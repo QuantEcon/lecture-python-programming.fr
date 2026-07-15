@@ -812,4 +812,4 @@ plt.tight_layout()
 ```{solution-end}
 ```
 
-[^mung] : Wikipédia définit le « munging » comme le nettoyage de données d'une forme brute vers une forme structurée et épurée.
+[^mung]: Wikipédia définit le « munging » comme le nettoyage de données d'une forme brute vers une forme structurée et épurée.
