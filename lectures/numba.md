@@ -54,7 +54,6 @@ import quantecon as qe
 import matplotlib.pyplot as plt
 ```
 
-
 ## Vue d'ensemble
 
 Dans un {doc}`cours précédent <need_for_speed>`, nous avons abordé la vectorisation, 
@@ -140,7 +139,6 @@ with qe.Timer() as timer1:
 
 ```
 
-
 #### Accélération via Numba
 
 Pour accélérer la fonction `qm` à l'aide de Numba, nous importons d'abord la fonction `jit`
@@ -225,7 +223,6 @@ la syntaxe de *décorateur* et plaçons `@jit` avant la définition de la foncti
 à ajouter `qm = jit(qm)` après la définition. 
 ```
 
-
 ## Points délicats
 
 Numba est relativement facile à utiliser mais pas toujours sans accroc.
@@ -274,7 +271,6 @@ iterate(g, 0.5, 100)
 
 Dans d'autres cas, comme lorsque nous voulons utiliser des fonctions de bibliothèques externes
 telles que `SciPy`, il pourrait ne pas y avoir de solution de contournement simple.
-
 
 ### Variables globales
 
@@ -474,7 +470,7 @@ Comparez la vitesse avec et sans Numba lorsque la taille de l'échantillon est g
 :class: dropdown
 ```
 
-Voici une solution :
+Voici une solution :
 
 ```{code-cell} ipython3
 @jit
@@ -491,7 +487,7 @@ def calculate_pi(u_draws, v_draws):
     return area_estimate * 4  # division par le rayon**2
 ```
 
-Voyons maintenant à quelle vitesse cela s'exécute :
+Voyons maintenant à quelle vitesse cela s'exécute :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -503,12 +499,12 @@ with qe.Timer():
     calculate_pi(u_draws, v_draws)
 ```
 
-Si nous désactivons la compilation JIT en supprimant `@jit`, le code prend environ
-150 fois plus de temps sur notre machine.
+Si nous désactivons la compilation JIT en supprimant `@jit`, le code prend
+considérablement plus de temps sur notre machine.
 
-Nous obtenons donc un gain de vitesse de 2 ordres de grandeur en ajoutant quatre caractères.
+Nous obtenons donc un gain de vitesse important en ajoutant quatre caractères.
 
-La solution ci-dessus adopte l'une des deux approches naturelles : elle *tire tous les
+La solution ci-dessus adopte l'une des deux approches naturelles : elle *tire tous les
 points aléatoires d'abord*, les stocke dans `u_draws` et `v_draws`, puis laisse la
 fonction jittée les parcourir en boucle.
 
@@ -533,6 +529,25 @@ with qe.Timer():
     calculate_pi_in_loop(rng, n)
 ```
 
+```{code-cell} ipython3
+with qe.Timer():
+    calculate_pi_in_loop(rng, n)
+```
+
+Les deux cellules chronométrant la première approche ne mesurent que la boucle --- ses points
+aléatoires sont tirés une seule fois dans le bloc de configuration partagé ci-dessus et ne sont jamais chronométrés, alors que
+la seconde approche paie pour ses tirages à l'intérieur de la fonction chronométrée.
+
+Pour comparer les deux approches de manière équitable, nous chronométrons la première approche de bout en bout,
+en incluant le coût de la génération des tableaux :
+
+```{code-cell} ipython3
+with qe.Timer():
+    u2 = rng.uniform(size=n)
+    v2 = rng.uniform(size=n)
+    calculate_pi(u2, v2)
+```
+
 Dans ce contexte séquentiel, les deux approches donnent des estimations tout aussi bonnes et s'exécutent à une
 vitesse similaire, mais elles ne sont pas équivalentes en termes d'*utilisation de la mémoire*. 
 
@@ -546,7 +561,7 @@ n'augmente pas avec `n`.
 
 Cela pourrait suggérer que tirer à l'intérieur de la boucle est le meilleur choix par défaut.
 
- Mais comme nous
+Mais comme nous
 le verrons dans {ref}`numba_ex_race`, tirer à l'intérieur de la boucle interagit
 mal avec la parallélisation.
 
@@ -642,7 +657,7 @@ print(np.mean(x == 0))  # Fraction du temps où x est dans l'état 0
 
 C'est (approximativement) la bonne sortie.
 
-Chronométrons-le maintenant :
+Chronométrons-le maintenant :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -669,7 +684,7 @@ with qe.Timer():
     compute_series_numba(n, U)
 ```
 
-C'est une belle amélioration de vitesse pour une ligne de code !
+C'est une belle amélioration de vitesse pour une ligne de code !
 
 ```{solution-end}
 ```
@@ -701,11 +716,11 @@ Pour la taille de la simulation Monte-Carlo, utilisez quelque chose de substanti
 :class: dropdown
 ```
 
-Voici une solution :
+Voici une solution :
 
 ```{code-cell} ipython3
 @jit(parallel=True)
-def calculate_pi(u_draws, v_draws):
+def calculate_pi_parallel(u_draws, v_draws):
     n = len(u_draws)
     count = 0
     for i in prange(n):
@@ -718,26 +733,26 @@ def calculate_pi(u_draws, v_draws):
     return area_estimate * 4  # division par le rayon**2
 ```
 
-Voyons maintenant à quelle vitesse cela s'exécute :
+Voyons maintenant à quelle vitesse cela s'exécute :
 
 ```{code-cell} ipython3
 with qe.Timer():
-    calculate_pi(u_draws, v_draws)
+    calculate_pi_parallel(u_draws, v_draws)
 ```
 
 ```{code-cell} ipython3
 with qe.Timer():
-    calculate_pi(u_draws, v_draws)
+    calculate_pi_parallel(u_draws, v_draws)
 ```
 
 En activant et désactivant la parallélisation (en choisissant `True` ou
 `False` dans l'annotation `@jit`), nous pouvons tester le gain de vitesse que
 le multithreading apporte en plus de la compilation JIT.
 
-Sur notre station de travail, nous constatons que la parallélisation augmente la vitesse d'exécution d'un
-facteur de 2 ou 3.
+Sur notre station de travail, nous constatons que la parallélisation apporte ici un gain de
+vitesse modeste mais appréciable.
 
-(Si vous exécutez localement, vous obtiendrez des nombres différents, dépendant principalement
+(Si vous exécutez localement, vous obtiendrez des résultats différents, dépendant principalement
 du nombre de CPU sur votre machine.)
 
 Remarquez que nous avons tiré tous les points aléatoires *avant* la boucle et les avons passés
@@ -760,16 +775,16 @@ Dans {ref}`numba_ex3`, nous avons tiré tous les points aléatoires *avant* la b
 
 Il est tentant de plutôt tirer chaque point *à l'intérieur* de la boucle `prange`, en passant un générateur `rng` en argument et en appelant `rng.uniform()` dans le corps de la boucle.
 
-Essayez-le : le code devrait s'exécuter et renvoyer un nombre proche de $\pi$, pourtant il y a un bug subtil dans cette approche.
+Essayez-le : le code devrait s'exécuter et renvoyer un nombre proche de $\pi$, pourtant il y a un bug subtil dans cette approche.
 
-Enquêtez comme suit :
+Enquêtez comme suit :
 
 1. Appelez votre fonction quelques fois avec la *même* graine et vérifiez si le résultat est reproductible.
 2. Répétez l'estimation de nombreuses fois sur une gamme de tailles d'échantillon et comparez sa dispersion à celle d'une version parallèle correcte.
 
 Expliquez ensuite ce qui ne va pas et donnez une manière correcte de tirer à l'intérieur d'une boucle parallèle.
 
-Astuce : essayez d'utiliser une fonction aléatoire ancienne telle que `np.random.uniform()` au lieu d'un `Generator` et voyez ce qui se passe.
+Astuce : essayez d'utiliser une fonction aléatoire ancienne telle que `np.random.uniform()` au lieu d'un `Generator` et voyez ce qui se passe.
 ```
 
 ```{solution-start} numba_ex_race
@@ -785,7 +800,7 @@ n = 1_000_000
 rng = np.random.default_rng()
 
 @jit(parallel=True)
-def calculate_pi_in_loop(rng, n):
+def calculate_pi_in_loop_parallel(rng, n):
     count = 0
     for i in prange(n):
         u, v = rng.uniform(), rng.uniform()
@@ -794,7 +809,7 @@ def calculate_pi_in_loop(rng, n):
             count += 1
     return (count / n) * 4
 
-calculate_pi_in_loop(rng, n)
+calculate_pi_in_loop_parallel(rng, n)
 ```
 
 Le code s'exécute sans erreur et renvoie quelque chose de proche de $\pi$.
@@ -814,7 +829,7 @@ imprévisible.
 
 Deux symptômes révèlent le problème.
 
-*Symptôme 1 : le résultat n'est plus reproductible.*
+*Symptôme 1 : le résultat n'est plus reproductible.*
 
 Un générateur correct renvoie la même réponse chaque fois qu'on lui donne la même graine.
 
@@ -822,12 +837,12 @@ Un générateur correct renvoie la même réponse chaque fois qu'on lui donne la
 
 ```{code-cell} ipython3
 for seed in (1, 1, 1):
-    print(calculate_pi_in_loop(np.random.default_rng(seed), n))
+    print(calculate_pi_in_loop_parallel(np.random.default_rng(seed), n))
 ```
 
 Chaque appel utilise la même graine, pourtant les réponses diffèrent.
 
-*Symptôme 2 : l'estimateur est bien plus bruité qu'il ne devrait l'être.*
+*Symptôme 2 : l'estimateur est bien plus bruité qu'il ne devrait l'être.*
 
 Les tirages dupliqués et corrélés portent moins d'information que $n$ tirages indépendants, de sorte que la taille d'échantillon *effective* est bien plus petite que $n$.
 
@@ -854,7 +869,7 @@ num_reps = 20
 methods = [("état par thread (correct)",
             lambda n: calculate_pi_legacy(n), 'C0'),
            ("générateur partagé dans prange (course aux données)",
-            lambda n: calculate_pi_in_loop(np.random.default_rng(), n), 'C1')]
+            lambda n: calculate_pi_in_loop_parallel(np.random.default_rng(), n), 'C1')]
 
 fig, ax = plt.subplots()
 for label, estimate, color in methods:
@@ -874,7 +889,7 @@ plt.show()
 
 Les deux bandes sont centrées sur $\pi$, mais la bande associée à la course aux données est bien plus large que l'autre et se rétrécit très lentement à mesure que la taille de l'échantillon augmente.
 
-L'autre option sûre est celle de {ref}`numba_ex3` : tirer les points avant la boucle afin que la boucle parallèle ne fasse que lire depuis la mémoire.
+L'autre option sûre est celle de {ref}`numba_ex3` : tirer les points avant la boucle afin que la boucle parallèle ne fasse que lire depuis la mémoire.
 
 ```{solution-end}
 ```
@@ -905,7 +920,7 @@ rng = np.random.default_rng()
 with qe.Timer():
     u_draws = rng.uniform(size=n)
     v_draws = rng.uniform(size=n)
-    calculate_pi(u_draws, v_draws)
+    calculate_pi_parallel(u_draws, v_draws)
 ```
 
 ```{code-cell} ipython3
@@ -1000,8 +1015,17 @@ $$
 
 En utilisant ce fait, la solution peut s'écrire comme suit.
 
-Notez que les tirages aléatoires sont conservés à l'intérieur de la boucle interne plutôt que pré-alloués,
-afin d'éviter de créer de grands tableaux de chocs de taille `M * n`.
+```{note}
+Ici, nous conservons les tirages aléatoires à l'intérieur de la boucle interne et utilisons l'ancienne
+API `np.random.randn()` plutôt qu'un `Generator`.
+
+En effet, le support de Numba pour les objets `Generator` n'est pas
+[thread-safe](https://numba.readthedocs.io/en/stable/reference/numpysupported.html#generator-objects)
+sous exécution parallèle (`@jit(parallel=True)`).
+
+Pré-tirer les chocs dans des tableaux de forme `(M, n)` éviterait ce problème mais est
+peu pratique ici, car `M = 10_000_000` nécessiterait plusieurs Go de mémoire.
+```
 
 
 ```{code-cell} ipython3
