@@ -12,8 +12,9 @@ on:
 
 jobs:
   review:
-    # Ignore `labeled` events for every other label: a sync applies its labels one call at a
-    # time, and each one would otherwise start a full (billed) review of the same diff.
+    # Ignore `labeled` events for every other label: a sync adds its labels in a single
+    # addLabels call, but GitHub emits one `labeled` event per label, and each would
+    # otherwise start a full (billed) review of the same diff.
     if: >
       contains(github.event.pull_request.labels.*.name, 'action-translation') &&
       (github.event.action != 'labeled' || github.event.label.name == 'action-translation')
