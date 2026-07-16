@@ -470,7 +470,7 @@ Comparez la vitesse avec et sans Numba lorsque la taille de l'échantillon est g
 :class: dropdown
 ```
 
-Voici une solution :
+Voici une solution :
 
 ```{code-cell} ipython3
 @jit
@@ -487,7 +487,7 @@ def calculate_pi(u_draws, v_draws):
     return area_estimate * 4  # division par le rayon**2
 ```
 
-Voyons maintenant à quelle vitesse cela s'exécute :
+Voyons maintenant à quelle vitesse cela s'exécute :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -504,7 +504,7 @@ considérablement plus de temps sur notre machine.
 
 Nous obtenons donc un gain de vitesse important en ajoutant quatre caractères.
 
-La solution ci-dessus adopte l'une des deux approches naturelles : elle *tire tous les
+La solution ci-dessus adopte l'une des deux approches naturelles : elle *tire tous les
 points aléatoires d'abord*, les stocke dans `u_draws` et `v_draws`, puis laisse la
 fonction jittée les parcourir en boucle.
 
@@ -539,7 +539,7 @@ aléatoires sont tirés une seule fois dans le bloc de configuration partagé ci
 la seconde approche paie pour ses tirages à l'intérieur de la fonction chronométrée.
 
 Pour comparer les deux approches de manière équitable, nous chronométrons la première approche de bout en bout,
-en incluant le coût de la génération des tableaux :
+en incluant le coût de la génération des tableaux :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -657,7 +657,7 @@ print(np.mean(x == 0))  # Fraction du temps où x est dans l'état 0
 
 C'est (approximativement) la bonne sortie.
 
-Chronométrons-le maintenant :
+Chronométrons-le maintenant :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -684,7 +684,7 @@ with qe.Timer():
     compute_series_numba(n, U)
 ```
 
-C'est une belle amélioration de vitesse pour une ligne de code !
+C'est une belle amélioration de vitesse pour une ligne de code !
 
 ```{solution-end}
 ```
@@ -716,7 +716,7 @@ Pour la taille de la simulation Monte-Carlo, utilisez quelque chose de substanti
 :class: dropdown
 ```
 
-Voici une solution :
+Voici une solution :
 
 ```{code-cell} ipython3
 @jit(parallel=True)
@@ -733,7 +733,7 @@ def calculate_pi_parallel(u_draws, v_draws):
     return area_estimate * 4  # division par le rayon**2
 ```
 
-Voyons maintenant à quelle vitesse cela s'exécute :
+Voyons maintenant à quelle vitesse cela s'exécute :
 
 ```{code-cell} ipython3
 with qe.Timer():
@@ -775,16 +775,16 @@ Dans {ref}`numba_ex3`, nous avons tiré tous les points aléatoires *avant* la b
 
 Il est tentant de plutôt tirer chaque point *à l'intérieur* de la boucle `prange`, en passant un générateur `rng` en argument et en appelant `rng.uniform()` dans le corps de la boucle.
 
-Essayez-le : le code devrait s'exécuter et renvoyer un nombre proche de $\pi$, pourtant il y a un bug subtil dans cette approche.
+Essayez-le : le code devrait s'exécuter et renvoyer un nombre proche de $\pi$, pourtant il y a un bug subtil dans cette approche.
 
-Enquêtez comme suit :
+Enquêtez comme suit :
 
 1. Appelez votre fonction quelques fois avec la *même* graine et vérifiez si le résultat est reproductible.
 2. Répétez l'estimation de nombreuses fois sur une gamme de tailles d'échantillon et comparez sa dispersion à celle d'une version parallèle correcte.
 
 Expliquez ensuite ce qui ne va pas et donnez une manière correcte de tirer à l'intérieur d'une boucle parallèle.
 
-Astuce : essayez d'utiliser une fonction aléatoire ancienne telle que `np.random.uniform()` au lieu d'un `Generator` et voyez ce qui se passe.
+Astuce : essayez d'utiliser une fonction aléatoire ancienne telle que `np.random.uniform()` au lieu d'un `Generator` et voyez ce qui se passe.
 ```
 
 ```{solution-start} numba_ex_race
@@ -829,7 +829,7 @@ imprévisible.
 
 Deux symptômes révèlent le problème.
 
-*Symptôme 1 : le résultat n'est plus reproductible.*
+*Symptôme 1 : le résultat n'est plus reproductible.*
 
 Un générateur correct renvoie la même réponse chaque fois qu'on lui donne la même graine.
 
@@ -842,7 +842,7 @@ for seed in (1, 1, 1):
 
 Chaque appel utilise la même graine, pourtant les réponses diffèrent.
 
-*Symptôme 2 : l'estimateur est bien plus bruité qu'il ne devrait l'être.*
+*Symptôme 2 : l'estimateur est bien plus bruité qu'il ne devrait l'être.*
 
 Les tirages dupliqués et corrélés portent moins d'information que $n$ tirages indépendants, de sorte que la taille d'échantillon *effective* est bien plus petite que $n$.
 
@@ -889,7 +889,7 @@ plt.show()
 
 Les deux bandes sont centrées sur $\pi$, mais la bande associée à la course aux données est bien plus large que l'autre et se rétrécit très lentement à mesure que la taille de l'échantillon augmente.
 
-L'autre option sûre est celle de {ref}`numba_ex3` : tirer les points avant la boucle afin que la boucle parallèle ne fasse que lire depuis la mémoire.
+L'autre option sûre est celle de {ref}`numba_ex3` : tirer les points avant la boucle afin que la boucle parallèle ne fasse que lire depuis la mémoire.
 
 ```{solution-end}
 ```
