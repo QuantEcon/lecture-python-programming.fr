@@ -82,10 +82,10 @@ Des détails supplémentaires seront ajoutés à notre `DataFrame` en utilisant 
 Nous allons lire un ensemble de données de l'OCDE des salaires minimums réels dans 32
 pays et l'assigner à `realwage`.
 
-L'ensemble de données est accessible via le lien suivant :
+L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url1 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python/master/source/_static/lecture_specific/pandas_panel/realwage.csv'
+url1 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python-programming/main/lectures/_static/lecture_specific/pandas_panel/realwage.csv'
 ```
 
 ```{code-cell} ipython3
@@ -200,10 +200,10 @@ En utilisant les informations sur les pays de
 [WorldData.info](https://www.worlddata.info/downloads/), nous ajouterons
 le continent de chaque pays à `realwage_f` avec la fonction `merge`.
 
-L'ensemble de données est accessible via le lien suivant :
+L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url2 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python/master/source/_static/lecture_specific/pandas_panel/countries.csv'
+url2 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python-programming/main/lectures/_static/lecture_specific/pandas_panel/countries.csv'
 ```
 
 ```{code-cell} ipython3
@@ -234,7 +234,7 @@ realwage_f.transpose().head()
 ```
 
 Nous pouvons utiliser une jointure left, right, inner ou outer pour fusionner nos
-ensembles de données :
+ensembles de données :
 
 * la jointure left n'inclut que les pays de l'ensemble de données de gauche
 * la jointure right n'inclut que les pays de l'ensemble de données de droite
@@ -278,7 +278,7 @@ colonne continent et filtrer le dataframe fusionné
 merged[merged['Continent'].isnull()]
 ```
 
-Nous avons trois valeurs manquantes !
+Nous avons trois valeurs manquantes !
 
 Une option pour traiter les valeurs NaN consiste à créer un dictionnaire contenant
 ces pays et leurs continents respectifs.
@@ -508,10 +508,10 @@ D'autres outils qui peuvent être utiles dans l'analyse des données de panel co
 Dans ces exercices, vous travaillerez avec un ensemble de données de taux
 d'emploi en Europe par âge et par sexe provenant d'[Eurostat](https://ec.europa.eu/eurostat/data/database).
 
-L'ensemble de données est accessible via le lien suivant :
+L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url3 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python/master/source/_static/lecture_specific/pandas_panel/employ.csv'
+url3 = 'https://raw.githubusercontent.com/QuantEcon/lecture-python-programming/main/lectures/_static/lecture_specific/pandas_panel/employ.csv'
 ```
 
 La lecture du fichier CSV retourne un ensemble de données de panel au format long. Utilisez `.pivot_table()` pour construire
