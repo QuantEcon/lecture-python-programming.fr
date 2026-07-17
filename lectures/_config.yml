@@ -8,8 +8,6 @@ execute:
   timeout: 600 # 10 minutes
 
 html:
-  # TODO: flip to https://python-programming-fr.quantecon.org/ together with the
-  # publish.yml cname once the custom-domain DNS is set up
   baseurl: https://quantecon.github.io/lecture-python-programming.fr/
 
 latex:

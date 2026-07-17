@@ -3,20 +3,27 @@ on:
   push:
     tags:
       - 'publish*'
+
+permissions:
+  contents: write
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   publish:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # upload archives to the release
-      pages: write     # deploy to GitHub Pages
-      id-token: write  # verify the deployment origin
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs['page-url'] }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Setup Anaconda
@@ -28,19 +35,6 @@ jobs:
           python-version: "3.13"
           environment-file: environment.yml
           activate-environment: quantecon
-      - name: Install latex dependencies
-        run: |
-          sudo apt-get -qq update
-          sudo apt-get install -y     \
-            texlive-latex-recommended \
-            texlive-latex-extra       \
-            texlive-fonts-recommended \
-            texlive-fonts-extra       \
-            texlive-xetex             \
-            latexmk                   \
-            xindy                     \
-            dvipng                    \
-            cm-super
       - name: Display Conda Environment Versions
         shell: bash -l {0}
         run: conda list
@@ -55,94 +49,19 @@ jobs:
           branch: main
           name: build-cache
           path: _build
-      # TODO: pdf support
-      # # Build Assets (Download Notebooks, PDF via LaTeX)
-      # - name: Build PDF from LaTeX
-      #   shell: bash -l {0}
-      #   run: |
-      #     jb build lectures --builder pdflatex --path-output ./ -n -W --keep-going
-      # - name: Copy LaTeX PDF for GH-PAGES
-      #   shell: bash -l {0}
-      #   run: |
-      #     mkdir -p _build/html/_pdf
-      #     cp -u _build/latex/*.pdf _build/html/_pdf
-      # TODO: download notebook support
-      # - name: Build Download Notebooks (sphinx-tojupyter)
-      #   shell: bash -l {0}
-      #   run: |
-      #     jb build lectures --path-output ./ --builder=custom --custom-builder=jupyter -n -W --keep-going
-      #     zip -r download-notebooks.zip _build/jupyter
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: download-notebooks
-      #     path: download-notebooks.zip
-      # - name: Copy Download Notebooks for GH-PAGES
-      #   shell: bash -l {0}
-      #   run: |
-      #     mkdir -p _build/html/_notebooks
-      #     cp -u _build/jupyter/*.ipynb _build/html/_notebooks
-      # Final Build of HTML (with assets)
+      # HTML only for now — no PDF or notebook assets
       - name: Build HTML
         shell: bash -l {0}
         run: |
           jb build lectures --path-output ./ -n --keep-going
           # TODO: Re-enable -W flag once all lectures are translated and warnings are resolved
-      # Create HTML archive for release assets
-      - name: Create HTML archive
-        shell: bash -l {0}
-        run: |
-          tar -czf lecture-python-programming-fr-html-${{ github.ref_name }}.tar.gz -C _build/html .
-          sha256sum lecture-python-programming-fr-html-${{ github.ref_name }}.tar.gz > html-checksum.txt
-
-          # Create metadata manifest
-          cat > html-manifest.json << EOF
-          {
-            "tag": "${{ github.ref_name }}",
-            "commit": "${{ github.sha }}",
-            "timestamp": "$(date -Iseconds)",
-            "size_mb": $(du -sm _build/html | cut -f1),
-            "file_count": $(find _build/html -type f | wc -l)
-          }
-          EOF
-      - name: Upload archives to release
-        uses: softprops/action-gh-release@v3
-        with:
-          files: |
-            lecture-python-programming-fr-html-${{ github.ref_name }}.tar.gz
-            html-checksum.txt
-            html-manifest.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # Deploy via the native Pages artifact flow (Pages source = "GitHub Actions").
-      # Custom domain (python-programming-fr.quantecon.org): once DNS is decided,
-      # set it in Settings → Pages and flip the _config.yml baseurl together.
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: _build/html
-      - name: Deploy website to GitHub Pages
+      # Serves at the default Pages URL (no cname):
+      # https://quantecon.github.io/lecture-python-programming.fr/
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
-      # TODO: download notebook support
-      # - name: Prepare lecture-python-programming.notebooks sync
-      #   shell: bash -l {0}
-      #   run: |
-      #     mkdir -p _build/lecture-python-programming.notebooks
-      #     cp -a _notebook_repo/. _build/lecture-python-programming.notebooks
-      #     cp _build/jupyter/*.ipynb _build/lecture-python-programming.notebooks
-      #     ls -a _build/lecture-python-programming.notebooks
-      # - name: Commit notebooks to lecture-python-programming.notebooks
-      #   shell: bash -l {0}
-      #   env:
-      #     QE_SERVICES_PAT: ${{ secrets.QUANTECON_SERVICES_PAT }}
-      #   run: |
-      #     git clone https://quantecon-services:$QE_SERVICES_PAT@github.com/quantecon/lecture-python-programming.notebooks
-
-      #     cp _build/lecture-python-programming.notebooks/*.ipynb lecture-python-programming.notebooks
-
-      #     cd lecture-python-programming.notebooks
-      #     git config user.name "QuantEcon Services"
-      #     git config user.email "admin@quantecon.org"
-      #     git add *.ipynb
-      #     git commit -m "auto publishing updates to notebooks"
-      #     git push origin main
+        uses: quantecon/actions/publish-gh-pages@v0.8.0
+        with:
+          build-dir: _build/html
+          create-release-assets: 'true'
+          asset-name: 'lecture-python-programming-fr-html'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
