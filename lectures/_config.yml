@@ -8,15 +8,16 @@ execute:
   timeout: 600 # 10 minutes
 
 html:
-  baseurl: https://python-programming.quantecon.org/
+  baseurl: https://quantecon.github.io/lecture-python-programming.fr/
 
 latex:
   latex_documents:
-     targetname: quantecon-python-programming.tex
+     targetname: quantecon-python-programming-fr.tex
 
 sphinx:
   extra_extensions: [sphinx_multitoc_numbering, sphinxext.rediraffe, sphinx_tojupyter, sphinx_exercise, sphinx_togglebutton, sphinx.ext.intersphinx]
   config:
+    language: fr
     # bibtex_reference_style: author_year #TODO: enable if bibtex bibliography is used in series
     # false-positive links
     linkcheck_ignore: ['https://github.com/matplotlib/matplotlib/blob/v3.6.2/lib/matplotlib/axes/_axes.py#L1417-L1669',
@@ -43,8 +44,9 @@ sphinx:
       dark_logo: quantecon-logo-transparent.png
       header_organisation_url: https://quantecon.org
       header_organisation: QuantEcon
-      repository_url: https://github.com/QuantEcon/lecture-python-programming
-      nb_repository_url: https://github.com/QuantEcon/lecture-python-programming.notebooks
+      repository_url: https://github.com/QuantEcon/lecture-python-programming.fr
+      # nb_repository_url omitted deliberately: no notebooks repo exists for this
+      # edition yet, and the theme skips notebook-launch links when it is unset
       path_to_docs: lectures
       twitter: quantecon
       twitter_logo_url: https://assets.quantecon.org/img/qe-twitter-logo.png
@@ -67,8 +69,8 @@ sphinx:
       index_toc.md: intro.md
     tojupyter_static_file_path: ["source/_static", "_static"]
     tojupyter_target_html: true
-    tojupyter_urlpath: "https://python-programming.quantecon.org/"
-    tojupyter_image_urlpath: "https://python-programming.quantecon.org/_static/"
+    tojupyter_urlpath: "https://quantecon.github.io/lecture-python-programming.fr/"
+    tojupyter_image_urlpath: "https://quantecon.github.io/lecture-python-programming.fr/_static/"
     tojupyter_lang_synonyms: ["ipython", "ipython3", "python"]
     tojupyter_kernels:
       python3:

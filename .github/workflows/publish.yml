@@ -1,0 +1,70 @@
+name: Build & Publish to GH Pages
+on:
+  push:
+    tags:
+      - 'publish*'
+
+permissions:
+  contents: write
+  actions: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs['page-url'] }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Setup Anaconda
+        uses: conda-incubator/setup-miniconda@v4
+        with:
+          auto-update-conda: true
+          auto-activate-base: true
+          miniconda-version: 'latest'
+          python-version: "3.13"
+          environment-file: environment.yml
+          activate-environment: quantecon
+      - name: Display Conda Environment Versions
+        shell: bash -l {0}
+        run: conda list
+      - name: Display Pip Versions
+        shell: bash -l {0}
+        run: pip list
+      # Download Build Cache from cache.yml
+      - name: Download "build" folder (cache)
+        uses: dawidd6/action-download-artifact@v21
+        with:
+          workflow: cache.yml
+          branch: main
+          name: build-cache
+          path: _build
+      - name: Clear stale Sphinx environment
+        shell: bash -l {0}
+        run: rm -rf _build/.doctrees
+      # HTML only for now — no PDF or notebook assets
+      - name: Build HTML
+        shell: bash -l {0}
+        run: |
+          jb build lectures --path-output ./ -n --keep-going
+          # TODO: Re-enable -W flag once all lectures are translated and warnings are resolved
+      # Serves at the default Pages URL (no cname):
+      # https://quantecon.github.io/lecture-python-programming.fr/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: quantecon/actions/publish-gh-pages@v0.8.0
+        with:
+          build-dir: _build/html
+          create-release-assets: 'true'
+          asset-name: 'lecture-python-programming-fr-html'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
