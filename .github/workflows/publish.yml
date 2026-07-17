@@ -7,6 +7,13 @@ jobs:
   publish:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # upload archives to the release
+      pages: write     # deploy to GitHub Pages
+      id-token: write  # verify the deployment origin
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -106,12 +113,16 @@ jobs:
             html-manifest.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy website to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
+      # Deploy via the native Pages artifact flow (Pages source = "GitHub Actions").
+      # Custom domain (python-programming-fr.quantecon.org): once DNS is decided,
+      # set it in Settings → Pages and flip the _config.yml baseurl together.
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html/
-          # cname: python-programming-fr.quantecon.org  # enable together with the _config.yml baseurl flip once DNS is decided
+          path: _build/html
+      - name: Deploy website to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
       # TODO: download notebook support
       # - name: Prepare lecture-python-programming.notebooks sync
       #   shell: bash -l {0}
