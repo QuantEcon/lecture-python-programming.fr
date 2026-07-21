@@ -41,6 +41,7 @@ translation:
 </div>
 ```
 
+(sympy)=
 # {index}`SymPy <single: SymPy>`
 
 ```{index} single: Python; SymPy
