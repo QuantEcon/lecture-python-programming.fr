@@ -56,8 +56,7 @@ jobs:
       - name: Build HTML
         shell: bash -l {0}
         run: |
-          jb build lectures --path-output ./ -n --keep-going
-          # TODO: Re-enable -W flag once all lectures are translated and warnings are resolved
+          jb build lectures --path-output ./ -n -W --keep-going
       # Serves at the default Pages URL (no cname):
       # https://quantecon.github.io/lecture-python-programming.fr/
       - name: Deploy to GitHub Pages
