@@ -11,9 +11,9 @@ translation:
   title: Un exemple introductif
   headings:
     Overview: Vue d'ensemble
-    'The Task: Plotting a White Noise Process': "La tâche\_: tracer un processus de bruit blanc"
+    'The Task: Plotting a White Noise Process': "Objectif\_: simuler et représenter un processus de bruit blanc"
     Version 1: Version 1
-    Version 1::Imports: Importations
+    Version 1::Imports: Importation de bibliothèques
     Version 1::Imports::Why So Many Imports?: "Pourquoi autant d'importations\_?"
     Version 1::Imports::Packages: Packages
     Version 1::Imports::Subpackages: Sous-packages
@@ -45,18 +45,18 @@ translation:
 
 ## Vue d'ensemble
 
-Nous sommes maintenant prêts à commencer à apprendre le langage Python lui-même.
+Nous sommes maintenant prêts à aborder le langage Python proprement dit.
 
 Dans ce cours, nous allons écrire puis décortiquer de petits programmes Python.
 
 L'objectif est de vous présenter la syntaxe de base de Python et ses structures de données.
 
-Des concepts plus approfondis seront abordés dans les cours ultérieurs.
+Les notions plus avancées seront abordées dans les chapitres suivants.
 
 Vous devriez avoir lu le {doc}`cours <getting_started>` sur la prise en main de Python avant de commencer celui-ci.
 
 
-## La tâche : tracer un processus de bruit blanc
+## Objectif : simuler et représenter un processus de bruit blanc
 
 Supposons que nous voulions simuler et tracer le processus de bruit blanc
 $\epsilon_0, \epsilon_1, \ldots, \epsilon_T$, où chaque tirage $\epsilon_t$ est un tirage indépendant d'une loi normale centrée réduite.
@@ -91,12 +91,12 @@ plt.show()
 Décomposons ce programme et voyons comment il fonctionne.
 
 (import)=
-### Importations
+### Importation de bibliothèques
 
 Les deux premières lignes du programme importent des fonctionnalités provenant de bibliothèques
 de code externes.
 
-La première ligne importe {doc}`NumPy <numpy>`, un package Python privilégié pour des tâches telles que
+La première ligne importe {doc}`NumPy <numpy>`, une bibliothèque Python très utilisée pour des tâches telles que
 
 * le travail avec des tableaux (vecteurs et matrices)
 * les fonctions mathématiques courantes comme `cos` et `sqrt`
@@ -184,12 +184,12 @@ sqrt(4)
 
 C'est également correct.
 
-L'avantage est qu'il y a moins à taper si nous utilisons `sqrt` souvent dans notre code.
+Cette écriture permet d'alléger le code lorsque la fonction `sqrt` est utilisée fréquemment.
 
 L'inconvénient est que, dans un long programme, ces deux lignes pourraient être
 séparées par de nombreuses autres lignes.
 
-Il est alors plus difficile pour les lecteurs de savoir d'où vient `sqrt`, s'ils le souhaitent.
+En revanche, dans un programme long, il peut devenir plus difficile de déterminer de quelle bibliothèque provient `sqrt`
 
 ### Tirages aléatoires
 
@@ -207,7 +207,7 @@ dans `ϵ_values`.
 
 Les deux lignes suivantes génèrent le graphique.
 
-Nous pouvons et allons examiner ci-dessous diverses façons de configurer et d'améliorer ce graphique.
+Nous verrons plus loin différentes façons de configurer et d'améliorer ce graphique.
 
 ## Implémentations alternatives
 
@@ -216,7 +216,7 @@ Essayons d'écrire quelques versions alternatives de {ref}`notre premier program
 Les programmes ci-dessous sont moins efficaces que l'original, et donc
 quelque peu artificiels.
 
-Mais ils nous aident à illustrer une syntaxe et une sémantique Python importantes dans un cadre familier.
+Ils permettent néanmoins d'illustrer, dans un contexte familier, plusieurs éléments importants de la syntaxe et du fonctionnement de Python.
 
 ### Une version avec une boucle for
 
@@ -253,7 +253,7 @@ En bref,
 
 Considérons l'instruction `ϵ_values = []`, qui crée une liste vide.
 
-Les listes sont une structure de données native de Python utilisée pour regrouper une collection d'objets.
+Une liste est une structure de données native de Python qui permet de regrouper plusieurs objets.
 
 Les éléments des listes sont ordonnés, et les doublons sont autorisés dans les listes.
 
@@ -279,7 +279,7 @@ x
 
 Ici `append()` est ce qu'on appelle une **méthode**, c'est-à-dire une fonction « attachée à » un objet --- dans ce cas, la liste `x`.
 
-Nous apprendrons tout sur les méthodes {doc}`plus tard <oop_intro>`, mais juste pour vous donner une idée,
+Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
 
 * Les objets Python tels que les listes, les chaînes de caractères, etc. ont tous des méthodes utilisées pour manipuler les données contenues dans l'objet.
 * Les objets chaînes de caractères ont des [méthodes de chaîne](https://docs.python.org/3/library/stdtypes.html#string-methods), les objets listes ont des [méthodes de liste](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), etc.
@@ -323,9 +323,9 @@ for i in range(ts_length):
 
 Python exécute les deux lignes indentées `ts_length` fois avant de passer à la suite.
 
-Ces deux lignes sont appelées un **bloc de code**, car elles constituent le « bloc » de code sur lequel nous bouclons.
+Ces deux lignes constituent un **bloc de code**, c'est-à-dire l'ensemble des instructions répétées à chaque itération.
 
-Contrairement à la plupart des autres langages, Python connaît l'étendue du bloc de code *uniquement grâce à l'indentation*.
+Contrairement à la plupart des autres langages, Python détermine les limites du bloc de code *uniquement à partir de l'indentation*.
 
 Dans notre programme, l'indentation diminue après la ligne `ϵ_values.append(e)`, indiquant à Python que cette ligne marque la limite inférieure du bloc de code.
 
@@ -366,7 +366,7 @@ Ainsi, contrairement à la plupart des autres langages, les espaces blancs dans 
 Une fois que vous vous y êtes habitué, c'est une bonne chose : cela
 
 * force une indentation propre et cohérente, améliorant la lisibilité
-* supprime l'encombrement, comme les accolades ou les instructions de fin utilisées dans d'autres langages
+* évite certains éléments syntaxiques supplémentaires, comme les accolades ou les mots-clés de fin utilisés dans d'autres langages.
 
 D'un autre côté, cela demande un peu de soin pour être fait correctement, alors veuillez retenir :
 
@@ -400,15 +400,16 @@ plt.plot(ϵ_values)
 plt.show()
 ```
 
-Une boucle while continuera d'exécuter le bloc de code délimité par l'indentation jusqu'à ce que la condition (```i < ts_length```) soit satisfaite.
+Une boucle while exécute le bloc de code délimité par l'indentation tant que la condition (```i < ts_length```) est vraie.
+
 
 Dans ce cas, le programme continuera d'ajouter des valeurs à la liste ```ϵ_values``` jusqu'à ce que ```i``` soit égal à ```ts_length``` :
 
 ```{code-cell} python3
-i == ts_length #la condition de fin de la boucle while
+i == ts_length # la condition de fin de la boucle while
 ```
 
-Notez que
+Notez que  
 
 * le bloc de code de la boucle `while` est à nouveau délimité uniquement par l'indentation.
 * l'instruction `i = i + 1` peut être remplacée par `i += 1`.
@@ -448,11 +449,10 @@ plt.show()
 L'instruction `b = np.empty(T+1)` alloue de l'espace mémoire pour `T+1`
 nombres (à virgule flottante).
 
-Ces nombres sont remplis par la boucle `for`.
+Ces nombres sont remplis au moyen de la boucle `for`.
 
 Allouer la mémoire au départ est plus efficace que d'utiliser une liste Python et
-`append`, car cette dernière doit demander de manière répétée de l'espace de stockage au
-système d'exploitation.
+`append`, car l'utilisation répétée de cette dernière peut nécessiter de nouvelles allocations de mémoire.
 
 Remarquez que nous avons ajouté une légende au graphique --- une fonctionnalité que l'on vous demandera
 d'utiliser dans les exercices.
@@ -484,7 +484,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-Posez $T=200$ et $\alpha = 0.9$.
+On pose $T = 200$ et $\alpha = 0.9$.
 
 ```{exercise-end}
 ```
@@ -612,8 +612,7 @@ plt.show()
 :label: pbe_ex4
 ```
 
-Un aspect important de pratiquement tous les langages de programmation est le branchement et
-les conditions.
+Les branchements conditionnels constituent un élément essentiel de presque tous les langages de programmation.
 
 En Python, les conditions sont généralement implémentées avec la syntaxe if--else.
 
@@ -706,8 +705,8 @@ import numpy as np
 Vos indices sont les suivants :
 
 * Si $U$ est une variable aléatoire uniforme bivariée sur le carré unité $(0, 1)^2$, alors la probabilité que $U$ se trouve dans un sous-ensemble $B$ de $(0,1)^2$ est égale à l'aire de $B$.
-* Si $U_1,\ldots,U_n$ sont des copies IID de $U$, alors, à mesure que $n$ devient grand, la fraction qui tombe dans $B$ converge vers la probabilité d'atterrir dans $B$.
-* Pour un cercle, $area = \pi * radius^2$.
+* Si $U_1,\ldots,U_n$ sont des copies IID de $U$, alors, lorsque $n$ devient suffisamment grand, la fraction qui tombe dans $B$ converge vers la probabilité que U appartienne à $B$.
+* Pour un cercle, $aire = \pi * rayon^2$.
 ```
 
 ```{exercise-end}
@@ -731,7 +730,7 @@ $\pi = A / r^2$.
 Résumé : si nous pouvons estimer l'aire d'un cercle de diamètre 1, alors diviser
 par $r^2 = (1/2)^2 = 1/4$ donne une estimation de $\pi$.
 
-Nous estimons l'aire en échantillonnant des uniformes bivariées et en regardant la
+Nous estimons l'aire en générant des observations d'une loi uniforme bidimensionnelle et en regardant la
 fraction qui tombe dans le cercle.
 
 ```{code-cell} python3
@@ -755,7 +754,7 @@ for i in range(n):
 
 area_estimate = count / n
 
-print(area_estimate * 4)  # division par radius**2
+print(area_estimate * 4)  # division par rayon**2
 ```
 
 ```{solution-end}
