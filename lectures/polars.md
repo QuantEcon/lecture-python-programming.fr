@@ -58,7 +58,7 @@ Elle a gagné une popularité considérable en tant qu'alternative moderne à {d
 
 Polars est conçue en tenant compte de la performance et de l'efficacité mémoire, en s'appuyant sur :
 
-* Le [format columnaire Apache Arrow](https://arrow.apache.org/docs/format/Columnar.html) pour un accès rapide aux données
+* Le [format colonnaire Apache Arrow](https://arrow.apache.org/docs/format/Columnar.html) pour un accès rapide aux données
 * L'[évaluation paresseuse](https://en.wikipedia.org/wiki/Lazy_evaluation) pour optimiser l'exécution des requêtes
 * Le traitement parallèle pour utiliser tous les cœurs de processeur disponibles
 * Une API expressive construite autour d'expressions de colonnes
