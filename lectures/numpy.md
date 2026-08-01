@@ -1,4 +1,4 @@
----
+ ---
 jupytext:
   text_representation:
     extension: .md
@@ -46,10 +46,10 @@ translation:
 ```
 
 ```{epigraph}
-« Soyons clairs : le travail de la science n'a rien à voir avec le consensus. Le consensus est l'affaire de la politique. La science, au contraire, ne requiert qu'un seul chercheur qui se trouve avoir raison, ce qui signifie qu'il ou elle dispose de résultats vérifiables par référence au monde réel. En science, le consensus n'a aucune importance. Ce qui importe, ce sont des résultats reproductibles. » -- Michael Crichton
+« Soyons clairs : le travail de la science n'a rien à voir avec le consensus. Le consensus est l'affaire de la politique. La science, au contraire, ne requiert qu'un seul chercheur qui se trouve avoir raison, ce qui signifie qu'il ou elle dispose de résultats vérifiables par référence au monde réel. En science, le consensus n'a aucune importance. Ce qui importe, ce sont des résultats reproductibles. » -- Michael Crichton
 ```
 
-En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothèques suivantes :
+En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothèques suivantes :
 
 ```{code-cell} ipython3
 :tags: [hide-output]
@@ -59,14 +59,14 @@ En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothè
 
 ## Vue d'ensemble
 
-[NumPy](https://en.wikipedia.org/wiki/NumPy) est une bibliothèque de premier ordre pour la programmation numérique
+[NumPy](https://en.wikipedia.org/wiki/NumPy) est une bibliothèque de référence pour le calcul numérique en Python
 
 * Largement utilisée dans le monde universitaire, la finance et l'industrie.
-* Mature, rapide, stable et en développement continu.
+* Mature, rapide, stable et continuellement améliorée.
 
-Nous avons déjà vu du code impliquant NumPy dans les cours précédents.
+Nous avons déjà rencontré du code utilisant NumPy dans les chapitres précédents.
 
-Dans ce cours, nous allons entamer une discussion plus systématique de 
+Dans ce chapitre, nous allons étudier de manière plus systématique
 
 1. les tableaux NumPy et
 1. les opérations fondamentales de traitement de tableaux fournies par NumPy.
@@ -74,7 +74,7 @@ Dans ce cours, nous allons entamer une discussion plus systématique de
 
 (Pour une référence alternative, consultez [la documentation officielle de NumPy](https://numpy.org/doc/stable/reference/).)
 
-Nous utiliserons les importations suivantes.
+Nous utiliserons les instructions d'importation suivantes.
 
 ```{code-cell} python3
 import numpy as np
@@ -93,12 +93,12 @@ from matplotlib import cm
 ```{index} single: NumPy; Arrays
 ```
 
-Le problème essentiel que NumPy résout est le traitement rapide de tableaux.
+L'un des principaux objectifs de NumPy est de permettre un traitement rapide des tableaux.
 
 La structure la plus importante que NumPy définit est un type de données tableau, formellement
 appelé [numpy.ndarray](https://numpy.org/doc/stable/reference/arrays.ndarray.html).
 
-Les tableaux NumPy alimentent une très grande proportion de l'écosystème scientifique de Python.
+Les tableaux NumPy constituent la base d'une grande partie de l'écosystème scientifique Python.
 
 ### Notions de base
 
@@ -113,16 +113,16 @@ a
 type(a)
 ```
 
-Les tableaux NumPy ressemblent quelque peu aux listes natives de Python, sauf que
+Les tableaux NumPy ressemblent à certains égards aux listes Python, à deux différences importantes près :
 
-* Les données *doivent être homogènes* (tous les éléments du même type).
+* Les données *doivent être homogènes* : tous les éléments doivent avoir le même type.
 * Ces types doivent être l'un des [types de données](https://numpy.org/doc/stable/reference/arrays.dtypes.html) (`dtypes`) fournis par NumPy.
 
-Les plus importants de ces dtypes sont :
+Parmi les types de données les plus couramment utilisés, on trouve :
 
-* float64 : nombre à virgule flottante sur 64 bits
-* int64 : entier sur 64 bits
-* bool : True ou False sur 8 bits
+* float64 : nombre à virgule flottante sur 64 bits
+* int64 : entier sur 64 bits
+* bool : True ou False sur 8 bits
 
 Il existe également des dtypes pour représenter les nombres complexes, les entiers non signés, etc.
 
@@ -133,7 +133,7 @@ a = np.zeros(3)
 type(a[0])
 ```
 
-Si nous voulons utiliser des entiers, nous pouvons le spécifier comme suit :
+Si nous voulons utiliser des entiers, nous pouvons le spécifier comme suit :
 
 ```{code-cell} python3
 a = np.zeros(3, dtype=int)
@@ -152,16 +152,16 @@ Considérons l'affectation suivante
 z = np.zeros(10)
 ```
 
-Ici `z` est un tableau **plat** --- ni vecteur ligne ni vecteur colonne.
+Ici, `z` est un tableau **unidimensionnel** : ce n'est ni un vecteur ligne ni un vecteur colonne.
 
 ```{code-cell} python3
 z.shape
 ```
 
-Ici, le tuple de forme n'a qu'un seul élément, qui est la longueur du tableau
+Ici, le tuple représentant la forme du tableau ne contient qu'un seul élément : sa longueur
 (les tuples à un seul élément se terminent par une virgule).
 
-Pour lui donner une dimension supplémentaire, nous pouvons modifier l'attribut `shape`
+Pour transformer ce tableau en tableau bidimensionnel, nous pouvons modifier son attribut `shape`
 
 ```{code-cell} python3
 z.shape = (10, 1)   # Convertit le tableau plat en vecteur colonne (bidimensionnel)
@@ -174,7 +174,7 @@ z.shape = (2, 2)    # Tableau bidimensionnel
 z
 ```
 
-Dans le dernier cas, pour créer le tableau 2x2, nous pourrions aussi passer un tuple à la fonction `zeros()`, comme
+Dans le dernier exemple, nous aurions également pu créer directement le tableau $2 \times 2$ en passant un tuple à la fonction `zeros()`, comme
 dans `z = np.zeros((2, 2))`.
 
 
@@ -189,7 +189,7 @@ Comme nous l'avons vu, la fonction `np.zeros` crée un tableau de zéros.
 
 Vous pouvez probablement deviner ce que crée `np.ones`.
 
-Une fonction apparentée est `np.empty`, qui crée des tableaux en mémoire qui peuvent ensuite être remplis de données
+La fonction `np.empty` crée un tableau sans initialiser ses valeurs, afin qu'il puisse être rempli ultérieurement
 
 ```{code-cell} python3
 z = np.empty(3)
@@ -200,7 +200,7 @@ Les nombres que vous voyez ici sont des valeurs parasites.
 
 (Python alloue 3 morceaux contigus de mémoire de 64 bits, et le contenu existant de ces emplacements mémoire est interprété comme des valeurs `float64`)
 
-Pour établir une grille de nombres régulièrement espacés, utilisez `np.linspace`
+Pour générer une suite de nombres régulièrement espacés sur un intervalle, utilisez `np.linspace`
 
 ```{code-cell} python3
 z = np.linspace(2, 4, 5)  # De 2 à 4, avec 5 éléments
@@ -234,7 +234,7 @@ z = np.array([[1, 2], [3, 4]])         # Tableau 2D à partir d'une liste de lis
 z
 ```
 
-Voir aussi `np.asarray`, qui remplit une fonction similaire, mais ne fait pas
+La fonction `np.asarray` joue un rôle similaire, mais ne fait pas
 de copie distincte des données déjà présentes dans un tableau NumPy.
 
 Pour lire les données d'un tableau à partir d'un fichier texte contenant des données numériques, utilisez `np.loadtxt` --- voir [la documentation](https://numpy.org/doc/stable/reference/routines.io.html) pour plus de détails.
@@ -246,7 +246,7 @@ Pour lire les données d'un tableau à partir d'un fichier texte contenant des d
 ```{index} single: NumPy; Arrays (Indexing)
 ```
 
-Pour un tableau plat, l'indexation est la même que pour les séquences Python :
+Pour un tableau unidimensionnel, l'indexation fonctionne comme pour les autres séquences Python :
 
 ```{code-cell} python3
 z = np.linspace(1, 2, 5)
@@ -265,7 +265,7 @@ z[0:2]  # Deux éléments, en commençant par l'élément 0
 z[-1]
 ```
 
-Pour les tableaux 2D, la syntaxe d'indexation est la suivante :
+Pour les tableaux 2D, la syntaxe d'indexation est la suivante :
 
 ```{code-cell} python3
 z = np.array([[1, 2], [3, 4]])
@@ -282,7 +282,7 @@ z[0, 1]
 
 Et ainsi de suite.
 
-Les colonnes et les lignes peuvent être extraites comme suit
+On peut extraire les lignes et les colonnes de la manière suivante
 
 ```{code-cell} python3
 z[0, :]
@@ -292,7 +292,7 @@ z[0, :]
 z[:, 1]
 ```
 
-Les tableaux NumPy d'entiers peuvent aussi être utilisés pour extraire des éléments
+Un tableau d'indices entiers peut également servir à sélectionner plusieurs éléments
 
 ```{code-cell} python3
 z = np.linspace(2, 4, 5)
@@ -304,7 +304,7 @@ indices = np.array((0, 2, 3))
 z[indices]
 ```
 
-Enfin, un tableau de `dtype bool` peut être utilisé pour extraire des éléments
+Enfin, un tableau booléen peut être utilisé comme masque pour sélectionner des éléments
 
 ```{code-cell} python3
 z
@@ -321,7 +321,7 @@ z[d]
 
 Nous verrons ci-dessous pourquoi cela est utile.
 
-Une remarque en passant : tous les éléments d'un tableau peuvent être fixés à un même nombre en utilisant la notation de tranche
+Remarquons également que l'on peut attribuer une même valeur à tous les éléments d'un tableau à l'aide d'une tranche
 
 ```{code-cell} python3
 z = np.empty(3)
@@ -338,7 +338,7 @@ z
 ```{index} single: NumPy; Arrays (Methods)
 ```
 
-Les tableaux disposent de méthodes utiles, toutes soigneusement optimisées
+Les tableaux NumPy disposent de nombreuses méthodes utiles et optimisées
 
 ```{code-cell} python3
 a = np.array((4, 3, 2, 1))
@@ -387,7 +387,7 @@ a.shape = (2, 2)
 a.T                   # Équivalent à a.transpose()
 ```
 
-Une autre méthode qui vaut la peine d'être connue est `searchsorted()`.
+Une autre méthode utile à connaître est `searchsorted()`.
 
 Si `z` est un tableau non décroissant, alors `z.searchsorted(a)` renvoie l'indice du
 premier élément de `z` qui est `>= a`
@@ -425,7 +425,7 @@ Nous pouvons ajouter un scalaire à chaque élément comme suit
 a + 10
 ```
 
-La multiplication scalaire est similaire
+La multiplication par un scalaire fonctionne de la même manière
 
 ```{code-cell} python3
 a * 10
@@ -456,10 +456,7 @@ En particulier, `A * B` n'est *pas* le produit matriciel, c'est un produit élé
 ```{index} single: NumPy; Matrix Multiplication
 ```
 
-```{index} single: NumPy; Matrix Multiplication
-```
-
-Nous utilisons le symbole `@` pour la multiplication matricielle, comme suit :
+Nous utilisons le symbole `@` pour la multiplication matricielle, comme suit :
 
 ```{code-cell} python3
 A = np.ones((2, 2))
@@ -468,7 +465,7 @@ A @ B
 ```
 
 La syntaxe fonctionne avec des tableaux plats --- NumPy devine intelligemment ce que vous
-voulez :
+voulez :
 
 ```{code-cell} python3
 A @ (0, 1)
@@ -487,10 +484,10 @@ Comme nous effectuons une post-multiplication, le tuple est traité comme un vec
 (Cette section prolonge une excellente discussion du broadcasting fournie par [Jake VanderPlas](https://jakevdp.github.io/PythonDataScienceHandbook/02.05-computation-on-arrays-broadcasting.html).)
 
 ```{note}
-Le broadcasting est un aspect très important de NumPy. En même temps, le broadcasting avancé est relativement complexe et certains des détails ci-dessous peuvent être survolés en première lecture.
+Le broadcasting est un aspect très important de NumPy. Cependant, les formes avancées de broadcasting sont relativement complexes et certains des détails ci-dessous peuvent être survolés en première lecture.
 ```
 
-Dans les opérations élément par élément, les tableaux peuvent ne pas avoir la même forme.
+Lors d'une opération élément par élément, les tableaux n'ont pas nécessairement la même forme.
  
 Lorsque cela se produit, NumPy étendra automatiquement les tableaux à la même forme chaque fois que possible.
 
@@ -518,7 +515,7 @@ b = np.array([3, 6, 9])
 a + b
 ```
 
-Voici une représentation visuelle de cette opération de broadcasting :
+Voici une représentation visuelle de cette opération de broadcasting :
 
 ```{code-cell} python3
 ---
@@ -635,7 +632,7 @@ ax.text(5, 7.0, '+', size=12, ha='center', va='center')
 ax.text(10.5, 7.0, '=', size=12, ha='center', va='center');
 ```
 
-Qu'en est-il de `b -> (3, 1)` ?
+Qu'en est-il de `b -> (3, 1)` ?
 
 Dans ce cas, NumPy étendra automatiquement `b -> (3, 1)` en `b -> (3, 3)`.
 
@@ -647,7 +644,7 @@ b.shape = (3, 1)
 a + b
 ```
 
-Voici une représentation visuelle de cette opération de broadcasting :
+Voici une représentation visuelle de cette opération de broadcasting :
 
 ```{code-cell} python3
 ---
@@ -716,7 +713,7 @@ b.shape = (3, 1)
 a + b
 ```
 
-Voici une représentation visuelle de cette opération de broadcasting :
+Voici une représentation visuelle de cette opération de broadcasting :
 
 ```{code-cell} python3
 ---
@@ -790,7 +787,7 @@ a + b
 La `ValueError` nous indique que les opérandes n'ont pas pu être broadcastées ensemble.
 
 
-Voici une représentation visuelle pour montrer pourquoi ce broadcasting ne peut pas être exécuté :
+La représentation suivante montre pourquoi cette opération de broadcasting est impossible :
 
 ```{code-cell} python3
 ---
@@ -835,22 +832,22 @@ C'est parce que, lorsque `b` est étendu de `b -> (3,)` à `b -> (3, 3)`, NumPy 
 
 Les choses deviennent encore plus délicates lorsque nous passons à des dimensions supérieures.
 
-Pour nous aider, nous pouvons utiliser la liste de règles suivante :
+Pour nous aider, nous pouvons utiliser la liste de règles suivante :
 
 * *Étape 1 :* Lorsque les dimensions de deux tableaux ne correspondent pas, NumPy étend celui qui a le moins de dimensions en ajoutant une ou plusieurs dimensions à gauche des dimensions existantes.
-    - Par exemple, si `a -> (3, 3)` et `b -> (3,)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 3)` ;
-    - Si `a -> (2, 2, 2)` et `b -> (2, 2)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 2, 2)` ;
+    - Par exemple, si `a -> (3, 3)` et `b -> (3,)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 3)` ;
+    - Si `a -> (2, 2, 2)` et `b -> (2, 2)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 2, 2)` ;
     - Si `a -> (3, 2, 2)` et `b -> (2,)`, alors le broadcasting ajoutera deux dimensions à gauche de sorte que `b -> (1, 1, 2)` (on peut aussi voir ce processus comme un passage par l'*Étape 1* deux fois).
 
 
 * *Étape 2 :* Lorsque les deux tableaux ont la même dimension mais des formes différentes, NumPy tentera d'étendre les dimensions où l'indice de forme est 1.
-    - Par exemple, si `a -> (1, 3)` et `b -> (3, 1)`, alors le broadcasting étendra les dimensions de forme 1 dans `a` et `b` de sorte que `a -> (3, 3)` et `b -> (3, 3)` ;
-    - Si `a -> (2, 2, 2)` et `b -> (1, 2, 2)`, alors le broadcasting étendra la première dimension de `b` de sorte que `b -> (2, 2, 2)` ;
+    - Par exemple, si `a -> (1, 3)` et `b -> (3, 1)`, alors le broadcasting étendra les dimensions de forme 1 dans `a` et `b` de sorte que `a -> (3, 3)` et `b -> (3, 3)` ;
+    - Si `a -> (2, 2, 2)` et `b -> (1, 2, 2)`, alors le broadcasting étendra la première dimension de `b` de sorte que `b -> (2, 2, 2)` ;
     - Si `a -> (3, 2, 2)` et `b -> (1, 1, 2)`, alors le broadcasting étendra `b` sur toutes les dimensions de forme 1 de sorte que `b -> (3, 2, 2)`.
 
 * *Étape 3 :* Après les étapes 1 et 2, si les deux tableaux ne correspondent toujours pas, une `ValueError` sera levée. Par exemple, supposons `a -> (2, 2, 3)` et `b -> (2, 2)`
-    - Par l'*Étape 1*, `b` sera étendu en `b -> (1, 2, 2)` ;
-    - Par l'*Étape 2*, `b` sera étendu en `b -> (2, 2, 2)` ;
+    - Par l'*Étape 1*, `b` sera étendu en `b -> (1, 2, 2)` ;
+    - Par l'*Étape 2*, `b` sera étendu en `b -> (2, 2, 2)` ;
     - Nous pouvons voir qu'ils ne correspondent pas l'un à l'autre après les deux premières étapes. Ainsi, une `ValueError` sera levée
 
 
@@ -859,10 +856,10 @@ Pour nous aider, nous pouvons utiliser la liste de règles suivante :
 
 Les tableaux NumPy sont des types de données mutables, comme les listes Python.
 
-En d'autres termes, leur contenu peut être modifié (muté) en mémoire après l'initialisation.
+En d'autres termes, leur contenu peut être modifié en mémoire après l'initialisation.
 
 C'est pratique mais, combiné au modèle de nommage et de référence de Python,
-cela peut conduire à des erreurs chez les débutants en NumPy.
+cela peut être source d'erreurs pour les personnes qui découvrent NumPy.
 
 Dans cette section, nous passons en revue quelques points clés.
 
@@ -883,7 +880,7 @@ a[-1] = 0  # Change le dernier élément en 0
 a
 ```
 
-La mutabilité conduit au comportement suivant (qui peut être choquant pour les programmeurs MATLAB...)
+La mutabilité entraîne le comportement suivant, qui peut surprendre les utilisateurs de MATLAB.
 
 ```{code-cell} python3
 rng = np.random.default_rng()
@@ -902,9 +899,9 @@ Ce qui s'est passé, c'est que nous avons modifié `a` en modifiant `b`.
 Le nom `b` est lié à `a` et devient simplement une autre référence au
 tableau (le modèle d'affectation de Python est décrit plus en détail {doc}`plus loin dans le cours <python_advanced_features>`).
 
-Il a donc des droits égaux pour apporter des modifications à ce tableau.
+Toute modification effectuée par l'intermédiaire de `b` affecte donc également le tableau accessible par `a`.
 
-C'est en fait le comportement par défaut le plus sensé !
+Ce comportement est généralement préférable, car il évite les copies inutiles.
 
 Cela signifie que nous ne faisons circuler que des pointeurs vers les données, plutôt que de faire des copies.
 
@@ -959,7 +956,7 @@ z = np.array([1, 2, 3])
 np.sin(z)
 ```
 
-Cela élimine le besoin de boucles explicites élément par élément telles que
+Cela évite d'écrire explicitement une boucle parcourant les éléments un à un, comme dans l'exemple suivant
 
 ```{code-cell} python3
 n = len(z)
@@ -973,7 +970,7 @@ Parce qu'elles agissent élément par élément sur les tableaux, ces fonctions 
 Dans le jargon de NumPy, elles sont aussi appelées **ufuncs**, ou **fonctions universelles**.
 
 Comme nous l'avons vu ci-dessus, les opérations arithmétiques usuelles (`+`, `*`, etc.) fonctionnent
-également élément par élément, et combiner celles-ci avec les ufuncs donne un très large ensemble de fonctions rapides opérant élément par élément.
+également élément par élément. En combinant ces opérations aux ufuncs, on dispose d'un vaste ensemble d'opérations vectorisées et efficaces.
 
 ```{code-cell} python3
 z
@@ -983,7 +980,7 @@ z
 (1 / np.sqrt(2 * np.pi)) * np.exp(- 0.5 * z**2)
 ```
 
-Toutes les fonctions définies par l'utilisateur n'agissent pas élément par élément.
+Les fonctions définies par l'utilisateur ne sont pas nécessairement vectorisées.
 
 Par exemple, passer un tableau NumPy à la fonction `f` définie ci-dessous provoque une `ValueError`
 
@@ -992,7 +989,7 @@ def f(x):
     return 1 if x > 0 else 0
 ```
 
-La fonction NumPy `np.where` fournit une alternative vectorisée :
+La fonction NumPy `np.where` fournit une alternative vectorisée :
 
 ```{code-cell} python3
 x = rng.standard_normal(4)
@@ -1061,7 +1058,7 @@ b
 z[b]
 ```
 
-Bien sûr, nous pouvons --- et faisons souvent --- effectuer ceci en une seule étape
+En pratique, cette sélection est souvent réalisée en une seule étape
 
 ```{code-cell} python3
 z[z > 3]
@@ -1099,7 +1096,7 @@ np.linalg.inv(A)           # Calcule l'inverse
 ```{index} single: Python; SciPy
 ```
 
-Une grande partie de ces fonctionnalités est aussi disponible dans [SciPy](https://scipy.org/), une collection de modules qui sont construits par-dessus NumPy.
+Une grande partie de ces fonctionnalités est aussi disponible dans [SciPy](https://scipy.org/), une collection de modules reposant sur NumPy.
 
 Nous couvrirons les versions SciPy plus en détail {doc}`bientôt <scipy>`.
 
@@ -1112,7 +1109,7 @@ Pour une liste complète de ce qui est disponible dans NumPy, consultez [cette d
 
 NumPy tente d'implémenter le multithreading dans une grande partie de son code compilé.
 
-Examinons un exemple pour voir cela en action.
+Observons ce comportement à l'aide d'un exemple.
 
 Le morceau de code suivant calcule les valeurs propres d'un grand nombre de matrices
 générées aléatoirement.
@@ -1128,7 +1125,7 @@ for i in range(n):
 ```
 
 Maintenant, examinons la sortie du moniteur système htop sur notre machine pendant que
-ce code s'exécute :
+ce code s'exécute :
 
 ```{figure} /_static/lecture_specific/parallelization/htop_parallel_npmat.png
 :scale: 80
@@ -1160,7 +1157,7 @@ p(x) = a_0 + a_1 x + a_2 x^2 + \cdots a_N x^N = \sum_{n=0}^N a_n x^n
 
 {ref}`Plus tôt <pyess_ex2>`, vous avez écrit une fonction simple `p(x, coeff)` pour évaluer {eq}`np_polynom` sans tenir compte de l'efficacité.
 
-Écrivez maintenant une nouvelle fonction qui effectue le même travail, mais qui utilise des tableaux NumPy et des opérations sur tableaux pour ses calculs, plutôt qu'une quelconque forme de boucle Python.
+Écrivez maintenant une nouvelle fonction qui effectue le même travail, mais qui utilise des tableaux NumPy et des opérations sur tableaux pour ses calculs, sans utiliser de boucle Python explicite.
 
 (Une telle fonctionnalité est déjà implémentée sous la forme de `np.poly1d`, mais pour les besoins de l'exercice, n'utilisez pas cette classe)
 
@@ -1175,7 +1172,7 @@ Utilisez `np.cumprod()`
 :class: dropdown
 ```
 
-Ce code fait le travail
+La fonction suivante répond à la question
 
 ```{code-cell} python3
 def p(x, coef):
@@ -1213,12 +1210,12 @@ Nous souhaitons générer une variable aléatoire discrète $x$ telle que $\math
 
 En d'autres termes, `x` prend des valeurs dans `range(len(q))` et `x = i` avec probabilité `q[i]`.
 
-L'algorithme standard (de transformation inverse) est le suivant :
+L'algorithme standard (de transformation inverse) est le suivant :
 
 * Divisez l'intervalle unité $[0, 1]$ en $n$ sous-intervalles $I_0, I_1, \ldots, I_{n-1}$ tels que la longueur de $I_i$ soit $q_i$.
-* Tirez une variable aléatoire uniforme $U$ sur $[0, 1]$ et renvoyez le $i$ tel que $U \in I_i$.
+* Effectuez un tirage $U$ selon la loi uniforme sur $[0, 1]$ et renvoyez le $i$ tel que $U \in I_i$.
 
-La probabilité de tirer $i$ est la longueur de $I_i$, qui est égale à $q_i$.
+La probabilité d'obtenir la valeur $i$ est égale à la longueur de l'intervalle $I_i$, qui est égale à $q_i$.
 
 Nous pouvons implémenter l'algorithme comme suit
 
@@ -1234,10 +1231,10 @@ def sample(q):
         a = a + q[i]
 ```
 
-Si vous ne voyez pas comment cela fonctionne, essayez de suivre le flux pour un exemple simple, tel que `q = [0.25, 0.75]`
+Si vous ne voyez pas comment cela fonctionne, essayez de suivre pas à pas l'exécution de l'algorithme sur un exemple simple, tel que `q = [0.25, 0.75]`
 Il est utile de dessiner les intervalles sur papier.
 
-Votre exercice consiste à l'accélérer en utilisant NumPy, en évitant les boucles explicites
+L'objectif de l'exercice est d'en proposer une version plus rapide à l'aide de NumPy, en évitant les boucles explicites
 
 ```{hint}
 :class: dropdown
@@ -1260,7 +1257,7 @@ Si vous le pouvez, écrivez la méthode de sorte que `draw(k)` renvoie `k` tirag
 :class: dropdown
 ```
 
-Voici notre première tentative de solution :
+Voici notre première tentative de solution :
 
 ```{code-cell} python3
 from numpy import cumsum
@@ -1288,8 +1285,7 @@ class DiscreteRV:
         return self.Q.searchsorted(self.rng.uniform(0, 1, size=k))
 ```
 
-La logique n'est pas évidente, mais si vous prenez votre temps et la lisez lentement,
-vous comprendrez.
+La logique peut sembler difficile au premier abord. Prenez le temps d'examiner chaque étape du code.
 
 Il y a cependant un problème ici.
 
@@ -1304,12 +1300,11 @@ d.q = (0.5, 0.5)
 Le problème est que `Q` ne change pas en conséquence, et `Q` correspond aux
 données utilisées dans la méthode `draw`.
 
-Pour gérer cela, une option consiste à calculer `Q` chaque fois que la méthode draw
-est appelée.
+Une première solution consisterait à recalculer `Q` à chaque appel de la méthode `draw`.
 
 Mais c'est inefficace par rapport à un calcul unique de `Q`.
 
-Une meilleure option consiste à utiliser des descripteurs.
+Une solution plus efficace consiste à utiliser un descripteur Python.
 
 Une solution de la [bibliothèque quantecon](https://github.com/QuantEcon/QuantEcon.py/tree/main/quantecon)
 utilisant des descripteurs et se comportant comme nous le souhaitons peut être trouvée
@@ -1324,7 +1319,7 @@ utilisant des descripteurs et se comportant comme nous le souhaitons peut être 
 
 Rappelez-vous notre {ref}`discussion précédente <oop_ex1>` sur la fonction de répartition empirique.
 
-Votre tâche consiste à
+L'objectif de cet exercice est de
 
 1. Rendre la méthode `__call__` plus efficace en utilisant NumPy.
 1. Ajouter une méthode qui trace la FDE sur $[a, b]$, où $a$ et $b$ sont des paramètres de la méthode.
@@ -1336,8 +1331,8 @@ Votre tâche consiste à
 
 Un exemple de solution est donné ci-dessous.
 
-En substance, nous avons simplement repris [ce code](https://github.com/QuantEcon/QuantEcon.py/blob/main/quantecon/ecdf.py)
-de QuantEcon et ajouté une méthode de tracé
+La solution ci-dessous adapte [ce code](https://github.com/QuantEcon/QuantEcon.py/blob/main/quantecon/ecdf.py)
+de QuantEcon en lui ajoutant une méthode de tracé
 
 ```{code-cell} python3
 """
@@ -1430,7 +1425,7 @@ Rappelez-vous que le [broadcasting](broadcasting) dans NumPy peut nous aider à 
 
 Dans cet exercice, essayez d'utiliser des boucles `for` pour reproduire le résultat des opérations de broadcasting suivantes.
 
-**Partie 1** : Essayez de reproduire cet exemple simple en utilisant des boucles `for` et comparez vos résultats avec l'opération de broadcasting ci-dessous.
+**Partie 1** : Essayez de reproduire cet exemple simple en utilisant des boucles `for` et comparez vos résultats avec l'opération de broadcasting ci-dessous.
 
 ```{code-cell} python3
 
@@ -1449,7 +1444,7 @@ tags: [hide-output]
 print(A)
 ```
 
-**Partie 2** : Passez à la reproduction du résultat de l'opération de broadcasting suivante. Parallèlement, comparez les vitesses du broadcasting et de la boucle `for` que vous implémentez.
+**Partie 2** : Passez à la reproduction du résultat de l'opération de broadcasting suivante. Parallèlement, comparez les vitesses du broadcasting et de la boucle `for` que vous implémentez.
 
 Pour cette partie de l'exercice, vous pouvez utiliser les fonctions `tic`/`toc` de la bibliothèque `quantecon` pour chronométrer l'exécution. 
 
