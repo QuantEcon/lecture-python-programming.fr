@@ -371,7 +371,7 @@ Comme deuxième tâche,
 1. Renseignez-vous sur le « forking » des dépôts GitHub (faire un fork signifie créer votre propre copie d'un dépôt GitHub, stockée sur GitHub).
 1. Faites un fork de [QuantEcon.py](https://github.com/QuantEcon/QuantEcon.py).
 1. Clonez votre fork dans un répertoire local, apportez des modifications, validez-les (commit) et renvoyez-les (push) vers votre dépôt GitHub forké.
-1. Si vous avez apporté une amélioration précieuse, envoyez-nous une [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) !
+1. Si vous avez apporté une amélioration précieuse, envoyez-nous une [pull request](https://docs.github.com/en/pull-requests/reference/pull-requests) !
 
 Pour approfondir ces sujets et d'autres, essayez
 
