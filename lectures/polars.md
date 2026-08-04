@@ -68,7 +68,7 @@ Polars est conçue en tenant compte de la performance et de l'efficacité mémoi
 
 * **Mémoire** : pandas nécessite généralement 5 à 10 fois la taille de votre jeu de données en RAM ; Polars n'en nécessite que 2 à 4 fois
 * **Vitesse** : Polars est 10 à 100 fois plus rapide pour de nombreuses opérations courantes
-* **Voir** : [Les benchmarks TPC-H de Polars](https://www.pola.rs/benchmarks/) pour des comparaisons de performance à jour
+* **Voir** : [Les benchmarks TPC-H de Polars](https://pola.rs/benchmarks/) pour des comparaisons de performance à jour
 ```
 
 Tout au long du cours, nous supposerons que les importations suivantes ont été effectuées
