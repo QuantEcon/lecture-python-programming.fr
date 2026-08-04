@@ -113,9 +113,9 @@ a
 type(a)
 ```
 
-Les tableaux NumPy ressemblent à certains égards aux listes Python, à deux différences importantes près :
+Les tableaux NumPy ressemblent à certains égards aux listes Python, à deux différences importantes près :
 
-* Les données *doivent être homogènes* : tous les éléments doivent avoir le même type.
+* Les données *doivent être homogènes* : tous les éléments doivent avoir le même type.
 * Ces types doivent être l'un des [types de données](https://numpy.org/doc/stable/reference/arrays.dtypes.html) (`dtypes`) fournis par NumPy.
 
 Parmi les types de données les plus couramment utilisés, on trouve :
@@ -152,13 +152,13 @@ Considérons l'affectation suivante
 z = np.zeros(10)
 ```
 
-Ici, `z` est un tableau **unidimensionnel** : ce n'est ni un vecteur ligne ni un vecteur colonne.
+Ici, `z` est un tableau **unidimensionnel** : ce n'est ni un vecteur ligne ni un vecteur colonne.
 
 ```{code-cell} python3
 z.shape
 ```
 
-Ici, le tuple représentant la forme du tableau ne contient qu'un seul élément : sa longueur
+Ici, le tuple représentant la forme du tableau ne contient qu'un seul élément : sa longueur
 (les tuples à un seul élément se terminent par une virgule).
 
 Pour transformer ce tableau en tableau bidimensionnel, nous pouvons modifier son attribut `shape`
