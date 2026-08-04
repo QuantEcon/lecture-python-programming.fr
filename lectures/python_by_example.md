@@ -131,7 +131,7 @@ d'importer des fonctionnalités supplémentaires.
 ```{index} single: Python; Packages
 ```
 
-Comme indiqué ci-dessus, NumPy est un package Python.
+NumPy, que nous avons présenté plus haut, est un package Python.
 
 Les packages sont utilisés par les développeurs pour organiser le code qu'ils souhaitent partager.
 
@@ -189,7 +189,7 @@ Cette écriture permet d'alléger le code lorsque la fonction `sqrt` est utilis�
 L'inconvénient est que, dans un long programme, ces deux lignes pourraient être
 séparées par de nombreuses autres lignes.
 
-En revanche, dans un programme long, il peut devenir plus difficile de déterminer de quelle bibliothèque provient `sqrt`.
+Il devient alors plus difficile de déterminer de quelle bibliothèque provient `sqrt`.
 
 ### Tirages aléatoires
 
@@ -279,7 +279,7 @@ x
 
 Ici `append()` est ce qu'on appelle une **méthode**, c'est-à-dire une fonction « attachée à » un objet --- dans ce cas, la liste `x`.
 
-Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
+Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
 
 * Les objets Python tels que les listes, les chaînes de caractères, etc. ont tous des méthodes utilisées pour manipuler les données contenues dans l'objet.
 * Les objets chaînes de caractères ont des [méthodes de chaîne](https://docs.python.org/3/library/stdtypes.html#string-methods), les objets listes ont des [méthodes de liste](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), etc.
@@ -729,7 +729,7 @@ $\pi = A / r^2$.
 Résumé : si nous pouvons estimer l'aire d'un cercle de diamètre 1, alors diviser
 par $r^2 = (1/2)^2 = 1/4$ donne une estimation de $\pi$.
 
-Nous estimons l'aire en générant des observations d'une loi uniforme bidimensionnelle et en regardant la
+Nous estimons l'aire en générant des observations d'une loi uniforme bivariée et en regardant la
 fraction qui tombe dans le cercle.
 
 ```{code-cell} python3
