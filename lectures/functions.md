@@ -95,7 +95,6 @@ type(22)
 
 La liste complète des fonctions intégrées de Python se trouve [ici](https://docs.python.org/3/library/functions.html).
 
-
 ### Fonctions tierces
 
 Si les fonctions intégrées ne couvrent pas nos besoins, nous devons soit importer
@@ -280,7 +279,6 @@ quad(lambda x: x**3, 0, 2)
 ```
 
 Ici, la fonction créée par `lambda` est dite *anonyme* car elle n'a jamais reçu de nom.
-
 
 ### Pourquoi écrire des fonctions ?
 
@@ -470,7 +468,7 @@ Ce qui se passe ici, c'est que chaque appel successif utilise son propre *cadre*
 
 * un cadre est l'endroit où sont conservées les variables locales d'un appel de fonction donné
 * la pile est la mémoire utilisée pour traiter les appels de fonction
-  * une file d'attente First In Last Out (FILO)
+  * une structure de données dernier entré, premier sorti (LIFO)
 
 Cet exemple est quelque peu artificiel, car la première solution (itérative) serait généralement préférée à la solution récursive.
 
@@ -633,7 +631,6 @@ draw_new(3)
 
 ```{solution-end}
 ```
-
 
 ## Exercices avancés
 
