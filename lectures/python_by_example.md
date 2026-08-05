@@ -55,7 +55,6 @@ Les notions plus avancées seront abordées dans les chapitres suivants.
 
 Vous devriez avoir lu le {doc}`cours <getting_started>` sur la prise en main de Python avant de commencer celui-ci.
 
-
 ## Objectif : simuler et représenter un processus de bruit blanc
 
 Supposons que nous voulions simuler et tracer le processus de bruit blanc
@@ -115,7 +114,6 @@ np.sqrt(4)
 np.log(4)
 ```
 
-
 #### Pourquoi autant d'importations ?
 
 Les programmes Python nécessitent généralement plusieurs instructions d'importation.
@@ -124,7 +122,6 @@ La raison en est que le cœur du langage est délibérément maintenu petit, afi
 
 Lorsque vous voulez faire quelque chose d'intéressant avec Python, vous avez presque toujours besoin
 d'importer des fonctionnalités supplémentaires.
-
 
 #### Packages
 
@@ -279,7 +276,7 @@ x
 
 Ici `append()` est ce qu'on appelle une **méthode**, c'est-à-dire une fonction « attachée à » un objet --- dans ce cas, la liste `x`.
 
-Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
+Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
 
 * Les objets Python tels que les listes, les chaînes de caractères, etc. ont tous des méthodes utilisées pour manipuler les données contenues dans l'objet.
 * Les objets chaînes de caractères ont des [méthodes de chaîne](https://docs.python.org/3/library/stdtypes.html#string-methods), les objets listes ont des [méthodes de liste](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), etc.
@@ -351,7 +348,6 @@ L'interpréteur Python effectue ce qui suit :
 
 * Pour chaque élément de la `sequence`, il « lie » le nom `variable_name` à cet élément puis exécute le bloc de code.
 
-
 ### Une remarque sur l'indentation
 
 ```{index} single: Python; Indentation
@@ -400,12 +396,12 @@ plt.plot(ϵ_values)
 plt.show()
 ```
 
-Une boucle while exécute le bloc de code délimité par l'indentation tant que la condition (```i < ts_length```) est vraie.
+Une boucle while exécute le bloc de code délimité par l'indentation tant que la condition (`i < ts_length`) est satisfaite.
 
-Dans ce cas, le programme continuera d'ajouter des valeurs à la liste ```ϵ_values``` jusqu'à ce que ```i``` soit égal à ```ts_length``` :
+Dans ce cas, le programme continuera d'ajouter des valeurs à la liste `ϵ_values` jusqu'à ce que `i` soit égal à `ts_length` :
 
 ```{code-cell} python3
-i == ts_length # la condition de fin de la boucle while
+i == ts_length #la condition de fin de la boucle while
 ```
 
 Notez que
