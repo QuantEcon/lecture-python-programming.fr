@@ -101,7 +101,8 @@ Commençons par les Series.
 Nous commençons par créer une série de quatre observations aléatoires
 
 ```{code-cell} ipython3
-s = pd.Series(np.random.randn(4), name='daily returns')
+rng = np.random.default_rng()
+s = pd.Series(rng.standard_normal(4), name='daily returns')
 s
 ```
 
