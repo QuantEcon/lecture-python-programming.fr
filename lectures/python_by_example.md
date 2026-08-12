@@ -55,7 +55,6 @@ Les notions plus avancées seront abordées dans les chapitres suivants.
 
 Vous devriez avoir lu le {doc}`cours <getting_started>` sur la prise en main de Python avant de commencer celui-ci.
 
-
 ## Objectif : simuler et représenter un processus de bruit blanc
 
 Supposons que nous voulions simuler et tracer le processus de bruit blanc
@@ -115,7 +114,6 @@ np.sqrt(4)
 np.log(4)
 ```
 
-
 #### Pourquoi autant d'importations ?
 
 Les programmes Python nécessitent généralement plusieurs instructions d'importation.
@@ -124,7 +122,6 @@ La raison en est que le cœur du langage est délibérément maintenu petit, afi
 
 Lorsque vous voulez faire quelque chose d'intéressant avec Python, vous avez presque toujours besoin
 d'importer des fonctionnalités supplémentaires.
-
 
 #### Packages
 
@@ -193,19 +190,22 @@ En revanche, dans un programme long, il peut devenir plus difficile de détermin
 
 ### Tirages aléatoires
 
-Pour revenir à notre programme qui trace le bruit blanc, les trois lignes restantes
+Pour revenir à notre programme qui trace le bruit blanc, les quatre lignes restantes
 après les instructions d'importation sont
 
 ```{code-cell} ipython
+rng = np.random.default_rng()
 ϵ_values = rng.standard_normal(100)
 plt.plot(ϵ_values)
 plt.show()
 ```
 
-La première ligne génère 100 tirages (quasi) indépendants d'une loi normale centrée réduite et les stocke
+La première ligne crée un générateur de nombres aléatoires `rng`.
+
+La deuxième ligne génère 100 tirages (quasi) indépendants d'une loi normale centrée réduite et les stocke
 dans `ϵ_values`.
 
-Les deux lignes suivantes génèrent le graphique.
+Les deux dernières lignes génèrent le graphique.
 
 Nous verrons plus loin différentes façons de configurer et d'améliorer ce graphique.
 
@@ -279,7 +279,7 @@ x
 
 Ici `append()` est ce qu'on appelle une **méthode**, c'est-à-dire une fonction « attachée à » un objet --- dans ce cas, la liste `x`.
 
-Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
+Nous étudierons les méthodes plus en détail dans un {doc}`chapitre ultérieur <oop_intro>`. Pour le moment, retenons simplement que :
 
 * Les objets Python tels que les listes, les chaînes de caractères, etc. ont tous des méthodes utilisées pour manipuler les données contenues dans l'objet.
 * Les objets chaînes de caractères ont des [méthodes de chaîne](https://docs.python.org/3/library/stdtypes.html#string-methods), les objets listes ont des [méthodes de liste](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), etc.
@@ -350,7 +350,6 @@ for variable_name in sequence:
 L'interpréteur Python effectue ce qui suit :
 
 * Pour chaque élément de la `sequence`, il « lie » le nom `variable_name` à cet élément puis exécute le bloc de code.
-
 
 ### Une remarque sur l'indentation
 
