@@ -101,11 +101,12 @@ Commençons par les Series.
 Nous commençons par créer une série de quatre observations aléatoires
 
 ```{code-cell} ipython3
-s = pd.Series(np.random.randn(4), name='daily returns')
+rng = np.random.default_rng()
+s = pd.Series(rng.standard_normal(4), name='daily returns')
 s
 ```
 
-Ici, vous pouvez imaginer les indices `0, 1, 2, 3` comme indexant quatre sociétés cotées, et les valeurs étant les rendements quotidiens de leurs actions.
+Ici, on peut imaginer les indices `0, 1, 2, 3` comme indexant quatre sociétés cotées, et les valeurs étant les rendements quotidiens de leurs actions.
 
 Les `Series` de pandas sont construites par-dessus les tableaux NumPy et prennent en charge de nombreuses opérations similaires
 
@@ -134,7 +135,7 @@ s
 
 Vues de cette manière, les `Series` sont comme des dictionnaires Python rapides et efficaces (avec la restriction que tous les éléments du dictionnaire ont le même type — dans ce cas, des flottants).
 
-En fait, vous pouvez utiliser une grande partie de la même syntaxe que les dictionnaires Python
+En fait, on peut utiliser une grande partie de la même syntaxe que les dictionnaires Python
 
 ```{code-cell} ipython3
 s['AMZN']
