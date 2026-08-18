@@ -697,19 +697,20 @@ effort de calcul de la constante $\pi$ par Monte-Carlo.
 
 Essayez maintenant d'ajouter la parallélisation et voyez si vous obtenez des gains de vitesse supplémentaires.
 
-Vous ne devez pas vous attendre à d'énormes gains ici car, bien qu'il y ait de nombreuses
-tâches indépendantes (tirer un point et tester s'il est dans le cercle), chacune a un
-temps d'exécution faible.
+Il existe ici de nombreuses tâches indépendantes (tirer un point et tester s'il tombe
+dans le cercle), mais chacune a un temps d'exécution très faible.
 
-De manière générale, la parallélisation est moins efficace lorsque les
-tâches individuelles à paralléliser sont très petites par rapport au temps d'exécution total.
+De manière générale, la parallélisation est moins efficace lorsque les tâches individuelles
+sont très petites par rapport aux surcoûts liés à leur répartition sur plusieurs CPU.
 
-Cela est dû aux surcoûts associés à la répartition de toutes ces petites tâches sur plusieurs CPU.
+Le moyen d'y remédier est de donner à chaque thread suffisamment de travail pour que ces
+surcoûts en vaillent la peine.
 
-Néanmoins, avec un matériel adapté, il est possible d'obtenir des gains de vitesse non triviaux dans cet exercice.
-
-Pour la taille de la simulation Monte-Carlo, utilisez quelque chose de substantiel, comme
+Ainsi, pour la taille de la simulation Monte-Carlo, utilisez quelque chose de substantiel, comme
 `n = 100_000_000`.
+
+À cette échelle, et avec un matériel adapté, vous devriez observer un gain net par rapport à
+la version séquentielle.
 ```
 
 ```{solution-start} numba_ex3
@@ -733,36 +734,65 @@ def calculate_pi_parallel(u_draws, v_draws):
     return area_estimate * 4  # division par le rayon**2
 ```
 
-Voyons maintenant à quelle vitesse cela s'exécute :
+La parallélisation porte ses fruits lorsque chaque thread dispose de suffisamment de travail pour compenser
+les coûts de surcharge tout en découpant le problème en parties permettant un travail simultané.
+
+Tirons un ensemble de points nouveau et bien plus grand plutôt que de réutiliser les tableaux ci-dessus.
+
+```{note}
+Les deux tableaux ci-dessous occupent environ 1,6 Go de mémoire — réduisez `n` si votre
+machine manque de RAM.
+```
+
+```{code-cell} ipython3
+n = 100_000_000
+rng = np.random.default_rng()
+u_big = rng.uniform(size=n)
+v_big = rng.uniform(size=n)
+```
+
+Voyons maintenant à quelle vitesse cela s'exécute (le second appel mesure le temps d'exécution sans
+le temps de compilation) :
 
 ```{code-cell} ipython3
 with qe.Timer():
-    calculate_pi_parallel(u_draws, v_draws)
+    calculate_pi_parallel(u_big, v_big)
 ```
 
 ```{code-cell} ipython3
 with qe.Timer():
-    calculate_pi_parallel(u_draws, v_draws)
+    calculate_pi_parallel(u_big, v_big)
 ```
 
-En activant et désactivant la parallélisation (en choisissant `True` ou
-`False` dans l'annotation `@jit`), nous pouvons tester le gain de vitesse que
-le multithreading apporte en plus de la compilation JIT.
+À titre de comparaison, voici la version séquentielle jittée de {ref}`speed_ex1` sur les
+mêmes points :
 
-Sur notre station de travail, nous constatons que la parallélisation apporte ici un gain de
-vitesse modeste mais appréciable.
+```{code-cell} ipython3
+with qe.Timer():
+    calculate_pi(u_big, v_big)
+```
+
+En comparant les deux derniers chronométrages, le multithreading apporte un gain de vitesse
+substantiel en plus de la compilation JIT.
 
 (Si vous exécutez localement, vous obtiendrez des résultats différents, dépendant principalement
-du nombre de CPU sur votre machine.)
+du nombre de CPU sur votre machine — et pour de petites tailles d'échantillon, la
+version parallèle peut même être plus lente, car les gains ne suffisent pas à couvrir le coût de
+la répartition du travail entre les threads.)
+
+Ces deux tableaux sont volumineux et nous n'en avons plus besoin, aussi libérons-nous la
+mémoire avant de poursuivre.
+
+```{code-cell} ipython3
+del u_big, v_big
+```
 
 Remarquez que nous avons tiré tous les points aléatoires *avant* la boucle et les avons passés
 comme tableaux, de sorte que la boucle parallèle ne fait que *lire* depuis la mémoire.
 
 Tirer les points *à l'intérieur* de la boucle parallèle est étonnamment délicat.
 
-
-Nous étudions pourquoi, et comment le faire de manière sûre, dans
-{ref}`numba_ex_race`.
+Nous étudions pourquoi, et comment le faire de manière sûre, dans {ref}`numba_ex_race`.
 
 ```{solution-end}
 ```
