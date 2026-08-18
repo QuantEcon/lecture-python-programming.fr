@@ -160,7 +160,7 @@ En substance, un `DataFrame` dans pandas est analogue à une feuille de calcul E
 
 Ainsi, c'est un outil puissant pour représenter et analyser des données naturellement organisées en lignes et en colonnes, souvent avec des indices descriptifs pour les lignes et les colonnes individuelles.
 
-Regardons un exemple qui lit des données à partir du fichier CSV `pandas/data/test_pwt.csv`, tiré des [Penn World Tables](https://www.rug.nl/ggdc/productivity/pwt/pwt-releases/pwt-7.0).
+Regardons un exemple qui lit des données à partir du fichier CSV `test_pwt.csv`, tiré des [Penn World Tables](https://www.rug.nl/ggdc/productivity/pwt/pwt-releases/pwt-7.0).
 
 Le jeu de données contient les indicateurs suivants
 
@@ -176,7 +176,7 @@ Le jeu de données contient les indicateurs suivants
 Nous allons le lire depuis une URL en utilisant la fonction `read_csv` de `pandas`.
 
 ```{code-cell} ipython3
-df = pd.read_csv('https://raw.githubusercontent.com/QuantEcon/lecture-python-programming/main/lectures/_static/lecture_specific/pandas/data/test_pwt.csv')
+df = pd.read_csv('https://github.com/QuantEcon/data-lectures/raw/main/lectures/test_pwt.csv')
 type(df)
 ```
 
@@ -357,10 +357,10 @@ df.loc[complexCondition]
 La capacité d'effectuer des modifications dans les dataframes est importante pour générer un jeu de données propre en vue d'analyses futures.
 
 
-**1.** Nous pouvons utiliser `df.where()` de manière pratique pour « conserver » les lignes que nous avons sélectionnées et remplacer les autres lignes par n'importe quelles autres valeurs
+**1.** Nous pouvons utiliser `df.where()` de manière pratique pour « conserver » les lignes que nous avons sélectionnées et remplacer les autres lignes par `NaN`
 
 ```{code-cell} ipython3
-df.where(df.POP >= 20000, False)
+df.where(df.POP >= 20000)
 ```
 
 **2.** Nous pouvons simplement utiliser `.loc[]` pour spécifier la colonne que nous voulons modifier, et attribuer des valeurs
@@ -388,7 +388,7 @@ df.apply(update_row, axis=1)
 
 ```{code-cell} ipython3
 # Arrondit tous les nombres décimaux à 2 décimales
-df.map(lambda x : round(x,2) if type(x)!=str else x)
+df.map(lambda x : round(x,2) if not isinstance(x, str) else x)
 ```
 
 **Application : Imputation des valeurs manquantes**
@@ -411,8 +411,8 @@ Nous pouvons utiliser à nouveau la méthode `.map()` pour remplacer toutes les 
 ```{code-cell} ipython3
 # remplace toutes les valeurs NaN par 0
 def replace_nan(x):
-    if type(x)!=str:
-        return  0 if np.isnan(x) else x
+    if not isinstance(x, str):
+        return  0 if pd.isna(x) else x
     else:
         return x
 
