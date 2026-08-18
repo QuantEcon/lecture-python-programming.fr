@@ -161,7 +161,7 @@ En substance, un `DataFrame` dans pandas est analogue à une feuille de calcul E
 
 Ainsi, c'est un outil puissant pour représenter et analyser des données naturellement organisées en lignes et en colonnes, souvent avec des indices descriptifs pour les lignes et les colonnes individuelles.
 
-Regardons un exemple qui lit des données à partir du fichier CSV `pandas/data/test_pwt.csv`, tiré des [Penn World Tables](https://www.rug.nl/ggdc/productivity/pwt/pwt-releases/pwt-7.0).
+Regardons un exemple qui lit des données à partir du fichier CSV `test_pwt.csv`, tiré des [Penn World Tables](https://www.rug.nl/ggdc/productivity/pwt/pwt-releases/pwt-7.0).
 
 Le jeu de données contient les indicateurs suivants
 
@@ -177,7 +177,7 @@ Le jeu de données contient les indicateurs suivants
 Nous allons le lire depuis une URL en utilisant la fonction `read_csv` de `pandas`.
 
 ```{code-cell} ipython3
-df = pd.read_csv('https://raw.githubusercontent.com/QuantEcon/lecture-python-programming/main/lectures/_static/lecture_specific/pandas/data/test_pwt.csv')
+df = pd.read_csv('https://github.com/QuantEcon/data-lectures/raw/main/lectures/test_pwt.csv')
 type(df)
 ```
 
