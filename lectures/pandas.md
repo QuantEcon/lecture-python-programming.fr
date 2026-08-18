@@ -357,10 +357,10 @@ df.loc[complexCondition]
 La capacité d'effectuer des modifications dans les dataframes est importante pour générer un jeu de données propre en vue d'analyses futures.
 
 
-**1.** Nous pouvons utiliser `df.where()` de manière pratique pour « conserver » les lignes que nous avons sélectionnées et remplacer les autres lignes par n'importe quelles autres valeurs
+**1.** Nous pouvons utiliser `df.where()` de manière pratique pour « conserver » les lignes que nous avons sélectionnées et remplacer les autres lignes par `NaN`
 
 ```{code-cell} ipython3
-df.where(df.POP >= 20000, False)
+df.where(df.POP >= 20000)
 ```
 
 **2.** Nous pouvons simplement utiliser `.loc[]` pour spécifier la colonne que nous voulons modifier, et attribuer des valeurs
@@ -388,7 +388,7 @@ df.apply(update_row, axis=1)
 
 ```{code-cell} ipython3
 # Arrondit tous les nombres décimaux à 2 décimales
-df.map(lambda x : round(x,2) if type(x)!=str else x)
+df.map(lambda x : round(x,2) if not isinstance(x, str) else x)
 ```
 
 **Application : Imputation des valeurs manquantes**
@@ -411,8 +411,8 @@ Nous pouvons utiliser à nouveau la méthode `.map()` pour remplacer toutes les 
 ```{code-cell} ipython3
 # remplace toutes les valeurs NaN par 0
 def replace_nan(x):
-    if type(x)!=str:
-        return  0 if np.isnan(x) else x
+    if not isinstance(x, str):
+        return  0 if pd.isna(x) else x
     else:
         return x
 
@@ -544,7 +544,7 @@ Dans le second cas, vous pouvez soit
 * passer à une autre machine
 * résoudre votre problème de proxy en lisant [la documentation](https://requests.readthedocs.io/en/latest/)
 
-En supposant que tout fonctionne, vous pouvez maintenant utiliser l'objet `source` renvoyé par l'appel `requests.get('https://research.stlouisfed.org/fred2/series/UNRATE/downloaddata/UNRATE.csv')`
+En supposant que tout fonctionne, vous pouvez maintenant construire l'objet `source` à partir des données renvoyées par l'appel `requests.get(url)`
 
 ```{code-cell} ipython3
 url = 'https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1318&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1948-01-01&coed=2024-06-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2024-07-29&revision_date=2024-07-29&nd=1948-01-01'
