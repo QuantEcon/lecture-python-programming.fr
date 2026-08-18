@@ -174,9 +174,7 @@ Comme dans {doc}`pandas`, travaillons avec les données des [Penn World Tables](
 Nous les lisons à l'aide de `pl.read_csv`
 
 ```{code-cell} ipython3
-url = ('https://raw.githubusercontent.com/QuantEcon/'
-       'lecture-python-programming/main/lectures/_static/'
-       'lecture_specific/pandas/data/test_pwt.csv')
+url = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/test_pwt.csv'
 df = pl.read_csv(url)
 df
 ```
@@ -360,9 +358,7 @@ Au lieu d'exécuter chaque opération immédiatement, le mode paresseux collecte
 
 ```{code-cell} ipython3
 # Rechargement du jeu de données
-url = ('https://raw.githubusercontent.com/QuantEcon/'
-       'lecture-python-programming/main/lectures/_static/'
-       'lecture_specific/pandas/data/test_pwt.csv')
+url = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/test_pwt.csv'
 df_full = pl.read_csv(url)
 ```
 
@@ -438,9 +434,7 @@ import pandas as pd
 import time
 
 # Petit jeu de données -- Penn World Tables (~8 lignes)
-url = ('https://raw.githubusercontent.com/QuantEcon/'
-       'lecture-python-programming/main/lectures/_static/'
-       'lecture_specific/pandas/data/test_pwt.csv')
+url = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/test_pwt.csv'
 small_pd = pd.read_csv(url)
 small_pl = pl.read_csv(url)
 ```
@@ -480,13 +474,13 @@ une moyenne pondérée groupée.
 
 ```{code-cell} ipython3
 n = 5_000_000
-np.random.seed(42)
+rng = np.random.default_rng(42)
 
-groups = np.random.choice(['A', 'B', 'C', 'D'], n)
-values = np.random.randn(n)
-weights = np.random.rand(n)
-extra1 = np.random.randn(n)
-extra2 = np.random.randn(n)
+groups = rng.choice(['A', 'B', 'C', 'D'], n)
+values = rng.standard_normal(n)
+weights = rng.random(n)
+extra1 = rng.standard_normal(n)
+extra2 = rng.standard_normal(n)
 
 big_pd = pd.DataFrame({
     'group': groups, 'value': values,
