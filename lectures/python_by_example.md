@@ -190,19 +190,22 @@ Il devient alors plus difficile de déterminer de quelle bibliothèque provient 
 
 ### Tirages aléatoires
 
-Pour revenir à notre programme qui trace le bruit blanc, les trois lignes restantes
+Pour revenir à notre programme qui trace le bruit blanc, les quatre lignes restantes
 après les instructions d'importation sont
 
 ```{code-cell} ipython
+rng = np.random.default_rng()
 ϵ_values = rng.standard_normal(100)
 plt.plot(ϵ_values)
 plt.show()
 ```
 
-La première ligne génère 100 tirages (quasi) indépendants d'une loi normale centrée réduite et les stocke
+La première ligne crée un générateur de nombres aléatoires `rng`.
+
+La deuxième ligne génère 100 tirages (quasi) indépendants d'une loi normale centrée réduite et les stocke
 dans `ϵ_values`.
 
-Les deux lignes suivantes génèrent le graphique.
+Les deux dernières lignes génèrent le graphique.
 
 Nous verrons plus loin différentes façons de configurer et d'améliorer ce graphique.
 

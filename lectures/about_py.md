@@ -61,7 +61,6 @@ Dans ce cours, nous allons
 
 Vous n'avez **pas** besoin de tout comprendre dans ce cours -- nous détaillerons les points progressivement plus tard dans la série de cours.
 
-
 ### Ne puis-je pas simplement utiliser des LLM ?
 
 Non !
@@ -78,7 +77,6 @@ Vous devrez être l'architecte et le superviseur -- et pour ces tâches, vous de
 
 Cela dit, un bon LLM est un compagnon utile pour ces cours -- essayez de copier-coller du code de cette série et de demander une explication.
 
-
 ### MATLAB n'est-il pas meilleur ?
 
 Non, non, et cent fois non.
@@ -93,8 +91,6 @@ De plus, tous les grands LLM sont plus compétents pour écrire du code Python q
 
 Nous discuterons des mérites relatifs des bibliothèques de Python tout au long de cette série de cours, ainsi que dans notre série ultérieure sur [JAX](https://jax.quantecon.org/intro.html).
 
-
-
 ## Présentation de Python
 
 [Python](https://www.python.org) est un langage de programmation à usage général conçu en 1989 par [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum).
@@ -106,7 +102,6 @@ C'est important parce que cela
 * nous fait économiser de l'argent,
 * signifie que Python est contrôlé par la communauté des utilisateurs plutôt que par une entreprise à but lucratif, et
 * encourage la reproductibilité et la [science ouverte](https://en.wikipedia.org/wiki/Open_science).
-
 
 ### Usages courants
 
@@ -132,7 +127,6 @@ Il est utilisé et largement soutenu par de grandes entreprises technologiques, 
 * [Reddit](https://www.reddit.com/)
 * etc.
 
-
 ### Popularité relative
 
 Python est l'un des -- si ce n'est le -- [langages de programmation les plus populaires](https://www.tiobe.com/tiobe-index/).
@@ -146,9 +140,7 @@ Par exemple, le graphique suivant issu de Stack Overflow Trends montre comment l
 
 ```{figure} /_static/lecture_specific/about_py/pytorch_vs_matlab.png
 ```
-Pytorch n'est que l'une des nombreuses bibliothèques Python pour l'apprentissage profond et l'IA.
-
-
+PyTorch n'est que l'une des nombreuses bibliothèques Python pour l'apprentissage profond et l'IA.
 
 ### Fonctionnalités
 
@@ -159,7 +151,6 @@ Il possède un noyau de langage relativement petit et facile à apprendre.
 Ce noyau est soutenu par de nombreuses bibliothèques, que l'on peut étudier au besoin.
 
 Python est flexible et pragmatique, prenant en charge plusieurs styles de programmation (procédural, orienté objet, fonctionnel, etc.).
-
 
 ### Syntaxe et conception
 
@@ -251,8 +242,6 @@ print(f"Average: {total / count if count else 'No valid data'}")
 
 ```
 
-
-
 ### Le lien avec l'IA
 
 L'IA est en train de prendre en charge de nombreuses tâches actuellement effectuées par des humains, tout comme d'autres formes de machines l'ont fait au cours des derniers siècles.
@@ -264,7 +253,6 @@ Cela signifie que les entreprises technologiques investissent massivement dans l
 Même si vous ne prévoyez pas de travailler sur l'IA et l'apprentissage automatique, vous pouvez tirer profit de l'apprentissage de certaines de ces bibliothèques pour vos propres projets en économie, en finance et dans d'autres domaines scientifiques.
 
 Ces cours vous expliqueront comment.
-
 
 ## Programmation scientifique avec Python
 
@@ -285,7 +273,6 @@ Python est également l'un des acteurs dominants dans
 L'utilisation de Python est également en hausse en économie, en finance et dans des domaines connexes comme la recherche opérationnelle -- qui étaient auparavant dominés par MATLAB / Excel / STATA / C / Fortran.
 
 Cette section présente brièvement quelques exemples d'utilisation de Python pour la programmation scientifique générale.
-
 
 ### NumPy
 
@@ -341,12 +328,11 @@ Nous pouvons également effectuer de nombreuses autres tâches, comme
 
 Nous en discuterons les détails plus tard dans la série de cours, où nous couvrons NumPy en profondeur.
 
-
 ### Alternatives à NumPy
 
 Bien que NumPy soit toujours le roi du traitement de tableaux en Python, il existe désormais d'importants concurrents.
 
-Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [Pytorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) disposent également de types de tableaux et d'opérations sur les tableaux intégrés qui peuvent être très rapides et efficaces.
+Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [PyTorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) disposent également de types de tableaux et d'opérations sur les tableaux intégrés qui peuvent être très rapides et efficaces.
 
 En fait, ces bibliothèques sont meilleures pour exploiter la parallélisation et le matériel rapide, comme nous l'expliquerons plus tard dans cette série.
 
@@ -385,7 +371,6 @@ SciPy comprend de nombreuses routines standard utilisées en
 Vous pouvez toutes les voir [ici](https://docs.scipy.org/doc/scipy/reference/index.html).
 
 Plus tard, nous discuterons de SciPy plus en détail.
-
 
 ### Graphiques
 
@@ -427,7 +412,6 @@ Parmi les autres bibliothèques graphiques figurent
 * [Bokeh](https://docs.bokeh.org/en/latest/)
 
 Vous pouvez visiter la [Python Graph Gallery](https://python-graph-gallery.com/) pour plus d'exemples de tracés réalisés à l'aide de diverses bibliothèques.
-
 
 ### Réseaux et graphes
 
@@ -481,7 +465,6 @@ nx.draw_networkx_nodes(g,
                        cmap=plt.cm.jet_r)
 plt.show()
 ```
-
 
 ### Autres bibliothèques scientifiques
 

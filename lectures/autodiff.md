@@ -32,7 +32,6 @@ translation:
 
 # Aventures avec la différentiation automatique
 
-
 ```{include} _admonition/gpu.md
 ```
 
@@ -369,11 +368,11 @@ Générons quelques données simulées :
 ```{code-cell} ipython3
 n = 100
 key = jax.random.key(1234)
-x = jax.random.uniform(key, (n,))
+key, x_key, ϵ_key = jax.random.split(key, 3)
+x = jax.random.uniform(x_key, (n,))
 
 α, β, σ = 0.5, 1.0, 0.1  # Fixe la vraie ordonnée à l'origine et la vraie pente.
-key, subkey = jax.random.split(key)
-ϵ = jax.random.normal(subkey, (n,))
+ϵ = jax.random.normal(ϵ_key, (n,))
 
 y = α * x + β + σ * ϵ
 ```

@@ -85,7 +85,7 @@ pays et l'assigner à `realwage`.
 L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url1 = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/realwage.csv'
+url1 = 'https://raw.githubusercontent.com/QuantEcon/data-lectures/main/lectures/realwage.csv'
 ```
 
 ```{code-cell} ipython3
@@ -203,7 +203,7 @@ le continent de chaque pays à `realwage_f` avec la fonction `merge`.
 L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url2 = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/countries.csv'
+url2 = 'https://raw.githubusercontent.com/QuantEcon/data-lectures/main/lectures/countries.csv'
 ```
 
 ```{code-cell} ipython3
@@ -511,7 +511,7 @@ d'emploi en Europe par âge et par sexe provenant d'[Eurostat](https://ec.europa
 L'ensemble de données est accessible via le lien suivant :
 
 ```{code-cell} ipython3
-url3 = 'https://github.com/QuantEcon/data-lectures/raw/main/lectures/employ.csv'
+url3 = 'https://raw.githubusercontent.com/QuantEcon/data-lectures/main/lectures/employ.csv'
 ```
 
 La lecture du fichier CSV retourne un ensemble de données de panel au format long. Utilisez `.pivot_table()` pour construire
