@@ -61,7 +61,7 @@ En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothè
 ---
 tags: [hide-output]
 ---
-!pip install quantecon jax
+!pip install quantecon "jax==0.11.0"
 ```
 
 ```{include} _admonition/gpu.md
@@ -143,7 +143,6 @@ for x in grid:
         m = max(m, z)
 ```
 
-
 ### Vectorisation avec NumPy
 
 Passons à NumPy et utilisons une grille plus grande
@@ -208,7 +207,6 @@ De plus, l'exécution eager de NumPy crée de nombreux tableaux intermédiaires 
 
 Ce type d'utilisation de la mémoire peut poser un gros problème dans les calculs de recherche réels.
 
-
 ### Une comparaison avec Numba
 
 Voyons si nous pouvons obtenir de meilleures performances en utilisant Numba avec une simple boucle.
@@ -249,7 +247,6 @@ De plus, la vitesse d'exécution est bonne.
 Sur la plupart des machines, la version Numba sera un peu plus rapide que NumPy.
 
 La raison en est un code machine efficace ainsi que moins d'opérations de lecture-écriture en mémoire.
-
 
 ### Numba parallélisé
 
@@ -296,7 +293,6 @@ print(f"Numba result: {z_max_parallel:.6f}")
 
 Pour les machines puissantes et les grilles de plus grande taille, la parallélisation peut générer des gains de vitesse utiles, même sur le CPU.
 
-
 ### Code vectorisé avec JAX
 
 Essayons de reproduire l'approche vectorisée de NumPy avec JAX.
@@ -342,7 +338,6 @@ with qe.Timer():
 Une fois compilé, JAX est nettement plus rapide que NumPy, en particulier sur un GPU.
 
 Le surcoût de compilation est un coût ponctuel qui est rentabilisé lorsque la fonction est appelée à plusieurs reprises.
-
 
 ### JAX plus vmap
 
@@ -400,7 +395,6 @@ with qe.Timer():
     z_max.block_until_ready()
 ```
 
-
 ### Résumé
 
 À notre avis, JAX est le gagnant pour les opérations vectorisées.
@@ -413,7 +407,6 @@ Il domine également Numba lorsqu'il est exécuté sur le GPU.
 Numba peut prendre en charge la programmation GPU via `numba.cuda`, mais nous devons alors paralléliser à la main. Pour la plupart des cas rencontrés en économie, en économétrie et en finance, il est bien préférable de laisser le compilateur JAX gérer une parallélisation efficace plutôt que d'essayer de coder ces routines nous-mêmes.
 ```
 
-
 ## Opérations séquentielles
 
 Certaines opérations sont intrinsèquement séquentielles -- et donc difficiles voire impossibles à vectoriser.
@@ -421,7 +414,6 @@ Certaines opérations sont intrinsèquement séquentielles -- et donc difficiles
 Dans ce cas, NumPy est une mauvaise option et il ne nous reste que le choix entre Numba et JAX.
 
 Pour comparer ces choix, nous reviendrons sur le problème de l'itération sur l'application quadratique que nous avons vu dans notre {doc}`cours sur Numba <numba>`.
-
 
 ### Version Numba
 
@@ -456,7 +448,6 @@ with qe.Timer():
 ```
 
 Numba gère cette opération séquentielle de manière très efficace.
-
 
 ### Version JAX
 
@@ -513,7 +504,6 @@ with qe.Timer():
 
 JAX est également assez efficace pour cette opération séquentielle !
 
-
 #### Deuxième tentative
 
 Il existe une autre manière d'implémenter la boucle qui utilise `lax.scan`.
@@ -556,7 +546,6 @@ with qe.Timer():
 
 Étonnamment, JAX offre également de solides performances après compilation.
 
-
 ### Résumé
 
 Bien que Numba et JAX offrent tous deux de solides performances pour les opérations séquentielles, il existe des différences en termes de lisibilité du code et de facilité d'utilisation.
@@ -568,8 +557,6 @@ C'est exactement ainsi que la plupart des programmeurs conçoivent l'algorithme.
 Les versions JAX, en revanche, nécessitent soit `lax.fori_loop`, soit `lax.scan`, qui sont toutes deux moins intuitives qu'une boucle Python standard.
 
 Bien que la syntaxe `at[t].set` de JAX permette des mises à jour élément par élément, le code global reste plus difficile à lire que l'équivalent Numba.
-
-
 
 ## Recommandations générales
 
