@@ -70,7 +70,7 @@ jobs:
       # https://quantecon.github.io/lecture-python-programming.fr/
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: quantecon/actions/publish-gh-pages@v0.8.0
+        uses: quantecon/actions/publish-gh-pages@v0.11.1
         with:
           build-dir: _build/html
           create-release-assets: 'true'
