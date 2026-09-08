@@ -60,13 +60,13 @@ Alors, dans laquelle de ces catégories Python s'inscrit-il ?
 
 En réalité, Python est un langage pragmatique qui mêle les styles orienté objet, fonctionnel et procédural, plutôt que d'adopter une approche puriste.
 
-D'une part, cela permet à Python et à ses utilisateurs de sélectionner les bons aspects de différents paradigmes.
+D'une part, cela permet à Python et à ses utilisateurs de retenir les meilleurs aspects de différents paradigmes.
 
 D'autre part, ce manque de pureté peut parfois prêter à confusion.
 
 Heureusement, cette confusion est réduite au minimum si vous comprenez qu'à un niveau fondamental, Python *est* orienté objet.
 
-Par cela, nous voulons dire qu'en Python, *tout est objet*.
+Nous entendons par là qu'en Python, *tout est objet*.
 
 Dans ce cours, nous expliquons ce que signifie cette affirmation et pourquoi elle est importante.
 
@@ -81,7 +81,7 @@ Nous utiliserons la bibliothèque tierce suivante
 
 ## Objets
 
-```{index} single: Python; Objects
+```{index} single: Python; Objets
 ```
 
 En Python, un *objet* est une collection de données et d'instructions conservées dans la mémoire de l'ordinateur, qui comprend
@@ -99,7 +99,7 @@ Ces concepts sont définis et discutés successivement ci-dessous.
 ```{index} single: Python; Type
 ```
 
-Python propose différents types d'objets, afin d'accommoder différentes catégories de données.
+Python propose différents types d'objets, afin de prendre en charge différentes catégories de données.
 
 Par exemple
 
@@ -136,7 +136,7 @@ tags: [raises-exception]
 '300' + 400
 ```
 
-Ici, nous mélangeons les types, et il n'est pas clair pour Python si l'utilisateur souhaite
+Ici, nous mélangeons les types, et Python ne peut pas déterminer si l'utilisateur souhaite
 
 * convertir `'300'` en entier puis l'ajouter à `400`, ou
 * convertir `400` en chaîne puis la concaténer avec `'300'`
@@ -146,7 +146,7 @@ Certains langages pourraient tenter de deviner, mais Python est *fortement typé
 * Le type est important, et la conversion de type implicite est rare.
 * Python répondra plutôt en levant une `TypeError`.
 
-Pour éviter l'erreur, vous devez clarifier en modifiant le type concerné.
+Pour éviter l'erreur, vous devez lever l'ambiguïté en modifiant le type concerné.
 
 Par exemple,
 
@@ -157,10 +157,10 @@ int('300') + 400   # Pour additionner en tant que nombres, convertir la chaîne 
 (identity)=
 ### Identité
 
-```{index} single: Python; Identity
+```{index} single: Python; Identité
 ```
 
-En Python, chaque objet possède un identifiant unique, qui aide Python (et nous-mêmes) à suivre l'objet.
+En Python, chaque objet possède un identifiant unique, qui aide Python (et nous-mêmes) à garder la trace de l'objet.
 
 L'identité d'un objet peut être obtenue via la fonction `id()`
 
@@ -180,7 +180,7 @@ L'identité d'un objet est en fait simplement l'adresse de l'objet en mémoire.
 
 ### Contenu de l'objet : données et attributs
 
-```{index} single: Python; Content
+```{index} single: Python; Contenu
 ```
 
 Si nous posons `x = 42`, alors nous créons un objet de type `int` qui contient
@@ -205,23 +205,23 @@ Lorsque Python crée cet objet entier, il stocke avec lui diverses informations 
 
 Tout nom suivant un point est appelé un *attribut* de l'objet situé à gauche du point.
 
-* par exemple, ``imag`` et `__class__` sont des attributs de `x`.
+* par exemple, `imag` et `__class__` sont des attributs de `x`.
 
 Nous voyons dans cet exemple que les objets possèdent des attributs contenant des informations auxiliaires.
 
 Ils possèdent également des attributs qui agissent comme des fonctions, appelés *méthodes*.
 
-Ces attributs sont importants, alors discutons-en en profondeur.
+Ces attributs sont importants ; examinons-les plus en détail.
 
 (methods)=
 ### Méthodes
 
-```{index} single: Python; Methods
+```{index} single: Python; Méthodes
 ```
 
 Les méthodes sont des *fonctions regroupées avec les objets*.
 
-Formellement, les méthodes sont des attributs d'objets qui sont **appelables** -- c'est-à-dire des attributs qui peuvent être appelés comme des fonctions
+Formellement, les méthodes sont des attributs d'objets qui sont **appelables** --- c'est-à-dire des attributs qui peuvent être appelés comme des fonctions
 
 ```{code-cell} python3
 x = ['foo', 'bar']
@@ -259,7 +259,7 @@ x[0] = 'aa'  # Affectation d'élément via la notation entre crochets
 x
 ```
 
-Il ne semble pas qu'aucune méthode ne soit utilisée ici, mais en fait la notation d'affectation entre crochets n'est qu'une interface pratique vers un appel de méthode.
+On pourrait croire qu'aucune méthode n'est utilisée ici, mais en fait la notation d'affectation entre crochets n'est qu'une interface pratique pour appeler une méthode.
 
 Ce qui se passe réellement, c'est que Python appelle la méthode `__setitem__`, comme suit
 
@@ -273,7 +273,7 @@ x
 
 ## Inspection avec Rich
 
-Il existe un joli paquet appelé [rich](https://github.com/Textualize/rich) qui
+Il existe un package très pratique appelé [rich](https://github.com/Textualize/rich) qui
 nous aide à visualiser le contenu d'un objet.
 
 Par exemple,
@@ -323,7 +323,7 @@ incohérent et plus difficile à retenir.
 Pour éviter cela, le créateur de Python a choisi d'ajouter
 `len()` comme fonction intégrée, afin de souligner que `len()` est la convention.
 
-Ceci dit, Python *reste* néanmoins orienté objet en coulisses.
+Cela dit, Python *reste* orienté objet en coulisses.
 
 En effet, la liste `x` évoquée ci-dessus possède une méthode appelée `__len__()`.
 
@@ -334,7 +334,7 @@ Autrement dit, le code suivant est équivalent :
 ```{code-cell} python3
 x = ['a', 'b']
 len(x)
-```
+``` 
 et
 
 ```{code-cell} python3
@@ -352,7 +352,7 @@ Le message de ce cours est clair :
 Cela inclut non seulement les listes, les chaînes de caractères, etc., mais aussi des choses moins évidentes, telles que
 
 * les fonctions (une fois qu'elles ont été chargées en mémoire)
-* les modules (idem)
+les modules (de même)
 * les fichiers ouverts en lecture ou en écriture
 * les entiers, etc.
 
