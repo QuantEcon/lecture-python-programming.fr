@@ -36,14 +36,6 @@ translation:
 ---
 
 (speed)=
-```{raw} jupyter
-<div id="qe-notebook-header" align="right" style="text-align:right;">
-        <a href="https://quantecon.org/" title="quantecon.org">
-                <img style="width:250px;display:inline;" width="250px" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
-        </a>
-</div>
-```
-
 # Python pour le calcul scientifique
 
 ```{epigraph}
@@ -92,11 +84,9 @@ import matplotlib.pyplot as plt
 import random
 ```
 
-
 ## Principales bibliothèques scientifiques
 
 Passons brièvement en revue les bibliothèques scientifiques de Python.
-
 
 ### Pourquoi en avons-nous besoin ?
 
@@ -125,7 +115,6 @@ Les bibliothèques scientifiques accélèrent l'exécution en utilisant trois st
 
 Nous discuterons de ces idées en profondeur ci-dessous.
 
-
 ### L'écosystème scientifique de Python
 
 À QuantEcon, les bibliothèques scientifiques que nous utilisons le plus souvent sont
@@ -151,7 +140,6 @@ Voici comment elles s'articulent :
 * Numba fournit un compilateur juste-à-temps qui fonctionne bien avec NumPy et aide à accélérer le code Python.
 
 Nous discuterons de toutes ces bibliothèques en détail dans cette série de cours.
-
 
 ## Pourquoi le Python pur est-il lent ?
 
@@ -204,7 +192,6 @@ Cela implique un surcoût.
 
 Si nous exécutons cette expression de manière répétée dans une boucle serrée, le surcoût devient important.
 
-
 #### Types statiques
 
 ```{index} single: Static Types
@@ -239,7 +226,6 @@ De ce fait, la signification de l'addition dans l'expression `sum + i` est total
 
 Il n'y a pas besoin de vérification de type et donc pas de surcoût.
 
-
 ### Accès aux données
 
 Un autre frein à la vitesse pour les langages de haut niveau est l'accès aux données.
@@ -258,7 +244,6 @@ De plus, le type de données est connu au moment de la compilation.
 Ainsi, chaque point de données successif peut être accédé en avançant dans l'espace mémoire
 d'une quantité connue et fixe.
 
-
 #### Sommation en Python pur
 
 Python essaie de reproduire ces idées dans une certaine mesure.
@@ -271,7 +256,6 @@ Cependant, ces éléments de liste ressemblent davantage à des pointeurs vers d
 Ainsi, il y a toujours un surcoût impliqué dans l'accès aux valeurs de données elles-mêmes.
 
 Un tel surcoût est un coupable majeur en ce qui concerne l'exécution lente.
-
 
 ### Résumé
 
@@ -291,8 +275,6 @@ synonyme de parallélisation.
 
 Cette tâche est mieux laissée aux compilateurs spécialisés !
 
-
-
 ## Accélérer Python
 
 Dans cette section, nous examinons trois techniques connexes pour accélérer le code Python.
@@ -300,8 +282,6 @@ Dans cette section, nous examinons trois techniques connexes pour accélérer le
 Ici, nous nous concentrerons sur les idées fondamentales.
 
 Plus tard, nous examinerons des bibliothèques spécifiques et comment elles implémentent ces idées.
-
-
 
 ### {index}`Vectorisation <single: Vectorization>`
 
@@ -340,7 +320,6 @@ L'idée de la vectorisation remonte à MATLAB, qui utilise la vectorisation de m
 ```
 
 NumPy utilise un modèle similaire, inspiré de MATLAB
-
 
 ### Vectorisation vs boucles Python pures
 
@@ -407,9 +386,6 @@ Dans les cours ultérieurs de cette série, nous apprendrons comment les bibliot
 Python modernes exploitent les compilateurs juste-à-temps pour générer du code machine rapide, efficace et
 parallélisé.
 
-
-
-
 ## Parallélisation
 
 La croissance de la fréquence d'horloge des CPU (c'est-à-dire la vitesse à laquelle une seule chaîne logique
@@ -431,12 +407,10 @@ Ci-dessous, nous discutons de la parallélisation pour le calcul scientifique, e
 1. les outils de parallélisation en Python et
 1. comment ces outils peuvent être appliqués à des problèmes économiques quantitatifs.
 
-
 ### Parallélisation sur les CPU
 
 Passons en revue les deux principaux types de parallélisation basée sur les CPU couramment utilisés dans
 le calcul scientifique et discutons de leurs avantages et inconvénients.
-
 
 #### Multithreading
 
@@ -454,7 +428,6 @@ Les fonctions importées de ces bibliothèques et le code compilé en JIT s'exé
 d'exécution de bas niveau où les restrictions héritées de Python ne s'appliquent pas.
 ```
 
-
 #### Multiprocessing
 
 Le multiprocessing signifie exécuter plusieurs processus indépendants, chacun avec son propre espace mémoire séparé.
@@ -463,7 +436,6 @@ Comme la mémoire n'est pas partagée, les processus communiquent en s'échangea
 
 Le multiprocessing peut s'exécuter sur une seule machine ou être distribué sur un cluster de machines connectées par un réseau.
 
-
 #### Que devrions-nous utiliser ?
 
 Pour le travail numérique sur une seule machine, le multithreading est généralement préféré --- il est léger et le modèle de mémoire partagée est très pratique.
@@ -471,7 +443,6 @@ Pour le travail numérique sur une seule machine, le multithreading est généra
 Le multiprocessing devient important lors du passage à l'échelle au-delà d'une seule machine.
 
 Pour la grande majorité de ce que nous faisons dans ces cours, le multithreading suffira.
-
 
 ### Accélérateurs matériels
 
@@ -502,7 +473,6 @@ données, les GPU peuvent être plusieurs ordres de grandeur plus rapides que le
 
 Les **TPU** (Tensor Processing Units, unités de traitement tensoriel), conçus par Google pour l'apprentissage automatique,
 suivent une philosophie similaire, en optimisant pour des opérations matricielles parallèles massives.
-
 
 ### Accéder aux ressources GPU
 
