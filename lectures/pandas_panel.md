@@ -463,7 +463,7 @@ grouped
 L'appel d'une méthode d'agrégation sur l'objet applique la fonction à chaque
 groupe, dont les résultats sont combinés dans une nouvelle structure de données.
 
-Par exemple, nous pouvons retourner le nombre de pays de notre ensemble de données pour
+Par exemple, nous pouvons renvoyer le nombre de pays de notre ensemble de données pour
 chaque continent en utilisant `.size()`.
 
 Dans ce cas, notre nouvelle structure de données est une `Series`
@@ -472,11 +472,11 @@ Dans ce cas, notre nouvelle structure de données est une `Series`
 grouped.size()
 ```
 
-En appelant `.get_group()` pour retourner uniquement les pays d'un seul groupe,
+En appelant `.get_group()` pour renvoyer uniquement les pays d'un seul groupe,
 nous pouvons créer une estimation par noyau de la densité de la distribution des salaires
 minimums réels en 2016 pour chaque continent.
 
-`grouped.groups.keys()` retournera les clés de l'objet `groupby`
+`grouped.groups.keys()` renverra les clés de l'objet `groupby`
 
 ```{code-cell} ipython3
 continents = grouped.groups.keys()
@@ -514,13 +514,13 @@ L'ensemble de données est accessible via le lien suivant :
 url3 = 'https://raw.githubusercontent.com/QuantEcon/data-lectures/main/lectures/employ.csv'
 ```
 
-La lecture du fichier CSV retourne un ensemble de données de panel au format long. Utilisez `.pivot_table()` pour construire
+La lecture du fichier CSV renvoie un ensemble de données de panel au format long. Utilisez `.pivot_table()` pour construire
 un dataframe au format large avec un `MultiIndex` dans les colonnes.
 
 Commencez par explorer le dataframe et les variables disponibles dans les
 niveaux du `MultiIndex`.
 
-Écrivez un programme qui retourne rapidement toutes les valeurs du `MultiIndex`.
+Écrivez un programme qui renvoie rapidement toutes les valeurs du `MultiIndex`.
 
 ```{exercise-end}
 ```

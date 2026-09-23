@@ -85,7 +85,7 @@ Dans ce cours, nous cherchons uniquement à mettre en évidence quelques parties
 SciPy est un package qui contient divers outils construits sur NumPy, en utilisant son type de données tableau et les fonctionnalités connexes.
 
 ````{note} 
-Dans les anciennes versions de SciPy (`scipy < 0.15.1`), importer le package importait aussi les symboles NumPy dans l'espace de noms global, comme on peut le voir dans cet extrait du fichier d'initialisation de SciPy :
+Dans les anciennes versions de SciPy (`scipy < 0.15.1`), importer le package importait aussi les symboles NumPy dans l'espace de nommage global, comme on peut le voir dans cet extrait du fichier d'initialisation de SciPy :
 
 ```python
 from numpy import *

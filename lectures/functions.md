@@ -345,7 +345,7 @@ Le résultat net est que le nom `data` est *lié* à la liste `ϵ_values` renvoy
 
 Notre fonction `generate_data()` est plutôt limitée.
 
-Rendons-la légèrement plus utile en lui donnant la capacité de renvoyer soit des lois normales centrées réduites, soit des variables aléatoires uniformes sur $(0, 1)$ selon les besoins.
+Rendons-la légèrement plus utile en lui donnant la capacité de renvoyer soit des variables normales centrées réduites, soit des variables aléatoires uniformes sur $(0, 1)$ selon les besoins.
 
 Ceci est réalisé dans le morceau de code suivant.
 

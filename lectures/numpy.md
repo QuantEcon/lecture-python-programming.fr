@@ -1293,7 +1293,7 @@ La logique peut sembler difficile au premier abord. Prenez le temps d'examiner c
 
 Il y a cependant un problème ici.
 
-Supposons que `q` soit modifié après la création d'une instance de `discreteRV`, par exemple par
+Supposons que `q` soit modifié après la création d'une instance de `DiscreteRV`, par exemple par
 
 ```{code-cell} python3
 q = (0.1, 0.9)
