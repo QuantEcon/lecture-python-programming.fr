@@ -257,7 +257,7 @@ Les méthodes `earn` et `spend` déploient les fonctions que nous avons décrite
 
 La méthode `__init__` est une *méthode constructeur*.
 
-Chaque fois que nous créons une instance de la classe, la méthode `__init_` sera appelée automatiquement.
+Chaque fois que nous créons une instance de la classe, la méthode `__init__` sera appelée automatiquement.
 
 L'appel de `__init__` met en place un « espace de nommage » pour contenir les données d'instance — nous y reviendrons bientôt.
 
