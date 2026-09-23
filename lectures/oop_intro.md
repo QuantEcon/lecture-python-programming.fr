@@ -395,7 +395,7 @@ ou
 print(sorted(dir(True)))
 ```
 
-Puisque le type de données booléen est un type primitif, vous pouvez aussi le trouver dans l'espace de noms intégré
+Puisque le type de données booléen est un type primitif, vous pouvez aussi le trouver dans l'espace de nommage intégré
 
 ```{code-cell} python3
 print(dir(__builtins__.bool))

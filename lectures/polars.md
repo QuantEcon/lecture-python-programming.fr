@@ -543,7 +543,7 @@ Ce qu'il faut retenir :
   Polars peut être significativement plus rapide grâce à son moteur Rust, à l'exécution
   parallèle et (en mode paresseux) à l'optimisation des requêtes.
 
-L'API paresseuse est particulièrement puissante lors de la lecture depuis le disque --- `scan_csv` retourne directement un `LazyFrame`, de sorte que les filtres et projections sont poussés jusqu'au lecteur de fichier.
+L'API paresseuse est particulièrement puissante lors de la lecture depuis le disque --- `scan_csv` renvoie directement un `LazyFrame`, de sorte que les filtres et projections sont poussés jusqu'au lecteur de fichier.
 
 ```{tip}
 Utilisez `pl.scan_csv(path)` plutôt que `pl.read_csv(path)` lorsque vous travaillez avec

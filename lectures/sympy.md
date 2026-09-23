@@ -32,7 +32,7 @@ translation:
     Exercises: Exercices
 ---
 
-(sympy=
+(sympy)=
 ```{raw} jupyter
 <div id="qe-notebook-header" align="right" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -41,7 +41,6 @@ translation:
 </div>
 ```
 
-(sympy)=
 # {index}`SymPy <single: SymPy>`
 
 ```{index} single: Python; SymPy

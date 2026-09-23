@@ -259,7 +259,7 @@ La méthode `__init__` est une *méthode constructeur*.
 
 Chaque fois que nous créons une instance de la classe, la méthode `__init_` sera appelée automatiquement.
 
-L'appel de `__init__` met en place un « espace de noms » pour contenir les données d'instance — nous y reviendrons bientôt.
+L'appel de `__init__` met en place un « espace de nommage » pour contenir les données d'instance — nous y reviendrons bientôt.
 
 Nous discuterons également en détail ci-dessous du rôle du particulier dispositif de gestion `self`.
 
@@ -293,7 +293,7 @@ c2.wealth
 c1.wealth
 ```
 
-Chaque instance, c'est-à-dire chaque consommateur, stocke ses données dans un dictionnaire d'espace de noms distinct
+Chaque instance, c'est-à-dire chaque consommateur, stocke ses données dans un dictionnaire d'espace de nommage distinct
 
 ```{code-cell} python3
 c1.__dict__
