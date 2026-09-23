@@ -270,7 +270,7 @@ La bibliothèque SciPy possède une fonction appelée `quad` qui effectuera ce c
 
 La syntaxe de la fonction `quad` est `quad(f, a, b)` où `f` est une fonction et `a` et `b` sont des nombres.
 
-Pour créer la fonction $f(x) = x^3$ nous pouvons utiliser `lambda` comme suit
+Pour créer la fonction $f(x) = x^3$, nous pouvons utiliser `lambda` comme suit
 
 ```{code-cell} python3
 from scipy.integrate import quad
@@ -402,7 +402,7 @@ Cet objet est un *appelable* — c'est-à-dire un objet qui peut être appelé e
 
 Lorsque l'appel de fonction `generate_data(100, rng.uniform)` est exécuté, Python exécute le bloc de code de la fonction avec `n` égal à 100 et le nom `generator_type` « lié » à l'appelable `rng.uniform`.
 
-* Pendant l'exécution de ces lignes, les noms `generator_type` et `rng.uniform` sont des « synonymes », et peuvent être utilisés de manière identique.
+* Pendant l'exécution de ces lignes, les noms `generator_type` et `rng.uniform` sont des « alias », et peuvent être utilisés de manière identique.
 
 Ce principe fonctionne de manière plus générale — par exemple, considérons le morceau de code suivant
 
@@ -415,7 +415,7 @@ m = max
 m(7, 2, 4)
 ```
 
-Ici, nous avons créé un autre nom pour la fonction intégrée `max()`, qui pouvait
+Ici, nous avons créé un autre nom pour la fonction intégrée `max()`, qui peut
 ensuite être utilisé de manière identique.
 
 Dans le contexte de notre programme, la capacité de lier des noms à des fonctions, ou plus généralement à des objets appelables, signifie qu'il n'y a aucun problème à passer un objet appelable comme argument à un autre appelable — comme nous l'avons fait avec `rng.uniform` ci-dessus.
@@ -434,7 +434,7 @@ votre carrière de programmeur.
 
 Fondamentalement, une fonction récursive est une fonction qui s'appelle elle-même.
 
-Par exemple, considérons le problème du calcul de $x_t$ pour un certain t lorsque
+Par exemple, considérons le problème du calcul de $x_t$ pour un certain $t$ lorsque
 
 ```{math}
 :label: xseqdoub
@@ -468,7 +468,7 @@ Ce qui se passe ici, c'est que chaque appel successif utilise son propre *cadre*
 
 * un cadre est l'endroit où sont conservées les variables locales d'un appel de fonction donné
 * la pile est la mémoire utilisée pour traiter les appels de fonction
-  * une structure de données dernier entré, premier sorti (LIFO)
+  * une structure de données selon le principe « dernier entré, premier sorti » (LIFO)
 
 Cet exemple est quelque peu artificiel, car la première solution (itérative) serait généralement préférée à la solution récursive.
 
@@ -565,15 +565,15 @@ binomial_rv(10, 0.5)
 :label: func_ex3
 ```
 
-D'abord, écrivez une fonction qui renvoie une réalisation du dispositif aléatoire suivant
+D'abord, écrivez une fonction qui renvoie une réalisation de l'expérience aléatoire suivante
 
 1. Lancez une pièce non biaisée 10 fois.
-1. Si une face (pile) apparaît `k` fois ou plus consécutivement dans cette séquence au moins une fois, payez un dollar.
+1. Si le côté « face » apparaît `k` fois ou plus consécutivement dans cette séquence au moins une fois, payez un dollar.
 1. Sinon, ne payez rien.
 
-Ensuite, écrivez une autre fonction qui effectue la même tâche sauf que la deuxième règle du dispositif aléatoire ci-dessus devient
+Ensuite, écrivez une autre fonction qui effectue la même tâche sauf que la deuxième règle de l'expérience aléatoire ci-dessus devient
 
-- Si une face (pile) apparaît `k` fois ou plus dans cette séquence, payez un dollar.
+- Si le côté « face » apparaît `k` fois ou plus dans cette séquence, payez un dollar.
 
 Utilisez `rng = np.random.default_rng()` pour générer des nombres aléatoires.
 
@@ -584,7 +584,7 @@ Utilisez `rng = np.random.default_rng()` pour générer des nombres aléatoires.
 :class: dropdown
 ```
 
-Voici une fonction pour le premier dispositif aléatoire.
+Voici une fonction pour la première expérience aléatoire.
 
 
 
@@ -609,7 +609,7 @@ def draw(k):  # paie si k succès consécutifs dans une séquence
 draw(3)
 ```
 
-Voici une autre fonction pour le deuxième dispositif aléatoire.
+Voici une autre fonction pour la deuxième expérience aléatoire.
 
 ```{code-cell} python3
 def draw_new(k):  # paie si k succès dans une séquence
@@ -651,7 +651,7 @@ x_{t+1} = x_t + x_{t-1}, \quad x_0 = 0, \; x_1 = 1
 
 Les premiers nombres de la suite sont $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55$.
 
-Écrivez une fonction pour calculer récursivement le $t$-ième nombre de Fibonacci pour tout $t$.
+Écrivez une fonction qui calcule récursivement le $t$-ième nombre de Fibonacci pour tout $t$.
 
 ```{exercise-end}
 ```
@@ -660,7 +660,7 @@ Les premiers nombres de la suite sont $0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55$.
 :class: dropdown
 ```
 
-Voici la solution standard
+Voici une solution standard
 
 ```{code-cell} python3
 def x(t):
@@ -685,7 +685,7 @@ print([x(i) for i in range(10)])
 :label: func_ex5
 ```
 
-Réécrivez la fonction `factorial()` de l'[Exercice 1](factorial_exercise) en utilisant la récursion.
+Réécrivez la fonction `factorial()` de l’[Exercice 1](factorial_exercise) en utilisant la récursion.
 
 ```{exercise-end}
 ```
@@ -694,7 +694,7 @@ Réécrivez la fonction `factorial()` de l'[Exercice 1](factorial_exercise) en u
 :class: dropdown
 ```
 
-Voici la solution standard
+Voici une solution standard
 
 ```{code-cell} python3
 def recursion_factorial(n):
