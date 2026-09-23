@@ -8,18 +8,18 @@ kernelspec:
   language: python
   name: python3
 translation:
-  title: Noms et espaces de noms
+  title: Noms et espaces de nommage
   headings:
     Overview: Vue d'ensemble
     Variable Names in Python: Noms de variables en Python
-    Namespaces: Espaces de noms
-    Viewing Namespaces: Visualiser les espaces de noms
+    Namespaces: Espaces de nommage
+    Viewing Namespaces: Consulter les espaces de nommage
     Interactive Sessions: Sessions interactives
-    The Global Namespace: L'espace de noms global
-    Local Namespaces: Espaces de noms locaux
-    The `__builtins__` Namespace: L'espace de noms `__builtins__`
+    The Global Namespace: L'espace de nommage global
+    Local Namespaces: Espaces de nommage locaux
+    The `__builtins__` Namespace: L'espace de nommage `__builtins__`
     Name Resolution: Résolution des noms
-    Name Resolution::Mutable Versus Immutable Parameters: Paramètres Mutables versus Immuables
+    Name Resolution::Mutable Versus Immutable Parameters: Paramètres mutables et immuables
 ---
 
 (oop_names)=
@@ -31,7 +31,7 @@ translation:
 </div>
 ```
 
-# Noms et espaces de noms
+# Noms et espaces de nommage
 
 ## Vue d'ensemble
 
@@ -62,7 +62,7 @@ Mais qu'est-ce que `x` lui-même ?
 
 En Python, `x` est appelé un **nom**, et l'instruction `x = 42` **lie** le nom `x` à l'objet entier dont nous venons de parler.
 
-Sous le capot, ce processus de liaison des noms aux objets est implémenté sous la forme d'un dictionnaire — nous y reviendrons dans un instant.
+En interne, ce processus de liaison des noms aux objets est implémenté sous la forme d'un dictionnaire — nous y reviendrons dans un instant.
 
 Il n'y a aucun problème à lier deux noms ou plus à un même objet, quel que soit cet objet
 
@@ -95,20 +95,20 @@ id(x)
 
 Dans ce cas, après avoir relié `x` à `'bar'`, aucun nom n'est lié au premier objet `'foo'`.
 
-Cela déclenche le ramassage de `'foo'` par le garbage collector.
+Cela entraîne la récupération de `'foo'` par le ramasse-miettes.
 
 Autrement dit, l'emplacement mémoire qui stocke cet objet est libéré et rendu au système d'exploitation.
 
-Le ramassage des ordures (garbage collection) est en réalité un domaine de recherche actif en informatique.
+Le fonctionnement des ramasse-miettes est encore un domaine de recherche actif en informatique.
 
-Vous pouvez [en lire davantage sur le garbage collection](https://rushter.com/blog/python-garbage-collector/) si cela vous intéresse.
+Vous pouvez [en lire davantage sur le fonctionnement des ramasse-miettes](https://rushter.com/blog/python-garbage-collector/) si cela vous intéresse.
 
-## Espaces de noms
+## Espaces de nommage
 
 ```{index} single: Python; Namespaces
 ```
 
-Rappelons de la discussion précédente que l'instruction
+Rappelons que l'instruction
 
 ```{code-cell} python3
 x = 42
@@ -118,16 +118,16 @@ lie le nom `x` à l'objet entier situé à droite.
 
 Nous avons également mentionné que ce processus de liaison de `x` au bon objet est implémenté sous la forme d'un dictionnaire.
 
-Ce dictionnaire est appelé un espace de noms.
+Ce dictionnaire est appelé un espace de nommage.
 
 ```{admonition} Définition
-Un **espace de noms** est une table de symboles qui associe des noms à des objets en mémoire.
+Un **espace de nommage** est une table de correspondance entre des noms et des objets en mémoire.
 ```
 
 
-Python utilise plusieurs espaces de noms, qu'il crée à la volée selon les besoins.
+Python utilise plusieurs espaces de nommage, qu'il crée à la volée selon les besoins.
 
-Par exemple, chaque fois que nous importons un module, Python crée un espace de noms pour ce module.
+Par exemple, chaque fois que nous importons un module, Python crée un espace de nommage pour ce module.
 
 Pour voir cela en action, supposons que nous écrivions un script `mathfoo.py` composé d'une seule ligne
 
@@ -158,7 +158,7 @@ math.pi
 mathfoo.pi
 ```
 
-Ces deux liaisons différentes de `pi` existent dans des espaces de noms différents, chacun implémenté sous la forme d'un dictionnaire.
+Ces deux liaisons différentes de `pi` existent dans des espaces de nommage différents, chacun implémenté sous la forme d'un dictionnaire.
 
 Si vous le souhaitez, vous pouvez consulter directement le dictionnaire, en utilisant `module_name.__dict__`.
 
@@ -174,7 +174,7 @@ import mathfoo
 mathfoo.__dict__
 ```
 
-Comme vous le savez, nous accédons aux éléments de l'espace de noms en utilisant la notation d'attribut par point
+Comme vous le savez, nous accédons aux éléments de l'espace de nommage en utilisant la notation d'attribut par point
 
 ```{code-cell} python3
 math.pi
@@ -186,9 +186,9 @@ Cela est entièrement équivalent à `math.__dict__['pi']`
 math.__dict__['pi'] 
 ```
 
-## Visualiser les espaces de noms
+## Consulter les espaces de nommage
 
-Comme nous l'avons vu ci-dessus, l'espace de noms `math` peut être affiché en tapant `math.__dict__`.
+Comme nous l'avons vu ci-dessus, l'espace de nommage `math` peut être affiché en tapant `math.__dict__`.
 
 Une autre façon d'en voir le contenu est de taper `vars(math)`
 
@@ -205,9 +205,9 @@ dir(math)[0:10]
 
 Remarquez les noms spéciaux `__doc__` et `__name__`.
 
-Ceux-ci sont initialisés dans l'espace de noms chaque fois qu'un module est importé
+Ceux-ci sont initialisés dans l'espace de nommage chaque fois qu'un module est importé
 
-* `__doc__` est la docstring du module
+* `__doc__` est la chaîne de documentation du module
 * `__name__` est le nom du module
 
 ```{code-cell} python3
@@ -235,7 +235,7 @@ Pour vérifier cela, nous pouvons examiner le nom du module actuel via la valeur
 print(__name__)
 ```
 
-Lorsque nous exécutons un script à l'aide de la commande `run` d'IPython, le contenu du fichier est également exécuté comme faisant partie de `__main__`.
+Lorsque nous exécutons un script à l'aide de la commande `%run` d'IPython, le contenu du fichier est également exécuté comme faisant partie de `__main__`.
 
 Pour le voir, créons un fichier `mod.py` qui affiche son propre attribut `__name__`
 
@@ -256,7 +256,7 @@ import mod  # Importation standard
 
 Dans le second cas, le code est exécuté comme faisant partie de `__main__`, donc `__name__` est égal à `__main__`.
 
-Pour voir le contenu de l'espace de noms de `__main__`, nous utilisons `vars()` plutôt que `vars(__main__)`.
+Pour voir le contenu de l'espace de nommage de `__main__`, nous utilisons `vars()` plutôt que `vars(__main__)`.
 
 Si vous faites cela dans IPython, vous verrez tout un tas de variables dont IPython a besoin et qu'il a initialisées lorsque vous avez démarré votre session.
 
@@ -271,18 +271,18 @@ import numpy as np
 %whos
 ```
 
-## L'espace de noms global
+## L'espace de nommage global
 
 ```{index} single: Python; Namespace (Global)
 ```
 
-La documentation Python fait souvent référence à « l'espace de noms global ».
+La documentation Python fait souvent référence à « l'espace de nommage global ».
 
-L'espace de noms global est *l'espace de noms du module en cours d'exécution*.
+L'espace de nommage global est *l'espace de nommage du module en cours d'exécution*.
 
 Par exemple, supposons que nous démarrions l'interpréteur et commencions à faire des affectations.
 
-Nous travaillons maintenant dans le module `__main__`, et donc l'espace de noms de `__main__` est l'espace de noms global.
+Nous travaillons maintenant dans le module `__main__`, et donc l'espace de nommage de `__main__` est l'espace de nommage global.
 
 Ensuite, nous importons un module appelé `amodule`
 
@@ -292,28 +292,28 @@ Ensuite, nous importons un module appelé `amodule`
 import amodule
 ```
 
-À ce stade, l'interpréteur crée un espace de noms pour le module `amodule` et commence à exécuter les commandes du module.
+À ce stade, l'interpréteur crée un espace de nommage pour le module `amodule` et commence à exécuter les commandes du module.
 
-Pendant ce temps, l'espace de noms `amodule.__dict__` est l'espace de noms global.
+Pendant ce temps, l'espace de nommage `amodule.__dict__` est l'espace de nommage global.
 
 Une fois l'exécution du module terminée, l'interpréteur revient au module depuis lequel l'instruction d'importation a été faite.
 
-Dans ce cas, il s'agit de `__main__`, donc l'espace de noms de `__main__` redevient l'espace de noms global.
+Dans ce cas, il s'agit de `__main__`, donc l'espace de nommage de `__main__` redevient l'espace de nommage global.
 
-## Espaces de noms locaux
+## Espaces de nommage locaux
 
 ```{index} single: Python; Namespace (Local)
 ```
 
-Fait important : lorsque nous appelons une fonction, l'interpréteur crée un *espace de noms local* pour cette fonction, et y enregistre les variables.
+Fait important : lorsque nous appelons une fonction, l'interpréteur crée un *espace de nommage local* pour cette fonction, et y enregistre les variables.
 
 La raison de ceci sera expliquée dans un instant.
 
-Les variables de l'espace de noms local sont appelées *variables locales*.
+Les variables de l'espace de nommage local sont appelées *variables locales*.
 
-Une fois la fonction terminée, l'espace de noms est libéré et perdu.
+Lorsque l'exécution de la fonction se termine, son espace de nommage local est oublié.
 
-Pendant que la fonction s'exécute, nous pouvons voir le contenu de l'espace de noms local avec `locals()`.
+Pendant que la fonction s'exécute, nous pouvons voir le contenu de l'espace de nommage local avec `locals()`.
 
 Par exemple, considérons
 
@@ -330,19 +330,19 @@ Maintenant, appelons la fonction
 f(1)
 ```
 
-Vous pouvez voir l'espace de noms local de `f` avant qu'il ne soit détruit.
+Vous pouvez voir l'espace de nommage local de `f` avant qu'il ne soit détruit.
 
-## L'espace de noms `__builtins__`
+## L'espace de nommage `__builtins__`
 
 ```{index} single: Python; Namespace (__builtins__)
 ```
 
-Nous avons utilisé diverses fonctions intégrées, telles que `max(), dir(), str(), list(), len(), range(), type()`, etc.
+Nous avons utilisé diverses fonctions natives, telles que `max(), dir(), str(), list(), len(), range(), type()`, etc.
 
 Comment fonctionne l'accès à ces noms ?
 
-* Ces définitions sont stockées dans un module appelé `__builtin__`.
-* Elles disposent de leur propre espace de noms appelé `__builtins__`.
+* Ces définitions sont fournies par le module `builtins`.
+* Elles disposent de leur propre espace de nommage appelé `__builtins__`.
 
 ```{code-cell} python3
 # Affiche les 10 premiers noms dans `__main__`
@@ -354,7 +354,7 @@ dir()[0:10]
 dir(__builtins__)[0:10]
 ```
 
-Nous pouvons accéder aux éléments de l'espace de noms comme suit
+Nous pouvons accéder aux éléments de l'espace de nommage comme suit
 
 ```{code-cell} python3
 __builtins__.max
@@ -377,29 +377,29 @@ La section suivante explique comment cela fonctionne...
 ```{index} single: Python; Namespace (Resolution)
 ```
 
-Les espaces de noms sont formidables car ils nous aident à organiser les noms de variables.
+Les espaces de nommage sont formidables car ils nous aident à organiser les noms de variables.
 
 (Tapez `import this` à l'invite et regardez le dernier élément affiché)
 
-Cependant, nous devons comprendre comment l'interpréteur Python travaille avec plusieurs espaces de noms.
+Cependant, nous devons comprendre comment l'interpréteur Python travaille avec plusieurs espaces de nommage.
 
-Comprendre le flux d'exécution nous aidera à vérifier quelles variables sont dans la portée et comment opérer sur elles lors de l'écriture et du débogage des programmes.
+Comprendre le flux d'exécution nous aidera à déterminer quelles variables sont accessibles dans une portée donnée et comment les utiliser lors de l'écriture et du débogage des programmes.
 
 
-À tout moment de l'exécution, il existe en fait au moins deux espaces de noms accessibles directement.
+À tout moment de l'exécution, il existe en fait au moins deux espaces de nommage accessibles directement.
 
 (« Accessible directement » signifie sans utiliser de point, comme dans `pi` plutôt que `math.pi`)
 
-Ces espaces de noms sont
+Ces espaces de nommage sont
 
-* L'espace de noms global (du module en cours d'exécution)
-* L'espace de noms builtin
+* L'espace de nommage global (du module en cours d'exécution)
+* L'espace de nommage des primitives
 
-Si l'interpréteur exécute une fonction, alors les espaces de noms directement accessibles sont
+Si l'interpréteur exécute une fonction, alors les espaces de nommage directement accessibles sont
 
-* L'espace de noms local de la fonction
-* L'espace de noms global (du module en cours d'exécution)
-* L'espace de noms builtin
+* L'espace de nommage local de la fonction
+* L'espace de nommage global (du module en cours d'exécution)
+* L'espace de nommage des primitives
 
 Parfois, des fonctions sont définies à l'intérieur d'autres fonctions, comme ceci
 
@@ -412,20 +412,20 @@ def f():
     g()
 ```
 
-Ici, `f` est la *fonction englobante* de `g`, et chaque fonction dispose de ses propres espaces de noms.
+Ici, `f` est la *fonction englobante* de `g`, et chaque fonction dispose de ses propres espaces de nommage.
 
-Maintenant, nous pouvons énoncer la règle qui régit la résolution des espaces de noms :
+Maintenant, nous pouvons énoncer la règle qui régit la résolution des espaces de nommage :
 
 L'ordre dans lequel l'interpréteur recherche les noms est
 
-1. l'espace de noms local (s'il existe)
-1. la hiérarchie des espaces de noms englobants (s'ils existent)
-1. l'espace de noms global
-1. l'espace de noms builtin
+1. l'espace de nommage local (s'il existe)
+1. la hiérarchie des espaces de nommage englobants (s'ils existent)
+1. l'espace de nommage global
+1. l'espace de nommage des primitives
 
-Si le nom ne se trouve dans aucun de ces espaces de noms, l'interpréteur lève une erreur `NameError`.
+Si le nom ne se trouve dans aucun de ces espaces de nommage, l'interpréteur lève une erreur `NameError`.
 
-C'est ce qu'on appelle la **règle LEGB** (local, englobant, global, builtin).
+C'est ce qu'on appelle la **règle LEGB** (Local, Enclosing, Global, Built-in, c'est-à-dire local, englobant, global et natif).
 
 Voici un exemple qui aide à illustrer cela.
 
@@ -455,21 +455,21 @@ Que se passe-t-il lorsque nous exécutons ce script ?
 
 Tout d'abord,
 
-* L'espace de noms global `{}` est créé.
+* L'espace de nommage global `{}` est créé.
 
 ```{figure} /_static/lecture_specific/oop_intro/global.png
 ```
 
-* L'objet fonction est créé, et `g` lui est lié au sein de l'espace de noms global.
-* Le nom `a` est lié à `0`, encore une fois dans l'espace de noms global.
+* L'objet fonction est créé, et `g` lui est lié au sein de l'espace de nommage global.
+* Le nom `a` est lié à `0`, encore une fois dans l'espace de nommage global.
 
 ```{figure} /_static/lecture_specific/oop_intro/global2.png
 ```
 
 Ensuite, `g` est appelé via `y = g(10)`, ce qui conduit à la séquence d'actions suivante
 
-* L'espace de noms local de la fonction est créé.
-* Les noms locaux `x` et `a` sont liés, de sorte que l'espace de noms local devient `{'x': 10, 'a': 1}`.
+* L'espace de nommage local de la fonction est créé.
+* Les noms locaux `x` et `a` sont liés, de sorte que l'espace de nommage local devient `{'x': 10, 'a': 1}`.
 
 Notez que le `a` global n'a pas été affecté par le `a` local.
 
@@ -478,17 +478,17 @@ Notez que le `a` global n'a pas été affecté par le `a` local.
 
 
 * L'instruction `x = x + a` utilise le `a` local et le `x` local pour calculer `x + a`, et lie le nom local `x` au résultat.
-* Cette valeur est retournée, et `y` lui est lié dans l'espace de noms global.
-* Les `x` et `a` locaux sont supprimés (et l'espace de noms local est libéré).
+* Cette valeur est renvoyée, et `y` lui est lié dans l'espace de nommage global.
+* Les `x` et `a` locaux sont supprimés (et l'espace de nommage local est libéré).
 
 ```{figure} /_static/lecture_specific/oop_intro/local_return.png
 ```
 
 
 (mutable_vs_immutable)=
-### Paramètres {index}`Mutables <single: Mutable>` versus {index}`Immuables <single: Immutable>`
+### Paramètres {index}`mutables <single: Mutable>` et {index}`immuables <single: Immutable>`
 
-C'est le bon moment pour en dire un peu plus sur les objets mutables versus immuables.
+C'est le bon moment pour en dire un peu plus sur les objets mutables et immuables.
 
 Considérons le segment de code
 
@@ -503,11 +503,11 @@ print(f(x), x)
 
 Nous comprenons maintenant ce qui va se passer ici : le code affiche `2` comme valeur de `f(x)` et `1` comme valeur de `x`.
 
-Tout d'abord, `f` et `x` sont enregistrés dans l'espace de noms global.
+Tout d'abord, `f` et `x` sont enregistrés dans l'espace de nommage global.
 
-L'appel `f(x)` crée un espace de noms local et y ajoute `x`, lié à `1`.
+L'appel `f(x)` crée un espace de nommage local et y ajoute `x`, lié à `1`.
 
-Ensuite, ce `x` local est relié au nouvel objet entier `2`, et cette valeur est retournée.
+Ensuite, ce `x` local est relié au nouvel objet entier `2`, et cette valeur est renvoyée.
 
 Rien de tout cela n'affecte le `x` global.
 
@@ -522,23 +522,23 @@ x = [1]
 print(f(x), x)
 ```
 
-Cela affiche `[2]` comme valeur de `f(x)` et *la même chose* pour `x`.
+Cela affiche `[2]` comme valeur de `f(x)` et également `[2]` comme valeur de `x`.
 
 Voici ce qui se passe
 
-* `f` est enregistré comme fonction dans l'espace de noms global
+* `f` est enregistré comme fonction dans l'espace de nommage global
 
 ```{figure} /_static/lecture_specific/oop_intro/mutable1.png
 ```
 
-* `x` est lié à `[1]` dans l'espace de noms global
+* `x` est lié à `[1]` dans l'espace de nommage global
 
 ```{figure} /_static/lecture_specific/oop_intro/mutable2.png
 ```
 
 * L'appel `f(x)`
-    * Crée un espace de noms local
-    * Ajoute `x` à l'espace de noms local, lié à `[1]`
+    * Crée un espace de nommage local
+    * Ajoute `x` à l'espace de nommage local, lié à `[1]`
 
 ```{figure} /_static/lecture_specific/oop_intro/mutable3.png
 ```
@@ -552,21 +552,21 @@ Nous pouvons voir que l'identité du `x` local et l'identité du `x` global sont
 ```{code-cell} python3
 def f(x):
     x[0] = x[0] + 1
-    print(f'the identity of local x is {id(x)}')
+    print(f"l'identité de x local est {id(x)}")
     return x
 
 x = [1]
-print(f'the identity of global x is {id(x)}')
+print(f"l'identité de x global est {id(x)}")
 print(f(x), x)
 ```
 
 * Au sein de `f(x)`
     * La liste `[1]` est modifiée en `[2]`
-    * Retourne la liste `[2]`
+    * Renvoie la liste `[2]`
 
 ```{figure} /_static/lecture_specific/oop_intro/mutable4.png
 ```
-* L'espace de noms local est libéré, et le `x` local est perdu
+* L'espace de nommage local est libéré, et le `x` local est perdu
 
 ```{figure} /_static/lecture_specific/oop_intro/mutable5.png
 ```
