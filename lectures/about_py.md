@@ -61,9 +61,9 @@ Dans ce cours, nous allons
 
 Vous n'avez **pas** besoin de tout comprendre dans ce cours -- nous détaillerons les points progressivement plus tard dans la série de cours.
 
-### Ne puis-je pas simplement utiliser des LLM ?
+### Ne puis-je pas simplement utiliser des LLM ?
 
-Non !
+Non !
 
 Bien sûr, il est tentant de penser qu'à l'ère de l'IA, nous n'avons plus besoin d'apprendre à coder.
 
@@ -77,7 +77,7 @@ Vous devrez être l'architecte et le superviseur -- et pour ces tâches, vous de
 
 Cela dit, un bon LLM est un compagnon utile pour ces cours -- essayez de copier-coller du code de cette série et de demander une explication.
 
-### MATLAB n'est-il pas meilleur ?
+### MATLAB n'est-il pas meilleur ?
 
 Non, non, et cent fois non.
 
@@ -129,7 +129,7 @@ Il est utilisé et largement soutenu par de grandes entreprises technologiques, 
 
 ### Popularité relative
 
-Python est l'un des -- si ce n'est le -- [langages de programmation les plus populaires](https://www.tiobe.com/tiobe-index/).
+Python est l'un des langages de programmation les plus populaires, si ce n'est le plus populaire.
 
 Des bibliothèques Python comme [pandas](https://pandas.pydata.org/) et [Polars](https://pola.rs/) remplacent des outils familiers comme Excel et VBA en tant que compétence essentielle dans les domaines de la finance et de la banque.
 
@@ -163,7 +163,7 @@ Pour vous en donner une idée, examinons un exemple.
 
 Le code ci-dessous est écrit en [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) plutôt qu'en Python.
 
-Vous n'avez **pas** besoin de lire et de comprendre ce code !
+Vous n'avez **pas** besoin de lire et de comprendre ce code !
 
 
 ```{code-block} java
@@ -283,7 +283,7 @@ L'une des parties les plus importantes du calcul scientifique consiste à travai
 
 Les données sont souvent stockées dans des matrices, des vecteurs et des tableaux.
 
-Nous pouvons créer un simple tableau de nombres en Python pur comme suit :
+Nous pouvons créer un simple tableau de nombres en Python pur comme suit :
 
 ```{code-cell} python3
 a = [-3.14, 0, 3.14]                    # Une liste Python
@@ -332,7 +332,7 @@ Nous en discuterons les détails plus tard dans la série de cours, où nous cou
 
 Bien que NumPy soit toujours le roi du traitement de tableaux en Python, il existe désormais d'importants concurrents.
 
-Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [PyTorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) disposent également de types de tableaux et d'opérations sur les tableaux intégrés qui peuvent être très rapides et efficaces.
+Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [PyTorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) intègrent également des types de tableaux et des opérations sur les tableaux qui peuvent être très rapides et efficaces.
 
 En fait, ces bibliothèques sont meilleures pour exploiter la parallélisation et le matériel rapide, comme nous l'expliquerons plus tard dans cette série.
 
@@ -381,7 +381,7 @@ L'un des grands atouts de Python est la visualisation de données.
 
 La bibliothèque Python la plus populaire et la plus complète pour créer des figures et des graphiques est [Matplotlib](https://matplotlib.org/), dont les fonctionnalités comprennent
 
-* des tracés, des histogrammes, des images de contours, des graphiques 3D, des diagrammes à barres, etc.
+* des tracés, des histogrammes, des tracés de contours, des graphiques 3D, des diagrammes à barres, etc.
 * une sortie dans de nombreux formats (PDF, PNG, EPS, etc.)
 * l'intégration de LaTeX
 
@@ -407,7 +407,7 @@ D'autres exemples se trouvent dans la [galerie de vignettes de Matplotlib](https
 Parmi les autres bibliothèques graphiques figurent
 
 * [Plotly](https://plotly.com/python/)
-* [seaborn](https://seaborn.pydata.org/) --- une interface de haut niveau pour matplotlib
+* [seaborn](https://seaborn.pydata.org/) --- une interface de haut niveau pour Matplotlib
 * [Altair](https://altair-viz.github.io/)
 * [Bokeh](https://docs.bokeh.org/en/latest/)
 
@@ -431,7 +431,7 @@ Python dispose de nombreuses bibliothèques pour étudier les réseaux et les gr
 
 Un exemple bien connu est [NetworkX](https://networkx.org/).
 
-Ses fonctionnalités comprennent, entre autres :
+Ses fonctionnalités comprennent, entre autres :
 
 * des algorithmes de graphes standard pour analyser les réseaux
 * des routines de tracé
