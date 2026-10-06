@@ -71,7 +71,7 @@ Les classes sont des plans qui vous aident à construire des objets selon vos pr
 
 Il faut un peu de temps pour s'habituer à la syntaxe, c'est pourquoi nous fournirons de nombreux exemples.
 
-Nous utiliserons les importations suivantes :
+Nous utiliserons les importations suivantes :
 
 ```{code-cell} ipython
 import numpy as np
@@ -80,7 +80,7 @@ import matplotlib.pyplot as plt
 
 ## Révision de la POO
 
-La POO est prise en charge dans de nombreux langages :
+La POO est prise en charge dans de nombreux langages :
 
 * Java et Ruby sont des langages relativement purement orientés objet.
 * Python prend en charge à la fois la programmation procédurale et orientée objet.
@@ -140,9 +140,9 @@ x.__class__
 * `dir(x)` peut être utilisé pour afficher tous les attributs de `x`.
 
 (why_oop)=
-### Pourquoi la POO est-elle utile ?
+### Pourquoi la POO est-elle utile ?
 
-La POO est utile pour la même raison que l'abstraction est utile : pour reconnaître et exploiter la structure commune.
+La POO est utile pour la même raison que l'abstraction est utile : pour reconnaître et exploiter la structure commune.
 
 Par exemple,
 
@@ -213,7 +213,7 @@ Prises ensemble, les données d'instance et les fonctions sont appelées *attrib
 
 Ceux-ci sont facilement accessibles de la manière que nous allons décrire maintenant.
 
-### Exemple : une classe Consommateur
+### Exemple : une classe Consommateur
 
 Nous allons construire une classe `Consumer` avec
 
@@ -249,7 +249,7 @@ Il y a une syntaxe spéciale ici, alors examinons-la attentivement
 
 * Le mot-clé `class` indique que nous construisons une classe.
 
-La classe `Consumer` définit les données d'instance `wealth` et trois méthodes : `__init__`, `earn` et `spend`
+La classe `Consumer` définit les données d'instance `wealth` et trois méthodes : `__init__`, `earn` et `spend`
 
 * `wealth` est une *donnée d'instance* car chaque consommateur que nous créons (chaque instance de la classe `Consumer`) aura ses propres données de richesse.
 
@@ -364,7 +364,7 @@ Le résultat final est que `self` est lié à l'instance `c1` à l'intérieur de
 C'est pourquoi l'instruction `self.wealth += y` à l'intérieur de `earn` finit par modifier `c1.wealth`.
 
 (oop_solow_growth)=
-### Exemple : le modèle de croissance de Solow
+### Exemple : le modèle de croissance de Solow
 
 ```{index} single: Programmation orientée objet; Méthodes
 ```
@@ -470,11 +470,11 @@ ax.legend()
 plt.show()
 ```
 
-### Exemple : un marché
+### Exemple : un marché
 
 Ensuite, écrivons une classe pour un marché concurrentiel dans lequel les acheteurs et les vendeurs sont tous deux preneurs de prix.
 
-Le marché consiste en les objets suivants :
+Le marché consiste en les objets suivants :
 
 * Une courbe de demande linéaire $Q = a_d - b_d p$
 * Une courbe d'offre linéaire $Q = a_z + b_z (p - t)$
@@ -604,7 +604,7 @@ m = Market(*baseline_params)
 deadw(m)  # Show deadweight loss
 ```
 
-### Exemple : le chaos
+### Exemple : le chaos
 
 Examinons un exemple de plus, lié à la dynamique chaotique dans les systèmes non linéaires.
 
