@@ -129,7 +129,7 @@ Il est utilisé et largement soutenu par de grandes entreprises technologiques, 
 
 ### Popularité relative
 
-Python est l'un des -- si ce n'est le -- [langages de programmation les plus populaires](https://www.tiobe.com/tiobe-index/).
+Python est l'un des langages de programmation les plus populaires, si ce n'est le plus populaire.
 
 Des bibliothèques Python comme [pandas](https://pandas.pydata.org/) et [Polars](https://pola.rs/) remplacent des outils familiers comme Excel et VBA en tant que compétence essentielle dans les domaines de la finance et de la banque.
 
@@ -332,7 +332,7 @@ Nous en discuterons les détails plus tard dans la série de cours, où nous cou
 
 Bien que NumPy soit toujours le roi du traitement de tableaux en Python, il existe désormais d'importants concurrents.
 
-Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [PyTorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) disposent également de types de tableaux et d'opérations sur les tableaux intégrés qui peuvent être très rapides et efficaces.
+Des bibliothèques telles que [JAX](https://github.com/jax-ml/jax), [PyTorch](https://pytorch.org/) et [CuPy](https://cupy.dev/) intègrent également des types de tableaux et des opérations sur les tableaux qui peuvent être très rapides et efficaces.
 
 En fait, ces bibliothèques sont meilleures pour exploiter la parallélisation et le matériel rapide, comme nous l'expliquerons plus tard dans cette série.
 
@@ -381,7 +381,7 @@ L'un des grands atouts de Python est la visualisation de données.
 
 La bibliothèque Python la plus populaire et la plus complète pour créer des figures et des graphiques est [Matplotlib](https://matplotlib.org/), dont les fonctionnalités comprennent
 
-* des tracés, des histogrammes, des images de contours, des graphiques 3D, des diagrammes à barres, etc.
+* des tracés, des histogrammes, des tracés de contours, des graphiques 3D, des diagrammes à barres, etc.
 * une sortie dans de nombreux formats (PDF, PNG, EPS, etc.)
 * l'intégration de LaTeX
 
@@ -407,7 +407,7 @@ D'autres exemples se trouvent dans la [galerie de vignettes de Matplotlib](https
 Parmi les autres bibliothèques graphiques figurent
 
 * [Plotly](https://plotly.com/python/)
-* [seaborn](https://seaborn.pydata.org/) --- une interface de haut niveau pour matplotlib
+* [seaborn](https://seaborn.pydata.org/) --- une interface de haut niveau pour Matplotlib
 * [Altair](https://altair-viz.github.io/)
 * [Bokeh](https://docs.bokeh.org/en/latest/)
 
