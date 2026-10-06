@@ -135,7 +135,7 @@ Anaconda est également livré avec un système de gestion de paquets pour organ
 
 Pour installer Anaconda, [téléchargez](https://www.anaconda.com/download) le binaire et suivez les instructions.
 
-Points importants :
+Points importants :
 
 * Assurez-vous d'installer la version correcte pour votre système d'exploitation.
 * Si on vous demande pendant le processus d'installation si vous souhaitez faire d'Anaconda votre installation Python par défaut, répondez oui.
@@ -228,7 +228,7 @@ Si vous regardez l'URL en haut, elle devrait être `localhost:8888` ou similaire
 
 En supposant que tout cela a bien fonctionné, vous pouvez maintenant cliquer sur `New` en haut à droite et sélectionner `Python 3` ou similaire.
 
-Voici ce qui apparaît sur notre machine :
+Voici ce qui apparaît sur notre machine :
 
 ```{figure} /_static/lecture_specific/getting_started/nb2.png
 :figclass: auto
@@ -295,7 +295,7 @@ Dans une cellule de code, essayez de taper `\alpha` puis d'appuyer sur la touche
 
 Exécutons un programme de test.
 
-Voici un programme arbitraire que nous pouvons utiliser : [https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html](https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html).
+Voici un programme arbitraire que nous pouvons utiliser : [https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html](https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html).
 
 Sur cette page, vous verrez le code suivant
 
@@ -367,7 +367,7 @@ La documentation apparaît dans une fenêtre divisée du navigateur, comme ceci
 
 Cliquer en haut à droite du panneau inférieur ferme l'aide en ligne.
 
-Nous en apprendrons davantage sur la façon de créer de la documentation comme celle-ci {ref}`plus tard <Docstrings>` !
+Nous en apprendrons davantage sur la façon de créer de la documentation comme celle-ci {ref}`plus tard <Docstrings>` !
 
 #### Autre contenu
 
@@ -521,7 +521,7 @@ Le code est d'abord enregistré dans un fichier texte sur une machine locale
 
 Par convention, ces fichiers texte ont une extension `.py`.
 
-Nous pouvons créer un exemple d'un tel fichier comme suit :
+Nous pouvons créer un exemple d'un tel fichier comme suit :
 
 ```{code-cell} ipython
 %%writefile foo.py
@@ -535,12 +535,12 @@ Ici, `%%writefile` est un exemple de [cell magic](https://ipython.readthedocs.io
 
 ### Édition et exécution
 
-Si vous tombez sur du code enregistré dans un fichier `*.py`, vous devrez considérer les questions suivantes :
+Si vous tombez sur du code enregistré dans un fichier `*.py`, vous devrez considérer les questions suivantes :
 
-1. comment devriez-vous l'exécuter ?
-1. Comment devriez-vous le modifier ou l'éditer ?
+1. comment devriez-vous l'exécuter ?
+1. Comment devriez-vous le modifier ou l'éditer ?
 
-#### Option 1 : {index}`JupyterLab <single: JupyterLab>`
+#### Option 1 : {index}`JupyterLab <single: JupyterLab>`
 
 ```{index} single: JupyterLab
 ```
@@ -555,7 +555,7 @@ Vous devriez maintenant pouvoir ouvrir, éditer et exécuter le fichier `foo.py`
 
 Lisez la documentation ou recherchez une vidéo YouTube récente pour trouver plus d'informations.
 
-#### Option 2 : Utiliser un éditeur de texte
+#### Option 2 : Utiliser un éditeur de texte
 
 On peut également éditer des fichiers en utilisant un éditeur de texte puis les exécuter depuis des notebooks Jupyter.
 
@@ -586,7 +586,7 @@ Maintenant, relancez, mais cette fois en utilisant `jupyter notebook --no-browse
 
 Ceci devrait démarrer le kernel sans lancer le navigateur.
 
-Notez également le message de démarrage : il devrait vous donner une URL telle que `http://localhost:8888` où le notebook s'exécute.
+Notez également le message de démarrage : il devrait vous donner une URL telle que `http://localhost:8888` où le notebook s'exécute.
 
 Maintenant
 
