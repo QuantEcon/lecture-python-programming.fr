@@ -1,4 +1,4 @@
----
+ ---
 jupytext:
   text_representation:
     extension: .md
@@ -57,7 +57,7 @@ Cette approche est moins passionnante mais aide à clarifier certains détails.
 ```{index} single: Python; Data Types
 ```
 
-Les programmes informatiques suivent généralement toute une gamme de types de données.
+Les programmes informatiques manipulent généralement toute une gamme de types de données.
 
 Par exemple, `1.5` est un nombre à virgule flottante, tandis que `1` est un entier.
 
@@ -73,7 +73,7 @@ Une autre est que les opérations arithmétiques sont différentes
 En général, les flottants sont plus informatifs mais les opérations arithmétiques sur les entiers
 sont plus rapides et plus précises.
 
-Python fournit de nombreux autres types de données Python intégrés, dont certains que nous avons déjà rencontrés
+Python fournit de nombreux autres types de données natifs, dont certains que nous avons déjà rencontrés
 
 * chaînes de caractères, listes, etc.
 
@@ -136,7 +136,7 @@ sum(bools)
 
 Les types numériques sont également des types de données primitifs importants.
 
-Nous avons déjà vu les types `integer` et `float`.
+Nous avons déjà vu les types entier et flottant.
 
 Les **nombres complexes** sont un autre type de données primitif en Python
 
@@ -161,7 +161,7 @@ Un type de données apparenté est celui des **tuples**, qui sont des listes « 
 
 ```{code-cell} python3
 x = ('a', 'b')  # Parenthèses au lieu des crochets
-x = 'a', 'b'    # Ou sans crochets --- la signification est identique
+x = 'a', 'b'    # Ou sans parenthèses --- la signification est identique
 x
 ```
 
@@ -279,7 +279,7 @@ d['age']
 
 Les noms `'name'` et `'age'` sont appelés les *clés*.
 
-Les objets vers lesquels les clés sont mappées (`'Frodo'` et `33`) sont appelés les `values` (valeurs).
+Les objets auxquels les clés sont associées (`'Frodo'` et `33`) sont appelés les *valeurs*.
 
 Les ensembles sont des collections non ordonnées sans doublons, et les méthodes d'ensemble fournissent les
 opérations ensemblistes habituelles
@@ -321,7 +321,7 @@ f.close()
 
 Ici
 
-* La fonction intégrée `open()` crée un objet fichier pour écrire dedans.
+* La fonction native `open()` crée un objet fichier dans lequel écrire.
 * `write()` et `close()` sont tous deux des méthodes des objets fichier.
 
 Où se trouve ce fichier que nous avons créé ?
@@ -334,7 +334,7 @@ Rappelez-vous que Python maintient une notion de répertoire de travail courant 
 
 Si aucun chemin n'est spécifié, c'est là que Python écrit.
 
-Nous pouvons également utiliser Python pour lire le contenu de `newline.txt` comme suit
+Nous pouvons également utiliser Python pour lire le contenu de `newfile.txt` comme suit
 
 ```{code-cell} python3
 f = open('newfile.txt', 'r')
@@ -411,7 +411,7 @@ with open('output2.txt', 'r') as fo:
 Supposons que nous voulions continuer à écrire dans le fichier existant
 au lieu de l'écraser.
 
-nous pouvons passer au mode `a` qui signifie mode d'ajout (append)
+Nous pouvons passer au mode `a`, qui correspond au mode d'ajout (« append »).
 
 ```{code-cell} python3
 with open('output2.txt', 'a') as fo:
@@ -486,13 +486,13 @@ Le programme ci-dessous lit les données et effectue la conversion :
 data_file = open('us_cities.txt', 'r')
 for line in data_file:
     city, population = line.split(':')         # Déballage de tuple
-    city = city.title()                        # Mettre en majuscule les noms de ville
+    city = city.title()                        # Mettre une majuscule à chaque mot des noms de ville
     population = f'{int(population):,}'        # Ajouter des virgules aux nombres
     print(city.ljust(15) + population)
 data_file.close()
 ```
 
-Ici `f'` est une f-string [utilisée pour insérer des variables dans des chaînes](https://docs.python.org/3/library/string.html#formatspec).
+Ici, le préfixe `f` indique une f-string, [utilisée pour insérer des valeurs dans des chaînes de caractères](https://docs.python.org/3/library/string.html#formatspec).
 
 Le reformatage de chaque ligne est le résultat de trois méthodes de chaîne différentes,
 dont les détails peuvent être laissés pour plus tard.
@@ -647,7 +647,7 @@ Que se passe-t-il ici ?
 
 La règle est :
 
-* Les expressions qui s'évaluent à zéro, à des séquences ou conteneurs vides (chaînes, listes, etc.) et `None` sont toutes équivalentes à `False`.
+* Les expressions qui s'évaluent à zéro, les séquences ou conteneurs vides (chaînes, listes, etc.) ainsi que `None` sont tous considérés comme `False`.
     * par exemple, `[]` et `()` sont équivalents à `False` dans une clause `if`
 * Toutes les autres valeurs sont équivalentes à `True`.
     * par exemple, `42` est équivalent à `True` dans une clause `if`
@@ -735,7 +735,7 @@ En Python, le style standard est exposé dans [PEP8](https://peps.python.org/pep
 ```{index} single: Python; Docstrings
 ```
 
-Python dispose d'un système pour ajouter des commentaires aux modules, classes, fonctions, etc. appelé *docstrings*.
+Python dispose d'un système permettant d'ajouter de la documentation aux modules, classes, fonctions, etc. à l'aide de chaînes de documentation (*docstrings*).
 
 Ce qui est agréable avec les docstrings, c'est qu'elles sont disponibles au moment de l'exécution.
 
@@ -792,7 +792,7 @@ Vous pouvez trouver les conventions pour les docstrings dans [PEP257](https://pe
 
 Résolvez les exercices suivants.
 
-(Pour certains, la fonction intégrée `sum()` s'avère pratique).
+(Pour certains, la fonction native `sum()` s'avère pratique).
 
 ```{exercise-start}
 :label: pyess_ex1
@@ -889,7 +889,7 @@ p(x)
 = \sum_{i=0}^n a_i x^i
 ```
 
-Écrivez une fonction `p` telle que `p(x, coeff)` calcule la valeur dans {eq}`polynom0` étant donné un point `x` et une liste de coefficients `coeff` ($a_1, a_2, \cdots a_n$).
+Écrivez une fonction `p` telle que `p(x, coeff)` calcule la valeur dans {eq}`polynom0` étant donné un point `x` et une liste de coefficients `coeff` ($a_0, a_1, \cdots a_n$).
 
 Essayez d'utiliser `enumerate()` dans votre boucle.
 
@@ -947,7 +947,7 @@ def f(string):
 f('The Rain in Spain')
 ```
 
-Une alternative, solution plus pythonique :
+Une solution alternative, plus pythonique :
 
 ```{code-cell} python3
 def count_uppercase_chars(s):
@@ -992,7 +992,7 @@ print(f([1, 2], [1, 2, 3]))
 print(f([1, 2, 3], [1, 2]))
 ```
 
-Une alternative, solution plus pythonique utilisant `all()` :
+Une solution alternative, plus pythonique, utilisant `all()` :
 
 ```{code-cell} python3
 def f(seq_a, seq_b):
@@ -1005,7 +1005,7 @@ print(f([1, 2], [1, 2, 3]))
 print(f([1, 2, 3], [1, 2]))
 ```
 
-Bien sûr, si nous utilisons le type de données `sets`, la solution est plus facile
+Bien sûr, si nous utilisons le type ensemble (`set`), la solution est plus facile
 
 ```{code-cell} python3
 def f(seq_a, seq_b):
