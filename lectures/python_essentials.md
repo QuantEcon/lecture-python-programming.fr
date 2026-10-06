@@ -744,7 +744,7 @@ Essayez d'exécuter ceci
 ```{code-cell} python3
 def f(x):
     """
-    This function squares its argument
+    Cette fonction élève son argument au carré.
     """
     return x**2
 ```
@@ -762,7 +762,7 @@ Type:       function
 String Form:<function f at 0x2223320>
 File:       /home/john/temp/temp.py
 Definition: f(x)
-Docstring:  This function squares its argument
+Docstring:  Cette fonction élève son argument au carré.
 ```
 
 ```{code-cell} ipython
@@ -779,7 +779,7 @@ Definition: f(x)
 Source:
 def f(x):
     """
-    This function squares its argument
+    Cette fonction élève son argument au carré.
     """
     return x**2
 ```
@@ -1044,23 +1044,23 @@ Voici une solution :
 ```{code-cell} python3
 def linapprox(f, a, b, n, x):
     """
-    Evaluates the piecewise linear interpolant of f at x on the interval
-    [a, b], with n evenly spaced grid points.
+    Évalue l'interpolant linéaire par morceaux de f en x sur l'intervalle
+    [a, b], avec n points de grille régulièrement espacés.
 
-    Parameters
+    Paramètres
     ==========
-        f : function
-            The function to approximate
+        f : fonction
+            La fonction à approximer
 
-        x, a, b : scalars (floats or integers)
-            Evaluation point and endpoints, with a <= x <= b
+        x, a, b : scalaires (flottants ou entiers)
+            Point d'évaluation et bornes, avec a <= x <= b
 
-        n : integer
-            Number of grid points
+        n : entier
+            Nombre de points de grille
 
-    Returns
+    Renvoie
     =======
-        A float. The interpolant evaluated at x
+        Un flottant. L'interpolant évalué en x
 
     """
     length_of_interval = b - a
