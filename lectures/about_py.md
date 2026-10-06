@@ -61,9 +61,9 @@ Dans ce cours, nous allons
 
 Vous n'avez **pas** besoin de tout comprendre dans ce cours -- nous détaillerons les points progressivement plus tard dans la série de cours.
 
-### Ne puis-je pas simplement utiliser des LLM ?
+### Ne puis-je pas simplement utiliser des LLM ?
 
-Non !
+Non !
 
 Bien sûr, il est tentant de penser qu'à l'ère de l'IA, nous n'avons plus besoin d'apprendre à coder.
 
@@ -77,7 +77,7 @@ Vous devrez être l'architecte et le superviseur -- et pour ces tâches, vous de
 
 Cela dit, un bon LLM est un compagnon utile pour ces cours -- essayez de copier-coller du code de cette série et de demander une explication.
 
-### MATLAB n'est-il pas meilleur ?
+### MATLAB n'est-il pas meilleur ?
 
 Non, non, et cent fois non.
 
@@ -163,7 +163,7 @@ Pour vous en donner une idée, examinons un exemple.
 
 Le code ci-dessous est écrit en [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) plutôt qu'en Python.
 
-Vous n'avez **pas** besoin de lire et de comprendre ce code !
+Vous n'avez **pas** besoin de lire et de comprendre ce code !
 
 
 ```{code-block} java
@@ -283,7 +283,7 @@ L'une des parties les plus importantes du calcul scientifique consiste à travai
 
 Les données sont souvent stockées dans des matrices, des vecteurs et des tableaux.
 
-Nous pouvons créer un simple tableau de nombres en Python pur comme suit :
+Nous pouvons créer un simple tableau de nombres en Python pur comme suit :
 
 ```{code-cell} python3
 a = [-3.14, 0, 3.14]                    # Une liste Python
@@ -431,7 +431,7 @@ Python dispose de nombreuses bibliothèques pour étudier les réseaux et les gr
 
 Un exemple bien connu est [NetworkX](https://networkx.org/).
 
-Ses fonctionnalités comprennent, entre autres :
+Ses fonctionnalités comprennent, entre autres :
 
 * des algorithmes de graphes standard pour analyser les réseaux
 * des routines de tracé
