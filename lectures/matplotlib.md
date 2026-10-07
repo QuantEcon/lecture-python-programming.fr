@@ -56,7 +56,7 @@ Matplotlib est une bibliothèque graphique remarquable, conçue pour le calcul s
 
 Matplotlib est inhabituelle dans le sens où elle offre deux interfaces différentes pour tracer des graphiques.
 
-L'une est une simple API (Application Programming Interface) de style MATLAB, qui a été écrite pour aider les réfugiés de MATLAB à trouver un environnement familier.
+L'une est une simple API (Application Programming Interface) de style MATLAB, qui a été écrite pour aider les utilisateurs venant de MATLAB à trouver un environnement familier.
 
 L'autre est une API orientée objet plus « pythonique ».
 
@@ -71,7 +71,7 @@ Mais commençons par discuter de la différence.
 
 ### L'API de style MATLAB
 
-Voici le genre d'exemple simple que vous pourriez trouver dans les traitements introductifs
+Voici le genre d'exemple simple que vous pourriez trouver dans les présentations introductives
 
 ```{code-cell} ipython
 import matplotlib.pyplot as plt
@@ -86,7 +86,7 @@ plt.show()
 
 C'est simple et pratique, mais aussi quelque peu limité et peu pythonique.
 
-Par exemple, dans les appels de fonction, beaucoup d'objets sont créés et transmis sans se faire connaître du programmeur.
+Par exemple, dans les appels de fonction, beaucoup d'objets sont créés et transmis sans être explicitement visibles pour le programmeur.
 
 Les programmeurs Python tendent à préférer un style de programmation plus explicite (exécutez `import this` dans un bloc de code et regardez la deuxième ligne).
 
@@ -105,7 +105,7 @@ plt.show()
 Ici, l'appel `fig, ax = plt.subplots()` renvoie une paire, où
 
 * `fig` est une instance de `Figure` — comme une toile vierge.
-* `ax` est une instance d'`AxesSubplot` — pensez à un cadre dans lequel tracer.
+* `ax` est une instance d'`Axes` — pensez à un cadre dans lequel tracer.
 
 La fonction `plot()` est en réalité une méthode de `ax`.
 
@@ -166,7 +166,7 @@ Nous n'en mentionnons que quelques-unes.
 ```{index} single: Matplotlib; Multiple Plots on One Axis
 ```
 
-Il est facile de générer plusieurs tracés sur les mêmes axes.
+Il est facile de générer plusieurs tracés sur un même axe.
 
 Voici un exemple qui génère aléatoirement trois densités normales et ajoute une étiquette avec leur moyenne
 
@@ -212,7 +212,7 @@ plt.show()
 ```{index} single: Matplotlib; 3D Plots
 ```
 
-Matplotlib fait un bon travail pour les tracés 3D — en voici un exemple
+Matplotlib permet également de réaliser de bons tracés 3D — en voici un exemple
 
 ```{code-cell} python3
 from mpl_toolkits.mplot3d.axes3d import Axes3D
@@ -305,7 +305,7 @@ def draw_graphs(style='default'):
     fig, axes = plt.subplots(nrows=1, ncols=4, figsize=(10, 3))
     x = np.linspace(-13, 13, 150)
 
-    # Fixer les valeurs de graine pour reproduire les résultats des tirages aléatoires
+    # Fixer la graine pour reproduire les résultats des tirages aléatoires
     np.random.seed(9)
 
     for i in range(3):
@@ -326,7 +326,7 @@ def draw_graphs(style='default'):
         # Créer un histogramme avec des valeurs X aléatoires
         axes[2].hist(rnormX, alpha=0.7)
 
-        # et un graphique en ligne avec des valeurs Y aléatoires
+        # et un graphique linéaire avec des valeurs Y aléatoires
         axes[3].plot(x, rnormY, linewidth=2, alpha=0.7)
 
     style_name = style.split('-')[0]
@@ -365,7 +365,7 @@ Vous pouvez utiliser la fonction pour expérimenter avec d'autres styles de la l
 
 Si cela vous intéresse, vous pouvez même créer vos propres feuilles de style.
 
-Les paramètres de vos feuilles de style sont stockés dans une variable de type dictionnaire `plt.rcParams`
+Les paramètres de vos feuilles de style sont stockés dans le dictionnaire `plt.rcParams`
 
 ```{code-cell} python3
 ---
@@ -381,7 +381,7 @@ Il existe de nombreux paramètres que vous pourriez définir pour vos feuilles d
 Définissez les paramètres de votre feuille de style en : 
 
 1. créant votre propre [fichier `matplotlibrc`](https://matplotlib.org/stable/users/explain/customizing.html), ou
-2. mettant à jour les valeurs stockées dans la variable de type dictionnaire `plt.rcParams`
+2. mettant à jour les valeurs stockées dans le dictionnaire `plt.rcParams`
 
 Changeons le style de nos lignes de densité superposées en utilisant la seconde méthode
 
@@ -425,7 +425,7 @@ plt.rcParams.update(parameters)
 
 Ces réglages sont `globaux`. 
 
-Tout graphique généré après avoir modifié les paramètres dans `.rcParams` sera affecté par ce réglage.
+Tout graphique généré après avoir modifié les paramètres dans `.rcParams` sera affecté par ces réglages.
 
 ```
 
