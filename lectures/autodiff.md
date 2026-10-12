@@ -37,8 +37,8 @@ translation:
 
 ## Vue d'ensemble
 
-Ce cours propose une introduction plus approfondie à la différentiation automatique
-à l'aide de Google JAX, en s'appuyant sur {doc}`notre bref aperçu <jax_intro>`.
+Ce cours propose une introduction à la différentiation automatique
+à l'aide de Google JAX.
 
 La différentiation automatique est l'un des éléments clés de l'apprentissage automatique
 et de l'intelligence artificielle modernes.
