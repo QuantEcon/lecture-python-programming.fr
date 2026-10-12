@@ -129,7 +129,7 @@ Il est utilisé et largement soutenu par de grandes entreprises technologiques, 
 
 ### Popularité relative
 
-Python est l'un des langages de programmation les plus populaires, si ce n'est le plus populaire.
+Python est l'un des [langages de programmation les plus populaires](https://www.tiobe.com/tiobe-index/), si ce n'est le plus populaire.
 
 Des bibliothèques Python comme [pandas](https://pandas.pydata.org/) et [Polars](https://pola.rs/) remplacent des outils familiers comme Excel et VBA en tant que compétence essentielle dans les domaines de la finance et de la banque.
 
