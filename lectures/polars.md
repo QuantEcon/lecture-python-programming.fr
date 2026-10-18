@@ -561,7 +561,8 @@ Comme dans {doc}`pandas`, Python permet d'interroger facilement des bases de don
 
 Une base de données importante pour les économistes est [FRED](https://fred.stlouisfed.org/) --- une vaste collection de séries temporelles maintenue par la Fed de St. Louis.
 
-La méthode `read_csv` de Polars peut récupérer des données directement depuis une URL.
+Nous téléchargeons le fichier CSV avec [requests](https://requests.readthedocs.io/en/latest/)
+et transmettons son contenu à la méthode `read_csv` de Polars.
 
 Nous utilisons `try_parse_dates=True` pour analyser automatiquement la colonne de date
 
@@ -581,7 +582,10 @@ fred_url = ('https://fred.stlouisfed.org/graph/fredgraph.csv?'
             'fgst=lin&fgsnd=2020-02-01&line_index=1&'
             'transformation=lin&vintage_date=2024-07-29&'
             'revision_date=2024-07-29&nd=1948-01-01')
-data = pl.read_csv(fred_url, try_parse_dates=True)
+import requests
+
+r = requests.get(fred_url)
+data = pl.read_csv(r.content, try_parse_dates=True)
 ```
 
 Examinons les premières lignes
