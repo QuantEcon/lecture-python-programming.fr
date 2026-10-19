@@ -51,12 +51,12 @@ translation:
 
 <style>
   .auto {
-    width : 70% ;
-    height : auto ;
+    width : 70% ;
+    height : auto ;
     } 
   .terminal{
-    width : 80% ;
-    height : auto ;
+    width : 80% ;
+    height : auto ;
   }  
 </style>
 
@@ -102,7 +102,7 @@ Le reste de ce cours vous guide à travers certains détails associés aux insta
 
 ### La distribution Anaconda
 
-Le [paquet Python de base](https://www.python.org/downloads/) est facile à installer mais *n'est pas* ce que vous devriez choisir pour ces cours.
+[L'installation de base de Python](https://www.python.org/downloads/) est facile à réaliser, mais *ce n'est pas* ce que vous devriez choisir pour ces cours.
 
 Ces cours nécessitent l'ensemble de l'écosystème de programmation scientifique, qui
 
@@ -251,7 +251,7 @@ Cela signifie que la cellule est en *mode édition*.
 
 Dans ce mode, tout ce que vous tapez apparaîtra dans la cellule avec le curseur clignotant.
 
-Lorsque vous êtes prêt à exécuter le code d'une cellule, appuyez sur `Shift-Enter` au lieu du `Enter` habituel.
+Lorsque vous êtes prêt à exécuter le code d'une cellule, appuyez sur `Shift-Enter` au lieu de la touche `Enter` habituelle.
 
 ```{figure} /_static/lecture_specific/getting_started/nb3.png
 :figclass: auto
@@ -286,7 +286,7 @@ Le comportement modal du notebook Jupyter est très efficace une fois que vous v
 
 #### Insérer de l'Unicode (par exemple, des lettres grecques)
 
-Python prend en charge l'[unicode](https://docs.python.org/3/howto/unicode.html), permettant l'utilisation de caractères tels que $\alpha$ et $\beta$ comme noms dans votre code.
+Python prend en charge l'[Unicode](https://docs.python.org/3/howto/unicode.html), permettant l'utilisation de caractères tels que $\alpha$ et $\beta$ comme noms dans votre code.
 
 Dans une cellule de code, essayez de taper `\alpha` puis d'appuyer sur la touche tab de votre clavier.
 
@@ -349,7 +349,7 @@ Par exemple, ici nous tapons `np.random.r` et appuyons sur Tab
 
 Jupyter propose plusieurs complétions possibles parmi lesquelles choisir.
 
-De cette manière, la touche Tab vous aide à vous rappeler ce qui est disponible et vous fait aussi gagner de la frappe.
+De cette manière, la touche Tab vous aide à vous rappeler ce qui est disponible et vous évite également d'avoir à tout taper.
 
 (gs_help)=
 #### Aide en ligne
@@ -365,7 +365,7 @@ La documentation apparaît dans une fenêtre divisée du navigateur, comme ceci
 :figclass: auto
 ```
 
-Cliquer en haut à droite de la partie inférieure divisée ferme l'aide en ligne.
+Cliquer en haut à droite du panneau inférieur ferme l'aide en ligne.
 
 Nous en apprendrons davantage sur la façon de créer de la documentation comme celle-ci {ref}`plus tard <Docstrings>` !
 
@@ -437,7 +437,7 @@ Les fichiers de notebook sont simplement des fichiers texte structurés en [JSON
 
 Vous pouvez les partager de la manière habituelle dont vous partagez des fichiers --- ou en utilisant des services web tels que [nbviewer](https://nbviewer.org/).
 
-Les notebooks que vous voyez sur ce site sont des représentations html **statiques**.
+Les notebooks que vous voyez sur ce site sont des représentations HTML **statiques**.
 
 Pour en exécuter un, téléchargez-le sous forme de fichier `ipynb` en cliquant sur l'icône de téléchargement en haut à droite.
 
@@ -491,7 +491,7 @@ Alternativement, vous pouvez taper ce qui suit dans un terminal
 conda install quantecon
 ```
 
-Plus d'instructions peuvent être trouvées sur la [page de la bibliothèque](https://quantecon.org/quantecon-py/).
+Vous trouverez davantage d'instructions sur la [page de la bibliothèque](https://quantecon.org/quantecon-py/).
 
 Pour passer à la dernière version, ce que vous devriez faire régulièrement, utilisez
 
@@ -529,7 +529,7 @@ Nous pouvons créer un exemple d'un tel fichier comme suit :
 print("foobar")
 ```
 
-Ceci écrit la ligne `print("foobar")` dans un fichier appelé `foo.py` dans le répertoire local.
+Cette commande écrit la ligne `print("foobar")` dans un fichier appelé `foo.py` dans le répertoire local.
 
 Ici, `%%writefile` est un exemple de [cell magic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cell-magics).
 
@@ -572,7 +572,7 @@ Un bon éditeur de texte fournira
 
 VS Code est facile à utiliser dès l'installation et possède de nombreuses extensions de haute qualité.
 
-Alternativement, si vous voulez un éditeur de texte gratuit exceptionnel et que cela ne vous dérange pas une courbe d'apprentissage apparemment verticale ainsi que de longues journées de peine et de souffrance pendant que toutes vos voies neuronales sont recâblées, essayez [Vim](https://www.vim.org/).
+Alternativement, si vous voulez un éditeur de texte gratuit exceptionnel et que cela ne vous dérange pas une courbe d'apprentissage apparemment très raide ainsi que de longues journées de peine et de souffrance pendant que toutes vos voies neuronales sont recâblées, essayez [Vim](https://www.vim.org/).
 
 ## Exercices
 
