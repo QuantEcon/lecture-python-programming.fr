@@ -157,7 +157,7 @@ Nous discuterons de toutes ces bibliothèques en détail dans cette série de co
 
 Comme mentionné ci-dessus, le code numérique écrit en Python pur est relativement lent.
 
-Essayons de comprendre ce qui explique les vitesses d'exécution lentes.
+Essayons de comprendre ce qui explique cette lenteur d'exécution.
 
 ### Vérification de type
 
@@ -232,7 +232,7 @@ int main(void) {
 
 Les variables `i` et `sum` sont explicitement déclarées comme des entiers.
 
-De plus, lorsque nous faisons une instruction telle que `int i`, nous faisons une promesse au compilateur
+De plus, lorsque nous écrivons une instruction telle que `int i`, nous faisons une promesse au compilateur
 que `i` sera *toujours* un entier, tout au long de l'exécution du programme.
 
 De ce fait, la signification de l'addition dans l'expression `sum + i` est totalement sans ambiguïté.
@@ -255,7 +255,7 @@ En C ou en Fortran, un tableau d'entiers est stocké dans un seul bloc contigu d
 
 De plus, le type de données est connu au moment de la compilation.
 
-Ainsi, chaque point de données successif peut être accédé en avançant dans l'espace mémoire
+Ainsi, on peut accéder à chaque point de données successif en avançant dans l'espace mémoire
 d'une quantité connue et fixe.
 
 
@@ -270,14 +270,14 @@ Cependant, ces éléments de liste ressemblent davantage à des pointeurs vers d
 
 Ainsi, il y a toujours un surcoût impliqué dans l'accès aux valeurs de données elles-mêmes.
 
-Un tel surcoût est un coupable majeur en ce qui concerne l'exécution lente.
+Un tel surcoût est une cause majeure de la lenteur d'exécution.
 
 
 ### Résumé
 
 La discussion ci-dessus signifie-t-elle que nous devrions simplement passer à C ou Fortran pour tout ?
 
-La réponse est : Certainement pas !
+La réponse est : certainement pas !
 
 Pour tout programme donné, relativement peu de lignes seront jamais critiques en termes de temps.
 
@@ -317,7 +317,7 @@ De nombreux économistes désignent généralement la programmation par tableaux
 En informatique, ce terme a [une signification légèrement différente](https://en.wikipedia.org/wiki/Automatic_vectorization).
 ```
 
-L'idée clé est d'envoyer les opérations de traitement de tableaux par lots à du code machine natif précompilé et
+L'idée clé est d'envoyer par lots les opérations de traitement de tableaux à du code machine natif précompilé et
 efficace.
 
 Le code machine lui-même est généralement compilé à partir de C ou de
@@ -325,11 +325,11 @@ Fortran soigneusement optimisé.
 
 Par exemple, lorsqu'on travaille dans un langage de haut niveau, l'opération d'inversion d'une
 grande matrice peut être sous-traitée à du code machine efficace qui est précompilé
-à cette fin et fourni aux utilisateurs dans le cadre d'un package.
+à cette fin et fourni aux utilisateurs dans le cadre d'un paquet.
 
 Les principaux avantages sont
 
-1. la vérification de type est payée *par tableau*, plutôt que par élément, et
+1. le coût de la vérification de type est supporté *par tableau*, plutôt que par élément, et
 1. les tableaux contenant des éléments du même type de données sont efficaces en termes
    d'accès mémoire.
 
@@ -347,7 +347,7 @@ NumPy utilise un modèle similaire, inspiré de MATLAB
 Essayons une comparaison rapide de vitesse pour illustrer comment la vectorisation peut
 accélérer le code.
 
-Voici du code non vectorisé, qui utilise une boucle Python native pour générer,
+Voici du code non vectorisé, qui utilise une boucle en Python pur pour générer,
 mettre au carré, puis additionner un grand nombre de variables aléatoires :
 
 ```{code-cell} python3
@@ -376,11 +376,11 @@ Comme vous pouvez le voir, le deuxième bloc de code s'exécute beaucoup plus ra
 
 Il décompose la boucle en trois opérations de base
 
-1. tirer `n` uniformes
+1. tirer `n` variables aléatoires uniformes
 1. les mettre au carré
 1. les additionner
 
-Ces opérations sont envoyées comme opérateurs par lots à du code machine optimisé.
+Ces opérations sont envoyées par lots à du code machine optimisé.
 
 
 
@@ -434,7 +434,7 @@ Ci-dessous, nous discutons de la parallélisation pour le calcul scientifique, e
 
 ### Parallélisation sur les CPU
 
-Passons en revue les deux principaux types de parallélisation basée sur les CPU couramment utilisés dans
+Passons en revue les deux principaux types de parallélisation sur CPU couramment utilisés dans
 le calcul scientifique et discutons de leurs avantages et inconvénients.
 
 
@@ -457,7 +457,7 @@ d'exécution de bas niveau où les restrictions héritées de Python ne s'appliq
 
 #### Multiprocessing
 
-Le multiprocessing signifie exécuter plusieurs processus indépendants, chacun avec son propre espace mémoire séparé.
+Le multiprocessing signifie exécuter plusieurs processus indépendants, chacun disposant de son propre espace mémoire.
 
 Comme la mémoire n'est pas partagée, les processus communiquent en s'échangeant des données.
 
@@ -468,7 +468,7 @@ Le multiprocessing peut s'exécuter sur une seule machine ou être distribué su
 
 Pour le travail numérique sur une seule machine, le multithreading est généralement préféré --- il est léger et le modèle de mémoire partagée est très pratique.
 
-Le multiprocessing devient important lors du passage à l'échelle au-delà d'une seule machine.
+Le multiprocessing devient important lorsqu'on passe à une échelle nécessitant plus d'une machine.
 
 Pour la grande majorité de ce que nous faisons dans ces cours, le multithreading suffira.
 
@@ -498,10 +498,10 @@ cœurs travaillent simultanément sur différentes parties du même problème.
 ```
 
 Lorsqu'un calcul peut être exprimé comme des opérations indépendantes sur de grands tableaux de
-données, les GPU peuvent être plusieurs ordres de grandeur plus rapides que les CPU.
+données, les GPU peuvent être plus rapides que les CPU de plusieurs ordres de grandeur.
 
 Les **TPU** (Tensor Processing Units, unités de traitement tensoriel), conçus par Google pour l'apprentissage automatique,
-suivent une philosophie similaire, en optimisant pour des opérations matricielles parallèles massives.
+suivent une philosophie similaire et sont optimisés pour des opérations matricielles massivement parallèles.
 
 
 ### Accéder aux ressources GPU
