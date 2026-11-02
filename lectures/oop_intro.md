@@ -78,7 +78,6 @@ Nous utiliserons la bibliothèque tierce suivante
 !pip install rich
 ```
 
-
 ## Objets
 
 ```{index} single: Python; Objets
@@ -291,8 +290,6 @@ inspect(10, methods=True)
 
 En fait, il existe encore plus de méthodes, comme vous pouvez le constater en exécutant `inspect(10, all=True)`.
 
-
-
 ## Un petit mystère
 
 Dans ce cours, nous avons affirmé que Python est, au fond, un langage orienté objet.
@@ -312,7 +309,7 @@ La réponse est liée au fait que Python vise la lisibilité et un style cohére
 En Python, il est courant que les utilisateurs construisent des objets personnalisés --- nous verrons comment
 faire cela {doc}`plus tard <python_oop>`.
 
-Il est assez courant que les utilisateurs ajoutent à ceux-ci des méthodes qui mesurent la longueur de
+Il est assez courant que les utilisateurs ajoutent à leurs objets des méthodes qui mesurent la longueur de
 l'objet, définie de manière appropriée.
 
 Lorsqu'il s'agit de nommer une telle méthode, les choix naturels sont `len()` et `length()`.
@@ -342,7 +339,6 @@ x = ['a', 'b']
 x.__len__()
 ```
 
-
 ## Résumé
 
 Le message de ce cours est clair :
@@ -356,7 +352,7 @@ Cela inclut non seulement les listes, les chaînes de caractères, etc., mais au
 * les fichiers ouverts en lecture ou en écriture
 * les entiers, etc.
 
-Se rappeler que tout est un objet vous aidera à interagir avec vos programmes
+Se rappeler que tout est un objet aide à interagir avec les programmes
 et à écrire un code clair et pythonique.
 
 ## Exercices
