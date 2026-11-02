@@ -685,7 +685,7 @@ print([x(i) for i in range(10)])
 :label: func_ex5
 ```
 
-Réécrivez la fonction `factorial()` de l’[Exercice 1](factorial_exercise) en utilisant la récursion.
+Réécrivez la fonction `factorial()` de l'[Exercice 1](factorial_exercise) en utilisant la récursion.
 
 ```{exercise-end}
 ```
