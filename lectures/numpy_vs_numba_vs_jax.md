@@ -61,7 +61,7 @@ En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothè
 ---
 tags: [hide-output]
 ---
-!pip install quantecon "jax==0.11.0"
+!pip install quantecon "jax==0.12.1"
 ```
 
 ```{include} _admonition/gpu.md
