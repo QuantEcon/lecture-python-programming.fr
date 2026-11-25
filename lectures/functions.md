@@ -293,6 +293,7 @@ Nous en dirons plus à ce sujet {doc}`plus tard <writing_good_code>`.
 
 ## Applications
 
+
 ### Tirages aléatoires
 
 Considérons à nouveau ce code du {doc}`cours précédent <python_by_example>`
@@ -377,7 +378,7 @@ Notes
 
 Maintenant, il existe plusieurs façons de simplifier le code ci-dessus.
 
-Par exemple, nous pouvons nous débarrasser complètement des conditions en passant simplement le type de générateur souhaité sous forme de fonction, de méthode, ou d'un autre objet [appelable](https://typing.python.org/en/latest/spec/callables.html).
+Par exemple, nous pouvons nous débarrasser entièrement des conditions en passant simplement le type de générateur souhaité sous forme de fonction, de méthode, ou d'un autre objet [appelable](https://typing.python.org/en/latest/spec/callables.html).
 
 Pour comprendre cela, considérons la version suivante.
 

@@ -172,7 +172,7 @@ Avant de le faire, afin d'illustrer une partie de la puissance des classes, nous
 
 ```{code-cell} python3
 def earn(w,y):
-    "Consumer with inital wealth w earns y"
+    "Consumer with initial wealth w earns y"
     return w+y
 
 def spend(w,x):
@@ -240,7 +240,7 @@ class Consumer:
         "The consumer spends x dollars if feasible"
         new_wealth = self.wealth - x
         if new_wealth < 0:
-            print("Insufficent funds")
+            print("Insufficient funds")
         else:
             self.wealth = new_wealth
 ```
