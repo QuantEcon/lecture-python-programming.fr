@@ -239,8 +239,6 @@ de copie distincte des données déjà présentes dans un tableau NumPy.
 
 Pour lire les données d'un tableau à partir d'un fichier texte contenant des données numériques, utilisez `np.loadtxt` --- voir [la documentation](https://numpy.org/doc/stable/reference/routines.io.html) pour plus de détails.
 
-
-
 ### Indexation de tableaux
 
 ```{index} single: NumPy; Arrays (Indexing)
@@ -401,7 +399,6 @@ z
 z.searchsorted(2.2)
 ```
 
-
 ## Opérations arithmétiques
 
 ```{index} single: NumPy; Arithmetic Operations
@@ -450,7 +447,6 @@ A * B
 (numpy_matrix_multiplication)=
 En particulier, `A * B` n'est *pas* le produit matriciel, c'est un produit élément par élément.
 
-
 ## Multiplication matricielle
 
 ```{index} single: NumPy; Matrix Multiplication
@@ -464,8 +460,7 @@ B = np.ones((2, 2))
 A @ B
 ```
 
-La syntaxe fonctionne avec des tableaux plats --- NumPy devine intelligemment ce que vous
-voulez :
+La syntaxe fonctionne avec des tableaux unidimensionnels --- NumPy devine intelligemment ce que l'on veut :
 
 ```{code-cell} python3
 A @ (0, 1)
@@ -850,8 +845,6 @@ Pour nous aider, nous pouvons utiliser la liste de règles suivante :
     - Par l'*Étape 2*, `b` sera étendu en `b -> (2, 2, 2)` ;
     - Nous pouvons voir qu'ils ne correspondent pas l'un à l'autre après les deux premières étapes. Ainsi, une `ValueError` sera levée
 
-
-
 ## Mutabilité et copie de tableaux
 
 Les tableaux NumPy sont des types de données mutables, comme les listes Python.
@@ -862,7 +855,6 @@ C'est pratique mais, combiné au modèle de nommage et de référence de Python,
 cela peut être source d'erreurs pour les personnes qui découvrent NumPy.
 
 Dans cette section, nous passons en revue quelques points clés.
-
 
 ### Mutabilité
 
@@ -936,13 +928,9 @@ a
 
 Notez que la modification de `b` n'a pas affecté `a`.
 
-
-
-
 ## Fonctionnalités supplémentaires
 
 Examinons quelques autres fonctionnalités utiles de NumPy.
-
 
 ### Fonctions universelles
 
@@ -1010,7 +998,6 @@ f(x)                # Passe le même vecteur x que dans l'exemple précédent
 Cependant, cette approche n'atteint pas toujours la même vitesse qu'une fonction vectorisée plus soigneusement conçue.
 
 (Plus tard, nous verrons que JAX dispose d'une version puissante de `np.vectorize` qui peut générer, et génère généralement, du code hautement efficace.)
-
 
 ### Comparaisons
 
@@ -1102,7 +1089,6 @@ Nous couvrirons les versions SciPy plus en détail {doc}`bientôt <scipy>`.
 
 Pour une liste complète de ce qui est disponible dans NumPy, consultez [cette documentation](https://numpy.org/doc/stable/reference/routines.html).
 
-
 ### Multithreading implicite 
 
 [Précédemment](need_for_speed), nous avons abordé le concept de parallélisation via le multithreading.
@@ -1135,10 +1121,6 @@ Nous pouvons voir que 4 des 8 processeurs fonctionnent à pleine vitesse.
 
 Cela est dû au fait que la routine `eigvals` de NumPy divise proprement les tâches et
 les distribue à différents threads.
-
-
-
-
 
 ## Exercices
 
