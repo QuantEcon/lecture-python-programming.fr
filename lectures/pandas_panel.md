@@ -39,7 +39,7 @@ En plus de ce qui est inclus dans Anaconda, ce cours nécessitera les bibliothè
 ```{code-cell} ipython3
 :tags: [hide-output]
 
-!pip install --upgrade seaborn
+!pip install seaborn
 ```
 
 Nous utilisons les importations suivantes.

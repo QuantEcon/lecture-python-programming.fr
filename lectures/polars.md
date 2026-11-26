@@ -47,7 +47,7 @@ En plus de ce qui est fourni dans Anaconda, ce cours nécessitera les bibliothè
 ```{code-cell} ipython3
 :tags: [hide-output]
 
-!pip install --upgrade polars yfinance
+!pip install polars yfinance
 ```
 
 ## Aperçu général
