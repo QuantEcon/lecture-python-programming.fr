@@ -110,7 +110,7 @@ type(y)
 
 Dans les expressions arithmétiques, `True` est converti en `1` et `False` est converti en `0`.
 
-Cela s'appelle l'**arithmétique booléenne** et est souvent utile en programmation.
+Cela s'appelle l’**arithmétique booléenne** et est souvent utile en programmation.
 
 Voici quelques exemples
 
@@ -1031,7 +1031,7 @@ En particulier, sans utiliser aucun import, écrivez une fonction `linapprox` qu
 * Un entier `n` déterminant le nombre de points de grille.
 * Un nombre `x` satisfaisant `a <= x <= b`.
 
-et renvoie l'[interpolation linéaire par morceaux](https://en.wikipedia.org/wiki/Linear_interpolation) de `f` en `x`, basée sur `n` points de grille régulièrement espacés `a = point[0] < point[1] < ... < point[n-1] = b`.
+et renvoie l’[interpolation linéaire par morceaux](https://en.wikipedia.org/wiki/Linear_interpolation) de `f` en `x`, basée sur `n` points de grille régulièrement espacés `a = point[0] < point[1] < ... < point[n-1] = b`.
 
 Visez la clarté, pas l'efficacité.
 ```

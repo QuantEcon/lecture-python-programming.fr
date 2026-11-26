@@ -166,7 +166,7 @@ Regardons un exemple qui lit des données à partir du fichier CSV `test_pwt.csv
 Le jeu de données contient les indicateurs suivants
 
 | Nom de la variable | Description |
-| :- : | :- : |
+| :-: | :-: |
 | POP | Population (en milliers) |
 | XRAT | Taux de change par rapport au dollar américain |                     
 | tcgdp | PIB total converti en PPA (en millions de dollars internationaux) |

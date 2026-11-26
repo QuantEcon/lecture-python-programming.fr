@@ -264,7 +264,7 @@ solve(solow, k)
 
 ### Inégalités et logique
 
-SymPy permet aussi aux utilisateurs de définir des inégalités et des opérateurs d'ensembles et fournit un large éventail d'[opérations](https://docs.sympy.org/latest/modules/solvers/inequalities.html).
+SymPy permet aussi aux utilisateurs de définir des inégalités et des opérateurs d'ensembles et fournit un large éventail d’[opérations](https://docs.sympy.org/latest/modules/solvers/inequalities.html).
 
 ```{code-cell} ipython3
 reduce_inequalities([2*x + 5*y <= 30, 4*x + 2*y <= 20], [x])
@@ -682,7 +682,7 @@ lim
 ```{exercise}
 :label: sympy_ex2
 
-L'[estimation par maximum de vraisemblance (MLE)](https://python.quantecon.org/mle.html) est une méthode pour estimer les paramètres d'un modèle statistique.
+L’[estimation par maximum de vraisemblance (MLE)](https://python.quantecon.org/mle.html) est une méthode pour estimer les paramètres d'un modèle statistique.
 
 Elle implique généralement de maximiser une fonction de log-vraisemblance et de résoudre la dérivée du premier ordre.
 

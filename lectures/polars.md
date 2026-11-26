@@ -59,7 +59,7 @@ Elle a gagné une popularité considérable en tant qu'alternative moderne à {d
 Polars est conçue en tenant compte de la performance et de l'efficacité mémoire, en s'appuyant sur :
 
 * Le [format colonnaire Apache Arrow](https://arrow.apache.org/docs/format/Columnar.html) pour un accès rapide aux données
-* L'[évaluation paresseuse](https://en.wikipedia.org/wiki/Lazy_evaluation) pour optimiser l'exécution des requêtes
+* L’[évaluation paresseuse](https://en.wikipedia.org/wiki/Lazy_evaluation) pour optimiser l'exécution des requêtes
 * Le traitement parallèle pour utiliser tous les cœurs de processeur disponibles
 * Une API expressive construite autour d'expressions de colonnes
 
@@ -351,7 +351,7 @@ plt.show()
 ```{index} single: Polars; Lazy Evaluation
 ```
 
-L'une des fonctionnalités les plus puissantes de Polars est l'**évaluation paresseuse** (lazy evaluation).
+L'une des fonctionnalités les plus puissantes de Polars est l’**évaluation paresseuse** (lazy evaluation).
 
 Au lieu d'exécuter chaque opération immédiatement, le mode paresseux collecte le plan de requête complet et l'optimise avant de l'exécuter.
 

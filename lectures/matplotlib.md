@@ -105,7 +105,7 @@ plt.show()
 Ici, l'appel `fig, ax = plt.subplots()` renvoie une paire, où
 
 * `fig` est une instance de `Figure` — comme une toile vierge.
-* `ax` est une instance d'`AxesSubplot` — pensez à un cadre dans lequel tracer.
+* `ax` est une instance d’`AxesSubplot` — pensez à un cadre dans lequel tracer.
 
 La fonction `plot()` est en réalité une méthode de `ax`.
 

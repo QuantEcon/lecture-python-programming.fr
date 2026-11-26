@@ -470,7 +470,7 @@ l3 = ['z', 'x', 'b']
 arb(l1, l2, l3)
 ```
 
-De même, Python nous permet d'utiliser `**kargs` pour passer un nombre arbitraire d'*arguments nommés* dans les fonctions
+De même, Python nous permet d'utiliser `**kargs` pour passer un nombre arbitraire d’*arguments nommés* dans les fonctions
 
 ```{code-cell} python3
 def arb(**ls):
@@ -490,7 +490,7 @@ arb(l1=l1, l2=l2, l3=l3)
 
 Dans l'ensemble, `*args` et `**kargs` sont utilisés lors de la *définition d'une fonction* ; ils permettent à la fonction de prendre une entrée de taille arbitraire.
 
-La différence est que les fonctions avec `*args` pourront prendre des *arguments positionnels* de taille arbitraire, tandis que `**kargs` permettra aux fonctions de prendre un nombre arbitraire d'*arguments nommés*.
+La différence est que les fonctions avec `*args` pourront prendre des *arguments positionnels* de taille arbitraire, tandis que `**kargs` permettra aux fonctions de prendre un nombre arbitraire d’*arguments nommés*.
 
 ## Indications de type
 

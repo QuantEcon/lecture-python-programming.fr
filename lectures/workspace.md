@@ -225,7 +225,7 @@ Utilisez Shift + Enter pour exécuter une ligne de code.
 
 Visual Studio Code (VS Code) est un éditeur de code et un espace de travail de développement qui peut s'exécuter
 - dans le [navigateur](https://vscode.dev/).
-- en tant qu'[installation](https://code.visualstudio.com/docs/?dv=win) locale.
+- en tant qu’[installation](https://code.visualstudio.com/docs/?dv=win) locale.
 
 Les deux interfaces sont identiques.
 

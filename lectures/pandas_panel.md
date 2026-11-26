@@ -506,7 +506,7 @@ D'autres outils qui peuvent être utiles dans l'analyse des données de panel co
 ```
 
 Dans ces exercices, vous travaillerez avec un ensemble de données de taux
-d'emploi en Europe par âge et par sexe provenant d'[Eurostat](https://ec.europa.eu/eurostat/data/database).
+d'emploi en Europe par âge et par sexe provenant d’[Eurostat](https://ec.europa.eu/eurostat/data/database).
 
 L'ensemble de données est accessible via le lien suivant :
 
