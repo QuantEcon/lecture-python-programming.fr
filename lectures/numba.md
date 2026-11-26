@@ -549,7 +549,7 @@ with qe.Timer():
 ```
 
 Dans ce contexte séquentiel, les deux approches donnent des estimations tout aussi bonnes et s'exécutent à une
-vitesse similaire, mais elles ne sont pas équivalentes en termes d'*utilisation de la mémoire*. 
+vitesse similaire, mais elles ne sont pas équivalentes en termes d’*utilisation de la mémoire*. 
 
 La première approche
 doit conserver l'ensemble des $2n$ tirages en mémoire à la fois --- deux tableaux de `n` nombres à virgule

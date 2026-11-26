@@ -198,7 +198,7 @@ Cela viole un principe fondamental de la programmation : Ne vous répétez pas 
 
 Oui, nous savons que vous pouvez simplement copier-coller et changer quelques symboles.
 
-Mais en tant que programmeur, votre objectif devrait être d'**automatiser** la répétition, **et non** de la faire vous-même.
+Mais en tant que programmeur, votre objectif devrait être d’**automatiser** la répétition, **et non** de la faire vous-même.
 
 Plus important encore, répéter la même logique à différents endroits signifie qu'à terme, l'un d'eux sera probablement erroné.
 

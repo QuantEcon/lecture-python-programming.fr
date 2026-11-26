@@ -74,7 +74,7 @@ Comme NumPy, SciPy est stable, mature et largement utilisé.
 
 De nombreuses routines de SciPy sont de fines surcouches autour de bibliothèques Fortran standard de l'industrie telles que [LAPACK](https://en.wikipedia.org/wiki/LAPACK), [BLAS](https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms), etc.
 
-Il n'est pas vraiment nécessaire d'« apprendre » SciPy dans son ensemble.
+Il n'est pas vraiment nécessaire d’« apprendre » SciPy dans son ensemble.
 
 Une approche plus courante consiste à avoir une idée de ce que contient la bibliothèque, puis à consulter la [documentation](https://docs.scipy.org/doc/scipy/reference/index.html) au besoin.
 
@@ -470,7 +470,7 @@ SciPy fournit également un module d'algèbre linéaire du même nom.
 
 Ce dernier n'est pas un sur-ensemble exact du premier, mais dans l'ensemble il possède davantage de fonctionnalités.
 
-Nous vous laissons explorer l'[ensemble des routines disponibles](https://docs.scipy.org/doc/scipy/reference/linalg.html).
+Nous vous laissons explorer l’[ensemble des routines disponibles](https://docs.scipy.org/doc/scipy/reference/linalg.html).
 
 ## Exercices
 
@@ -610,7 +610,7 @@ print(f"The Monte Carlo option price is {P:3f}")
 ```{exercise}
 :label: sp_ex1
 
-Dans {ref}`ce cours <functions>`, nous avons abordé le concept d'{ref}`appels récursifs de fonctions <recursive_functions>`.
+Dans {ref}`ce cours <functions>`, nous avons abordé le concept d’{ref}`appels récursifs de fonctions <recursive_functions>`.
 
 Essayez d'écrire une implémentation récursive de la fonction de bissection maison {ref}`décrite ci-dessus <bisect_func>`.
 

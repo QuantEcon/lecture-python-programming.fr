@@ -837,7 +837,7 @@ Pour nous aider, nous pouvons utiliser la liste de règles suivante :
 * *Étape 1 :* Lorsque les dimensions de deux tableaux ne correspondent pas, NumPy étend celui qui a le moins de dimensions en ajoutant une ou plusieurs dimensions à gauche des dimensions existantes.
     - Par exemple, si `a -> (3, 3)` et `b -> (3,)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 3)` ;
     - Si `a -> (2, 2, 2)` et `b -> (2, 2)`, alors le broadcasting ajoutera une dimension à gauche de sorte que `b -> (1, 2, 2)` ;
-    - Si `a -> (3, 2, 2)` et `b -> (2,)`, alors le broadcasting ajoutera deux dimensions à gauche de sorte que `b -> (1, 1, 2)` (on peut aussi voir ce processus comme un passage par l'*Étape 1* deux fois).
+    - Si `a -> (3, 2, 2)` et `b -> (2,)`, alors le broadcasting ajoutera deux dimensions à gauche de sorte que `b -> (1, 1, 2)` (on peut aussi voir ce processus comme un passage par l’*Étape 1* deux fois).
 
 
 * *Étape 2 :* Lorsque les deux tableaux ont la même dimension mais des formes différentes, NumPy tentera d'étendre les dimensions où l'indice de forme est 1.
@@ -846,8 +846,8 @@ Pour nous aider, nous pouvons utiliser la liste de règles suivante :
     - Si `a -> (3, 2, 2)` et `b -> (1, 1, 2)`, alors le broadcasting étendra `b` sur toutes les dimensions de forme 1 de sorte que `b -> (3, 2, 2)`.
 
 * *Étape 3 :* Après les étapes 1 et 2, si les deux tableaux ne correspondent toujours pas, une `ValueError` sera levée. Par exemple, supposons `a -> (2, 2, 3)` et `b -> (2, 2)`
-    - Par l'*Étape 1*, `b` sera étendu en `b -> (1, 2, 2)` ;
-    - Par l'*Étape 2*, `b` sera étendu en `b -> (2, 2, 2)` ;
+    - Par l’*Étape 1*, `b` sera étendu en `b -> (1, 2, 2)` ;
+    - Par l’*Étape 2*, `b` sera étendu en `b -> (2, 2, 2)` ;
     - Nous pouvons voir qu'ils ne correspondent pas l'un à l'autre après les deux premières étapes. Ainsi, une `ValueError` sera levée
 
 
@@ -1047,7 +1047,7 @@ z
 z > 3
 ```
 
-Ceci est particulièrement utile pour l'*extraction conditionnelle*
+Ceci est particulièrement utile pour l’*extraction conditionnelle*
 
 ```{code-cell} python3
 b = z > 3

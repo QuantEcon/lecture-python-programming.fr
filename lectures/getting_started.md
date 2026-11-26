@@ -286,7 +286,7 @@ Le comportement modal du notebook Jupyter est très efficace une fois que vous v
 
 #### Insérer de l'Unicode (par exemple, des lettres grecques)
 
-Python prend en charge l'[unicode](https://docs.python.org/3/howto/unicode.html), permettant l'utilisation de caractères tels que $\alpha$ et $\beta$ comme noms dans votre code.
+Python prend en charge l’[unicode](https://docs.python.org/3/howto/unicode.html), permettant l'utilisation de caractères tels que $\alpha$ et $\beta$ comme noms dans votre code.
 
 Dans une cellule de code, essayez de taper `\alpha` puis d'appuyer sur la touche tab de votre clavier.
 
@@ -396,7 +396,7 @@ Maintenant, nous faisons `Shift+Enter` pour produire ceci
 
 Le débogage est le processus d'identification et de suppression des erreurs d'un programme.
 
-Vous passerez beaucoup de temps à déboguer du code, il est donc important d'[apprendre à le faire efficacement](https://www.freecodecamp.org/news/what-is-debugging-how-to-debug-code/).
+Vous passerez beaucoup de temps à déboguer du code, il est donc important d’[apprendre à le faire efficacement](https://www.freecodecamp.org/news/what-is-debugging-how-to-debug-code/).
 
 Si vous utilisez une version plus récente de Jupyter, vous devriez voir une icône de bug à l'extrémité droite de la barre d'outils.
 
@@ -451,7 +451,7 @@ Pour collaborer avec d'autres personnes sur des notebooks, vous pourriez jeter u
 - [Google Colab](https://colab.research.google.com/)
 - [Kaggle](https://www.kaggle.com/code)
 
-Pour garder le code privé et utiliser l'interface familière de JupyterLab et Notebook, renseignez-vous sur l'[extension JupyterLab Real-Time Collaboration](https://jupyterlab-realtime-collaboration.readthedocs.io/en/latest/).
+Pour garder le code privé et utiliser l'interface familière de JupyterLab et Notebook, renseignez-vous sur l’[extension JupyterLab Real-Time Collaboration](https://jupyterlab-realtime-collaboration.readthedocs.io/en/latest/).
 ```
 
 ### QuantEcon Notes
