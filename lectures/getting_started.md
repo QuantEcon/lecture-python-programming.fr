@@ -51,12 +51,12 @@ translation:
 
 <style>
   .auto {
-    width : 70% ;
-    height : auto ;
+    width: 70%;
+    height: auto;
     } 
   .terminal{
-    width : 80% ;
-    height : auto ;
+    width: 80%;
+    height: auto;
   }  
 </style>
 
